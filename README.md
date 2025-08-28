@@ -3,7 +3,7 @@
 #### Video Demo: <URL HERE>  
 #### Author: Francisco Teixeira Barbosa  
 #### GitHub Username: Tuminha  
-#### edX Username: <YOUR EDX USERNAME>  
+#### edX Username: Tuminha  
 #### Location: Basel, Switzerland  
 #### Date: <DATE YOU RECORD VIDEO>  
 
