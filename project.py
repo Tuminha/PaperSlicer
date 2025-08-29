@@ -40,7 +40,19 @@ def main():
     parser.add_argument("path", nargs="?", help="PDF file or folder")
     parser.add_argument("--out", help="Output .json or .jsonl")
     parser.add_argument("--jsonl", action="store_true", help="Write JSON Lines format")
+    parser.add_argument(
+        "--tei-out",
+        dest="tei_out",
+        help="Directory to save TEI XML from Grobid (overrides PAPERSLICER_XML_DIR)",
+    )
     args = parser.parse_args()
+
+    # Allow setting TEI output dir even while CLI is WIP
+    if args.tei_out:
+        os.makedirs(args.tei_out, exist_ok=True)
+        # Prefer TEI_SAVE_DIR; also set legacy env for compatibility
+        os.environ["TEI_SAVE_DIR"] = args.tei_out
+        os.environ["PAPERSLICER_XML_DIR"] = args.tei_out
 
     # For now, keep CLI inert so you can focus on tests-driven coding
     print("PaperSlicer CLI is WIP. Implement steps in order and run pytest first.")

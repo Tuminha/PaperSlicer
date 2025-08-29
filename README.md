@@ -96,8 +96,29 @@ java -version
 
 ```bash
 # Single file → JSON
-python project.py data/paper1.pdf --out out/paper1.json
+python project.py data/pdf/paper1.pdf --out out/paper1.json
 
 # Folder of PDFs → JSONL (one record per line)
-python project.py data/ --out out/papers.jsonl --jsonl
+python project.py data/pdf --out out/papers.jsonl --jsonl
+
+# Save TEI XML to a custom folder
+python project.py data/pdf/paper1.pdf --tei-out data/xml
+```
+
+Directory layout:
+
+- data/pdf: place your source PDF files here
+- data/xml: TEI XML outputs from GROBID
+
+TEI autosave:
+- The pipeline automatically saves TEI XML to `data/xml` when Grobid is used.
+- Override the save location with `TEI_SAVE_DIR` (preferred) or `PAPERSLICER_XML_DIR` (legacy).
+- Or pass `--tei-out` on the CLI to set it per run.
+
+Tip: when using the Grobid client directly, you can persist TEI alongside the bytes by passing a save directory:
+
+```python
+from paperslicer.grobid.client import GrobidClient
+tei_bytes, tei_path = GrobidClient().process_fulltext("data/pdf/paper1.pdf", save_dir="data/xml")
+print(tei_path)
 ```
