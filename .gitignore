@@ -129,6 +129,14 @@ dmypy.json
 .pyre/
 
 # Project specific
-data/
-out/
+
+# Inputs/outputs (ignore contents, keep placeholders)
+data/pdf/*
+!data/pdf/.gitkeep
+data/xml/*
+!data/xml/.gitkeep
+out/*
+!out/.gitkeep
+
+# PDFs anywhere (keep ignored by default)
 *.pdf
