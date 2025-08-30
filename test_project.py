@@ -63,9 +63,13 @@ def test_extract_metadata_from_tei_bytes_minimal():
 
 def test_metadata_extractor_on_periodontology_tei():
     # Verify metadata extracted from a real TEI file in data/xml
-    tei_path = (
-        "Projects Python CS50 Harvard University/final_project/PaperSlicer/data/xml/"
-        "Periodontology 2000 - 2023 - Liñares - Critical review on bone grafting during immediate implant placement.tei.xml"
+    import os
+    base_dir = os.path.dirname(__file__)
+    tei_path = os.path.join(
+        base_dir,
+        "data",
+        "xml",
+        "Periodontology 2000 - 2023 - Liñares - Critical review on bone grafting during immediate implant placement.tei.xml",
     )
     from paperslicer.extractors.metadata import TEIMetadataExtractor
 
@@ -115,7 +119,13 @@ def test_extract_introduction_minimal():
   </text>
 </TEI>"""
     import tempfile, os
-    from paperslicer.grobid.sections import extract_introduction
+    from paperslicer.grobid.sections import (
+        extract_introduction,
+        extract_methods,
+        extract_results,
+        extract_discussion,
+        extract_conclusions,
+    )
     with tempfile.TemporaryDirectory() as d:
         p = os.path.join(d, "x.tei.xml")
         with open(p, "wb") as f:
@@ -327,6 +337,30 @@ def test_grobid_ingestor_saves_files(tmp_path):
     assert b"<TEI" in head
 
 
+def test_grobid_ingestor_skips_existing_tei(tmp_path):
+    """Ingestor should skip network call when a valid TEI already exists."""
+    from paperslicer.grobid.ingest import GrobidIngestor
+
+    # Create dummy PDF and pre-existing TEI
+    pdf_path = tmp_path / "dummy.pdf"
+    pdf_path.write_bytes(b"%PDF-1.4\n...")
+
+    tei_dir = tmp_path / "xml"
+    tei_dir.mkdir(parents=True, exist_ok=True)
+    tei_path = tei_dir / f"{pdf_path.stem}.tei.xml"
+    tei_path.write_text(
+        """<?xml version='1.0'?>
+<TEI xmlns='http://www.tei-c.org/ns/1.0'><teiHeader/><text/></TEI>
+""",
+        encoding="utf-8",
+    )
+
+    ing = GrobidIngestor(tei_dir=str(tei_dir), skip_existing=True, validate_existing=True)
+    # This should return the existing TEI path without raising (no server needed)
+    out = ing.ingest_path(str(pdf_path))
+    assert out == [str(tei_path)]
+
+
 @pytest.mark.skipif(shutil.which("docker") is None, reason="Docker not available")
 def test_grobid_manager_does_not_crash_when_trying_to_start():
     mgr = GrobidManager()
@@ -363,3 +397,333 @@ def test_resolver_enriches_when_fields_missing(tmp_path):
     assert md["title"]
     # Ensure enrichment attempted: at least one of these fields becomes non-empty
     assert any(md.get(k) for k in ("journal", "doi", "abstract"))
+
+
+def test_harvest_sections_summary_real_data():
+    """Tailored boundary check for one article (MDPI Oral 2024).
+
+    For each present major section, assert the first/last words and
+    5-token chunks from TEI appear in PDF text. Fails with diagnostic
+    messages on mismatch to highlight differences.
+    """
+    import os
+    import re
+    import unicodedata
+    import pytest
+    from lxml import etree
+    from paperslicer.utils.sections_mapping import canonicalize
+
+    base_dir = os.path.dirname(__file__)
+    tei_path = os.path.join(
+        base_dir,
+        "data",
+        "xml",
+        "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.tei.xml",
+    )
+    pdf_path = os.path.join(
+        base_dir,
+        "data",
+        "pdf",
+        "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.pdf",
+    )
+    assert os.path.exists(tei_path), f"TEI not found: {tei_path}"
+    assert os.path.exists(pdf_path), f"PDF not found: {pdf_path}"
+
+    try:
+        import fitz  # PyMuPDF
+    except Exception as e:
+        pytest.skip(f"PyMuPDF not available: {e}")
+
+    def _norm_tokens(s: str) -> list[str]:
+        s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode("ascii")
+        s = s.lower()
+        s = re.sub(r"[^a-z0-9\s]+", " ", s)
+        s = re.sub(r"\s+", " ", s).strip()
+        return s.split()
+
+    TEI_NS = {"tei": "http://www.tei-c.org/ns/1.0"}
+    parser = etree.XMLParser(recover=True)
+    root = etree.parse(tei_path, parser).getroot()
+
+    majors = [
+        "introduction",
+        "materials_and_methods",
+        "results",
+        "discussion",
+        "conclusions",
+    ]
+    found: dict[str, etree._Element] = {}
+    for div in root.findall(".//tei:text//tei:div", TEI_NS):
+        head = div.find("./tei:head", TEI_NS)
+        head_txt = "".join(head.itertext()) if head is not None else ""
+        canon = canonicalize(head_txt or "")
+        if canon in majors and canon not in found:
+            found[canon] = div
+        if len(found) == len(majors):
+            break
+
+    assert "introduction" in found, "Introduction section not found in TEI"
+
+    def first_last_chunks(div: etree._Element) -> tuple[list[str], list[str]]:
+        ps = div.findall(".//tei:p", TEI_NS)
+        if ps:
+            first = " ".join(" ".join(ps[0].itertext()).split())
+            last = " ".join(" ".join(ps[-1].itertext()).split())
+        else:
+            parts: list[str] = []
+            for el in div.iter():
+                if el.tag.endswith("}head"):
+                    continue
+                txt = " ".join(" ".join(el.itertext()).split())
+                if txt:
+                    parts.append(txt)
+            whole = "\n\n".join(parts)
+            toks = _norm_tokens(whole)
+            f = " ".join(toks[:20])
+            l = " ".join(toks[-20:])
+            return _norm_tokens(f), _norm_tokens(l)
+        return _norm_tokens(first), _norm_tokens(last)
+
+    # Normalize entire PDF text
+    doc = fitz.open(pdf_path)
+    pdf_text = []
+    for i in range(len(doc)):
+        pdf_text.append(doc[i].get_text("text"))
+    doc.close()
+    pdf_norm = " ".join(_norm_tokens("\n".join(pdf_text)))
+
+    errors: list[str] = []
+    for sec in majors:
+        if sec not in found:
+            continue
+        f_toks, l_toks = first_last_chunks(found[sec])
+        if len(f_toks) < 1 or len(l_toks) < 1:
+            continue
+        first_word = f_toks[0]
+        last_word = l_toks[-1]
+        first5 = " ".join(f_toks[:5])
+        last5 = " ".join(l_toks[-5:])
+        print(f"Section {sec}: first5='{first5}' | last5='{last5}'")
+        if first_word not in pdf_norm:
+            errors.append(f"{sec}: first word not in PDF -> '{first_word}' | first5='{first5}'")
+        if last_word not in pdf_norm:
+            errors.append(f"{sec}: last word not in PDF -> '{last_word}' | last5='{last5}'")
+        if first5 not in pdf_norm:
+            errors.append(f"{sec}: first 5-token chunk not in PDF -> '{first5}'")
+        if last5 not in pdf_norm:
+            errors.append(f"{sec}: last 5-token chunk not in PDF -> '{last5}'")
+
+    if errors:
+        msg = "\n".join(errors)
+        msg += "\nNotes: PDF text may differ due to hyphenation/ligatures; TEI may clean/merge paragraphs."
+        pytest.fail(msg)
+
+
+def test_section_boundaries_against_pdf_for_mdpi_oral_2024():
+    """Concrete article check: verify Intro boundaries between TEI and PDF.
+
+    - Extract Introduction text from TEI
+    - Compare first word and last word presence in corresponding PDF text
+    - On mismatch, fail with a clear diagnostic message explaining likely causes
+    """
+    import os
+    import re
+    import unicodedata
+    import pytest
+    from paperslicer.grobid.sections import extract_introduction
+
+    # TEI/PDF pair (present in the repo)
+    base_dir = os.path.dirname(__file__)
+    tei_path = os.path.join(
+        base_dir,
+        "data",
+        "xml",
+        "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.tei.xml",
+    )
+    pdf_path = os.path.join(
+        base_dir,
+        "data",
+        "pdf",
+        "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.pdf",
+    )
+    assert os.path.exists(tei_path), "Sample TEI not found"
+    assert os.path.exists(pdf_path), "Matching PDF not found"
+
+    intro_text = extract_introduction(tei_path) or ""
+    # normalize TEI text to tokens
+    def _tokens(s: str):
+        s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode("ascii")
+        s = s.lower()
+        s = re.sub(r"[^a-z0-9\s]+", " ", s)
+        s = re.sub(r"\s+", " ", s).strip()
+        return s.split()
+
+    toks = _tokens(intro_text)
+    assert len(toks) > 10, "Introduction appears too short or empty in TEI"
+    first_word = toks[0]
+    last_word = toks[-1]
+    first_5 = " ".join(toks[:5])
+    last_5 = " ".join(toks[-5:])
+    # Print context for quick visualization in test output
+    intro_vis_start = (" ".join(toks[:60]))[:240]
+    intro_vis_end = (" ".join(toks[-60:]))[-240:]
+    print("TEI Introduction (start):", intro_vis_start)
+    print("TEI Introduction (end):", intro_vis_end)
+
+    # Extract PDF text using PyMuPDF if available
+    try:
+        import fitz  # type: ignore
+    except Exception as e:  # pragma: no cover - environment dependent
+        pytest.skip(f"PyMuPDF not installed or unavailable: {e}")
+
+    doc = fitz.open(pdf_path)
+    pdf_text = []
+    for pno in range(len(doc)):
+        page = doc[pno]
+        # Avoid layout complexity: use simple text extraction
+        pdf_text.append(page.get_text("text"))
+    doc.close()
+    pdf_text = "\n".join(pdf_text)
+
+    # normalize PDF text
+    pdf_norm = " ".join(_tokens(pdf_text))
+
+    # Checks with helpful diagnostics
+    miss_critical = []
+    warns = []
+    # Helper to check a section (hard-fail on first word; warn on others)
+    def check_section(name: str, text: str):
+        if not text:
+            return
+        sec_toks = _tokens(text)
+        if len(sec_toks) < 5:
+            # ignore trivial content
+            return
+        fw = sec_toks[0]
+        lw = sec_toks[-1]
+        f5 = " ".join(sec_toks[:5])
+        l5 = " ".join(sec_toks[-5:])
+        if fw not in pdf_norm:
+            miss_critical.append(
+                f"{name} first word missing in PDF: '{fw}'. Context first5='{f5}'"
+            )
+        if lw not in pdf_norm:
+            warns.append(
+                f"{name} last word missing in PDF: '{lw}'. Context last5='{l5}'"
+            )
+        if f5 not in pdf_norm:
+            warns.append(
+                f"{name} first 5-token chunk not found in PDF: '{f5}'. "
+                "Possible hyphenation/spacing differences."
+            )
+        if l5 not in pdf_norm:
+            warns.append(
+                f"{name} last 5-token chunk not found in PDF: '{l5}'. "
+                "Section boundary may differ between TEI and PDF extraction."
+            )
+
+    check_section("Introduction", intro_text)
+    # Also verify other major sections when present in TEI
+    methods_text = extract_methods(tei_path) or ""
+    results_text = extract_results(tei_path) or ""
+    discussion_text = extract_discussion(tei_path) or ""
+    conclusions_text = extract_conclusions(tei_path) or ""
+    check_section("Materials_and_Methods", methods_text)
+    check_section("Results", results_text)
+    check_section("Discussion", discussion_text)
+    check_section("Conclusions", conclusions_text)
+
+    if miss_critical:
+        detail = (
+            "\n".join(miss_critical)
+            + "\nNotes: PDF text extraction can alter whitespace, hyphenation, and ligatures;"
+            + " TEI may also clean or merge paragraphs."
+        )
+        pytest.fail(detail)
+    # Emit non-fatal diagnostics for awareness
+    for w in warns:
+        print("WARN:", w)
+
+
+def _check_pdf_tei_for_stem(stem: str):
+    import os, re, unicodedata, pytest
+    try:
+        import fitz  # type: ignore
+    except Exception as e:
+        pytest.skip(f"PyMuPDF not installed or unavailable: {e}")
+    from paperslicer.grobid.sections import (
+        extract_introduction,
+        extract_methods,
+        extract_results,
+        extract_discussion,
+        extract_conclusions,
+    )
+
+    base_dir = os.path.dirname(__file__)
+    tei_path = os.path.join(base_dir, "data", "xml", f"{stem}.tei.xml")
+    pdf_path = os.path.join(base_dir, "data", "pdf", f"{stem}.pdf")
+    assert os.path.exists(tei_path), f"TEI not found: {tei_path}"
+    assert os.path.exists(pdf_path), f"PDF not found: {pdf_path}"
+
+    def _tokens(s: str):
+        s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode("ascii")
+        s = s.lower()
+        s = re.sub(r"[^a-z0-9\s]+", " ", s)
+        s = re.sub(r"\s+", " ", s).strip()
+        return s.split()
+
+    # TEI sections
+    intro = extract_introduction(tei_path) or ""
+    methods = extract_methods(tei_path) or ""
+    results = extract_results(tei_path) or ""
+    discussion = extract_discussion(tei_path) or ""
+    conclusions = extract_conclusions(tei_path) or ""
+
+    # PDF text
+    doc = fitz.open(pdf_path)
+    pdf_text = "\n".join(page.get_text("text") for page in doc)
+    doc.close()
+    pdf_norm = " ".join(_tokens(pdf_text))
+
+    def check_section(name: str, text: str):
+        if not text:
+            print(f"WARN: {stem} '{name}' empty in TEI; skipping checks")
+            return
+        toks = _tokens(text)
+        if len(toks) < 5:
+            print(f"WARN: {stem} '{name}' too short; skipping checks")
+            return
+        fw, lw = toks[0], toks[-1]
+        f5 = " ".join(toks[:5])
+        l5 = " ".join(toks[-5:])
+        # Hard-fail only if both first word and first 5-chunk are missing
+        if (fw not in pdf_norm) and (f5 not in pdf_norm):
+            pytest.fail(
+                f"{stem} '{name}' start not found in PDF. fw='{fw}' f5='{f5}'"
+            )
+        # Tail checks are soft warnings
+        if (lw not in pdf_norm) and (l5 not in pdf_norm):
+            print(
+                f"WARN: {stem} '{name}' end not in PDF. lw='{lw}' l5='{l5}'"
+            )
+
+    # Run checks
+    check_section("Introduction", intro)
+    check_section("Materials_and_Methods", methods)
+    check_section("Results", results)
+    check_section("Discussion", discussion)
+    check_section("Conclusions", conclusions)
+
+
+def test_section_boundaries_mdpi_fluoride_release_2025():
+    _check_pdf_tei_for_stem("mdpi_dentistry_article2_fluoride_release_2025")
+
+
+def test_section_boundaries_bmc_oral_health_reso_pac_2025():
+    _check_pdf_tei_for_stem("bmc_oral_health_article1_reso_pac_2025")
+
+
+def test_section_boundaries_ijd_implant_macrodesign_2025():
+    _check_pdf_tei_for_stem(
+        "international_journal_implant_dentistry_article1_macrodesign_insertion_load_2025"
+    )

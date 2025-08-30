@@ -22,11 +22,15 @@ from paperslicer.grobid.sections import (
     extract_discussion,
     extract_conclusions,
     extract_results_and_discussion,
+    extract_unmapped_sections,
 )
+from paperslicer.grobid.sections import TEI_NS
 from paperslicer.utils.harvest_sections import harvest_heads
 from paperslicer.utils.sections_mapping import canonicalize
 from paperslicer.utils.media_path import build_media_outdir
 from paperslicer.grobid.sections import extract_references
+from paperslicer.grobid.refs import parse_references, format_references_list
+from paperslicer.journals.periodontology2000 import Periodontology2000Handler
 
 class Pipeline:
     def __init__(self, try_start_grobid: bool = True, xml_save_dir: str | None = None):
@@ -88,7 +92,10 @@ def run_corpus_e2e(
     debug_out_dir: str | None = None,
     mailto: str | None = None,
     export_images: bool = False,
+    images_mode: str = "auto",
     progress: bool = False,
+    review_mode: bool = False,
+    tei_refresh: bool = False,
 ) -> str:
     """
     End-to-end: PDFs -> TEI (GROBID) -> metadata (+enrichment) -> debug JSONs.
@@ -102,7 +109,7 @@ def run_corpus_e2e(
     report_path = os.path.join(reports_dir, report_name)
 
     # Prepare ingestor and resolver
-    ing = GrobidIngestor(tei_dir=tei_dir)
+    ing = GrobidIngestor(tei_dir=tei_dir, skip_existing=not tei_refresh)
     resolver = MetadataResolver(mailto=mailto or os.getenv("CROSSREF_MAILTO") or "you@example.com")
 
     lines: list[str] = []
@@ -141,6 +148,161 @@ def run_corpus_e2e(
         progress = True
     if progress:
         print(f"Discovered {total} TEI file(s) to process from '{input_path}'.", flush=True)
+    # --- helper: review-aware augmentation ---
+    def _augment_sections_if_needed(md_plus: dict, tei_path: str) -> list[str]:
+        augmented: list[str] = []
+        # compute coverage on canonical set
+        sec_keys_local = [
+            "introduction",
+            "materials_and_methods",
+            "results",
+            "discussion",
+            "conclusions",
+        ]
+        cov = sum(1 for k in sec_keys_local if (md_plus.get(k) or "").strip())
+        if not review_mode or cov >= 3:
+            return augmented
+        try:
+            extras = md_plus.get("sections_extra")
+            if extras is None:
+                from paperslicer.grobid.sections import extract_unmapped_sections
+                extras = extract_unmapped_sections(tei_path)
+        except Exception:
+            extras = []
+        if not extras or len(extras) < 5:
+            return augmented
+
+        def pick(extras_list: list[dict], keywords: list[str]) -> str:
+            out_chunks: list[str] = []
+            for ex in extras_list:
+                head = (ex.get("head") or "").lower()
+                if any(kw in head for kw in keywords):
+                    txt = (ex.get("text") or "").strip()
+                    if txt:
+                        out_chunks.append(txt)
+            return "\n\n".join(out_chunks).strip()
+
+        # conservative keyword sets
+        intro_kw = ["overview", "scope", "background", "aim", "purpose"]
+        meth_kw = [
+            "study selection",
+            "eligibility",
+            "information sources",
+            "search strategy",
+            "data extraction",
+            "risk of bias",
+            "data synthesis",
+            "methodology",
+            "sample size",
+        ]
+        res_kw = [
+            "included studies",
+            "findings",
+            "outcomes",
+            "meta-analysis",
+            "meta analysis",
+            "evidence",
+        ]
+        disc_kw = [
+            "limitations",
+            "challenges",
+            "perspectives",
+            "practice points",
+            "implications",
+            "recommendations",
+        ]
+        concl_kw = [
+            "summary",
+            "decision-making",
+            "decision making",
+            "concluding remarks",
+            "conclusion",
+            "clinical significance",
+            "implications",
+        ]
+
+        if not (md_plus.get("introduction") or "").strip():
+            agg = pick(extras, intro_kw)
+            if agg:
+                md_plus["augmented_introduction"] = agg
+                augmented.append("introduction")
+        if not (md_plus.get("materials_and_methods") or "").strip():
+            agg = pick(extras, meth_kw)
+            if agg:
+                md_plus["augmented_materials_and_methods"] = agg
+                augmented.append("materials_and_methods")
+        if not (md_plus.get("results") or "").strip():
+            agg = pick(extras, res_kw)
+            if agg:
+                md_plus["augmented_results"] = agg
+                augmented.append("results")
+        if not (md_plus.get("discussion") or "").strip():
+            agg = pick(extras, disc_kw)
+            if agg:
+                md_plus["augmented_discussion"] = agg
+                augmented.append("discussion")
+        if not (md_plus.get("conclusions") or "").strip():
+            agg = pick(extras, concl_kw)
+            if agg:
+                md_plus["augmented_conclusions"] = agg
+                augmented.append("conclusions")
+        # Generic, domain-agnostic fallback: if results/discussion still empty,
+        # aggregate unmapped body sections between Introduction and Conclusions/References.
+        try:
+            need_results = not (md_plus.get("results") or "").strip()
+            need_discussion = not (md_plus.get("discussion") or "").strip()
+            if (need_results or need_discussion):
+                parser = etree.XMLParser(recover=True)
+                root = etree.parse(tei_path, parser).getroot()
+                divs = root.findall(".//tei:text//tei:div", TEI_NS)
+                def head_of(d):
+                    h = d.find("./tei:head", TEI_NS)
+                    return "".join(h.itertext()) if h is not None else ""
+                intro_idx = None
+                end_idx = None
+                for i, dv in enumerate(divs):
+                    canon = canonicalize(head_of(dv))
+                    if intro_idx is None and canon == "introduction":
+                        intro_idx = i
+                    if canon in ("conclusions", "references") and end_idx is None:
+                        end_idx = i
+                start = (intro_idx + 1) if intro_idx is not None else 0
+                stop = end_idx if end_idx is not None else len(divs)
+                parts: list[str] = []
+                import copy, re
+                for i in range(max(0, start), max(start, min(stop, len(divs)))):
+                    dv = divs[i]
+                    canon = canonicalize(head_of(dv))
+                    if canon is None:
+                        cp = copy.deepcopy(dv)
+                        for ref in cp.findall('.//tei:ref[@type="bibr"]', TEI_NS):
+                            par = ref.getparent()
+                            if par is not None:
+                                par.remove(ref)
+                        for h in cp.findall('.//tei:head', TEI_NS):
+                            par = h.getparent()
+                            if par is not None:
+                                par.remove(h)
+                        s = "\n\n".join(" ".join(x.split()) for x in ["".join(cp.itertext())])
+                        s = re.sub(r"\[(?:\s*\d+(?:\s*[-–]\s*\d+)?\s*(?:,\s*\d+(?:\s*[-–]\s*\d+)?)*)\]", "", s)
+                        s = re.sub(r"\n+\d+\n+", "\n\n", s)
+                        s = re.sub(r"(?m)^\|\s*", "", s)
+                        s = s.strip()
+                        if s:
+                            parts.append(s)
+                agg_body = "\n\n".join(parts).strip()
+                if agg_body:
+                    md_plus["augmented_results_and_discussion"] = agg_body
+                    if need_results and not (md_plus.get("results") or "").strip():
+                        md_plus["results"] = agg_body
+                        augmented.append("results")
+                    if need_discussion and not (md_plus.get("discussion") or "").strip():
+                        md_plus["discussion"] = agg_body
+                        augmented.append("discussion")
+        except Exception:
+            pass
+        return augmented
+
     for idx, tei in enumerate(tei_paths, 1):
         if progress:
             print(f"[{idx}/{total}] Processing {os.path.basename(tei)} ...", flush=True)
@@ -168,8 +330,23 @@ def run_corpus_e2e(
                     md_plus["discussion"] = rd_combined
                 combined_present += 1
 
+            # Always include figure/table metadata from TEI
             figures_meta = []
             tables_meta = []
+            try:
+                from paperslicer.grobid.figures import parse_figures_tables, parse_table_data
+                items = parse_figures_tables(tei)
+                if items:
+                    md_plus["figures_list"] = [it for it in items if it.get("type") == "figure"]
+                    md_plus["tables_list"] = [it for it in items if it.get("type") == "table"]
+                # Optional: structured table rows
+                table_rows = parse_table_data(tei)
+                if table_rows:
+                    md_plus["tables_data"] = table_rows
+            except Exception:
+                pass
+
+            # Export images optionally
             if export_images:
                 try:
                     from paperslicer.grobid.figures import parse_figures_tables
@@ -194,15 +371,25 @@ def run_corpus_e2e(
                         exp = ImageExporter(media_root=media_root)
                         with_coords = [it for it in items if it.get("bbox")]
                         exported = exp.export_with_coords(pdf_path, with_coords, outdir=outdir) if with_coords else []
-                        if not exported:
-                            exported = exp.export_page_images(pdf_path, outdir=outdir)
+                        # Fallback to page images only if allowed by mode
+                        if not exported and images_mode != "coords-only":
+                            if images_mode == "pages-large":
+                                exported = exp.export_page_images(
+                                    pdf_path,
+                                    outdir=outdir,
+                                    min_width_px=300,
+                                    min_height_px=300,
+                                    min_area_px=80000,
+                                    skip_full_page=True,
+                                )
+                            else:
+                                exported = exp.export_page_images(pdf_path, outdir=outdir)
                         for e in exported:
                             if e.get("type") == "table":
                                 tables_meta.append(e)
                             else:
                                 figures_meta.append(e)
                 except Exception:
-                    # ignore image extraction errors per-file
                     pass
             if figures_meta:
                 md_plus["figures"] = figures_meta
@@ -215,6 +402,36 @@ def run_corpus_e2e(
             refs_text = extract_references(tei) or ""
             if refs_text:
                 md_plus["references"] = refs_text
+            # Structured references list (best-effort)
+            try:
+                refs_struct = parse_references(tei)
+                if refs_struct:
+                    md_plus["references_list"] = refs_struct
+                    # Human-readable formatted citations
+                    md_plus["references_citations"] = format_references_list(refs_struct)
+                    md_plus["references_text"] = "\n".join(md_plus["references_citations"])[:50000]
+                    # Prefer readable references_text over raw references
+                    md_plus["references"] = md_plus.get("references_text") or md_plus.get("references")
+            except Exception:
+                pass
+
+            # Include extra sections (unmapped) for review-style articles
+            try:
+                extras = extract_unmapped_sections(tei)
+                if extras:
+                    md_plus["sections_extra"] = extras
+            except Exception:
+                pass
+
+            # Optional review-aware augmentation (does not overwrite canonical)
+            augmented = _augment_sections_if_needed(md_plus, tei)
+            # Journal-specific adjustments (safe, conservative)
+            try:
+                changed = Periodontology2000Handler().apply(md_plus, tei)
+                if changed:
+                    augmented.extend([f"p2000:{c}" for c in changed])
+            except Exception:
+                pass
 
             saved_json = save_metadata_json(
                 md_plus,
@@ -241,6 +458,8 @@ def run_corpus_e2e(
             lines.append(f"    intro: {intro_snippet}")
             if missing:
                 lines.append(f"    missing_sections: {', '.join(missing)}")
+            if augmented:
+                lines.append(f"    augmented_sections: {', '.join(augmented)}")
             if figures_meta or tables_meta:
                 lines.append(f"    media: figures={len(figures_meta)} tables={len(tables_meta)}")
             lines.append(f"    saved: {saved_json}")

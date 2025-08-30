@@ -128,6 +128,11 @@ def main():
         help="End-to-end: PDFs → TEI → metadata → debug JSON + report",
     )
     parser.add_argument(
+        "--review-mode",
+        action="store_true",
+        help="Enable review-aware fallback to augment sections for review/consensus papers",
+    )
+    parser.add_argument(
         "--reports-dir",
         default=os.getenv("REPORTS_DIR", "out/tests"),
         help="Directory to write test reports (txt)",
@@ -138,6 +143,12 @@ def main():
         help="When used with --e2e, export images from PDFs and add figure/table metadata",
     )
     parser.add_argument(
+        "--images-mode",
+        choices=["auto", "coords-only", "pages-large"],
+        default=os.getenv("IMAGES_MODE", "auto"),
+        help="Image export mode: 'auto' (coords then fallback), 'coords-only' (no fallback), 'pages-large' (fallback but filter small/page renders)",
+    )
+    parser.add_argument(
         "--progress",
         action="store_true",
         help="Show real-time progress for --e2e runs",
@@ -146,6 +157,20 @@ def main():
         "--harvest-sections",
         action="store_true",
         help="Scan TEI files under PATH and report discovered section headings",
+    )
+    parser.add_argument(
+        "--tei-refresh",
+        action="store_true",
+        help="Regenerate TEI via GROBID even if an existing TEI file is present",
+    )
+    parser.add_argument(
+        "--images-summary",
+        action="store_true",
+        help="Write a CSV summary of image exports for all JSONs in out/meta",
+    )
+    parser.add_argument(
+        "--rag-jsonl",
+        help="Export a RAG-ready JSONL from out/meta with chunked sections (provide output path)",
     )
     args = parser.parse_args()
 
@@ -176,6 +201,8 @@ def main():
             extract_results_and_discussion,
             extract_references,
         )
+        from paperslicer.grobid.sections import extract_unmapped_sections
+        from paperslicer.grobid.figures import parse_figures_tables, parse_table_data
         md = TEIMetadataExtractor().from_file(args.path)
         # include major sections in output and saved JSON
         md["introduction"] = extract_introduction(args.path) or ""
@@ -190,9 +217,87 @@ def main():
                 md["results"] = rd_combined
             if not md["discussion"]:
                 md["discussion"] = rd_combined
+        # figures/tables metadata and rows
+        try:
+            items = parse_figures_tables(args.path)
+            if items:
+                md["figures_list"] = [it for it in items if it.get("type") == "figure"]
+                md["tables_list"] = [it for it in items if it.get("type") == "table"]
+            trows = parse_table_data(args.path)
+            if trows:
+                md["tables_data"] = trows
+        except Exception:
+            pass
+        # extras (thematic unmapped sections)
+        try:
+            extras = extract_unmapped_sections(args.path)
+            if extras:
+                md["sections_extra"] = extras
+        except Exception:
+            pass
+        # Optional review-aware augmentation
+        try:
+            if args.review_mode:
+                sec_keys_local = [
+                    "introduction",
+                    "materials_and_methods",
+                    "results",
+                    "discussion",
+                    "conclusions",
+                ]
+                cov = sum(1 for k in sec_keys_local if (md.get(k) or "").strip())
+                extras = md.get("sections_extra") or []
+                if cov < 3 and len(extras) >= 5:
+                    def pick(extras_list, keywords):
+                        out_chunks = []
+                        for ex in extras_list:
+                            head = (ex.get("head") or "").lower()
+                            if any(kw in head for kw in keywords):
+                                txt = (ex.get("text") or "").strip()
+                                if txt:
+                                    out_chunks.append(txt)
+                        return "\n\n".join(out_chunks).strip()
+                    intro_kw = ["overview", "scope", "background", "aim", "purpose"]
+                    meth_kw = ["study selection","eligibility","information sources","search strategy","data extraction","risk of bias","data synthesis","methodology","sample size"]
+                    res_kw = ["included studies","findings","outcomes","meta-analysis","meta analysis","evidence"]
+                    disc_kw = ["limitations","challenges","perspectives","practice points","implications","recommendations"]
+                    concl_kw = ["summary","decision-making","decision making","concluding remarks","conclusion","clinical significance","implications"]
+                    if not (md.get("introduction") or "").strip():
+                        agg = pick(extras, intro_kw)
+                        if agg:
+                            md["augmented_introduction"] = agg
+                    if not (md.get("materials_and_methods") or "").strip():
+                        agg = pick(extras, meth_kw)
+                        if agg:
+                            md["augmented_materials_and_methods"] = agg
+                    if not (md.get("results") or "").strip():
+                        agg = pick(extras, res_kw)
+                        if agg:
+                            md["augmented_results"] = agg
+                    if not (md.get("discussion") or "").strip():
+                        agg = pick(extras, disc_kw)
+                        if agg:
+                            md["augmented_discussion"] = agg
+                    if not (md.get("conclusions") or "").strip():
+                        agg = pick(extras, concl_kw)
+                        if agg:
+                            md["augmented_conclusions"] = agg
+        except Exception:
+            pass
         refs_text = extract_references(args.path) or ""
         if refs_text:
             md["references"] = refs_text
+        # Add structured references too
+        try:
+            from paperslicer.grobid.refs import parse_references, format_references_list
+            refs_list = parse_references(args.path)
+            if refs_list:
+                md["references_list"] = refs_list
+                md["references_citations"] = format_references_list(refs_list)
+                md["references_text"] = "\n".join(md["references_citations"])[:50000]
+                md["references"] = md.get("references_text") or md.get("references")
+        except Exception:
+            pass
         print(json.dumps(md, ensure_ascii=False, indent=2))
         # Save a debug JSON under out/meta
         try:
@@ -220,6 +325,8 @@ def main():
             extract_results_and_discussion,
             extract_references,
         )
+        from paperslicer.grobid.sections import extract_unmapped_sections
+        from paperslicer.grobid.figures import parse_figures_tables, parse_table_data
         md = resolve_metadata(args.path, mailto=args.mailto)
         # include major sections in output and saved JSON
         md["introduction"] = extract_introduction(args.path) or ""
@@ -234,9 +341,86 @@ def main():
                 md["results"] = rd_combined
             if not md["discussion"]:
                 md["discussion"] = rd_combined
+        # figures/tables metadata and rows
+        try:
+            items = parse_figures_tables(args.path)
+            if items:
+                md["figures_list"] = [it for it in items if it.get("type") == "figure"]
+                md["tables_list"] = [it for it in items if it.get("type") == "table"]
+            trows = parse_table_data(args.path)
+            if trows:
+                md["tables_data"] = trows
+        except Exception:
+            pass
+        # extras (thematic unmapped sections)
+        try:
+            extras = extract_unmapped_sections(args.path)
+            if extras:
+                md["sections_extra"] = extras
+        except Exception:
+            pass
+        # Optional review-aware augmentation
+        try:
+            if args.review_mode:
+                sec_keys_local = [
+                    "introduction",
+                    "materials_and_methods",
+                    "results",
+                    "discussion",
+                    "conclusions",
+                ]
+                cov = sum(1 for k in sec_keys_local if (md.get(k) or "").strip())
+                extras = md.get("sections_extra") or []
+                if cov < 3 and len(extras) >= 5:
+                    def pick(extras_list, keywords):
+                        out_chunks = []
+                        for ex in extras_list:
+                            head = (ex.get("head") or "").lower()
+                            if any(kw in head for kw in keywords):
+                                txt = (ex.get("text") or "").strip()
+                                if txt:
+                                    out_chunks.append(txt)
+                        return "\n\n".join(out_chunks).strip()
+                    intro_kw = ["overview", "scope", "background", "aim", "purpose"]
+                    meth_kw = ["study selection","eligibility","information sources","search strategy","data extraction","risk of bias","data synthesis","methodology","sample size"]
+                    res_kw = ["included studies","findings","outcomes","meta-analysis","meta analysis","evidence"]
+                    disc_kw = ["limitations","challenges","perspectives","practice points","implications","recommendations"]
+                    concl_kw = ["summary","decision-making","decision making","concluding remarks","conclusion","clinical significance","implications"]
+                    if not (md.get("introduction") or "").strip():
+                        agg = pick(extras, intro_kw)
+                        if agg:
+                            md["augmented_introduction"] = agg
+                    if not (md.get("materials_and_methods") or "").strip():
+                        agg = pick(extras, meth_kw)
+                        if agg:
+                            md["augmented_materials_and_methods"] = agg
+                    if not (md.get("results") or "").strip():
+                        agg = pick(extras, res_kw)
+                        if agg:
+                            md["augmented_results"] = agg
+                    if not (md.get("discussion") or "").strip():
+                        agg = pick(extras, disc_kw)
+                        if agg:
+                            md["augmented_discussion"] = agg
+                    if not (md.get("conclusions") or "").strip():
+                        agg = pick(extras, concl_kw)
+                        if agg:
+                            md["augmented_conclusions"] = agg
+        except Exception:
+            pass
         refs_text = extract_references(args.path) or ""
         if refs_text:
             md["references"] = refs_text
+        try:
+            from paperslicer.grobid.refs import parse_references, format_references_list
+            refs_list = parse_references(args.path)
+            if refs_list:
+                md["references_list"] = refs_list
+                md["references_citations"] = format_references_list(refs_list)
+                md["references_text"] = "\n".join(md["references_citations"])[:50000]
+                md["references"] = md.get("references_text") or md.get("references")
+        except Exception:
+            pass
         print(json.dumps(md, ensure_ascii=False, indent=2))
         # Save a debug JSON under out/meta
         try:
@@ -259,7 +443,10 @@ def main():
             debug_out_dir=os.getenv("DEBUG_OUT_DIR", "out/meta"),
             mailto=args.mailto,
             export_images=args.export_images,
+            images_mode=args.images_mode,
             progress=args.progress,
+            review_mode=args.review_mode,
+            tei_refresh=args.tei_refresh,
         )
         print(f"E2E report written to: {report}")
         return
@@ -283,6 +470,24 @@ def main():
         print(f"Saved {len(saved)} TEI file(s):")
         for p in saved:
             print("  ", p)
+        return
+
+    # Utilities: images summary and RAG export
+    if args.images_summary:
+        try:
+            from paperslicer.utils.exports import write_images_summary
+            csv_path = write_images_summary(meta_dir=os.getenv("DEBUG_OUT_DIR", "out/meta"))
+            print(f"Wrote image summary CSV to: {csv_path}")
+        except Exception as e:
+            print(f"Failed to write images summary: {e}")
+        return
+    if args.rag_jsonl:
+        try:
+            from paperslicer.utils.exports import export_rag_jsonl
+            outp = export_rag_jsonl(meta_dir=os.getenv("DEBUG_OUT_DIR", "out/meta"), out_path=args.rag_jsonl)
+            print(f"Wrote RAG JSONL to: {outp}")
+        except Exception as e:
+            print(f"Failed to export RAG JSONL: {e}")
         return
 
     # For now, keep CLI inert so you can focus on tests-driven coding

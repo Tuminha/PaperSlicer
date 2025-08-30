@@ -30,6 +30,7 @@ class ImageExporter:
     def export_with_coords(self, pdf_path: str, items: List[Dict], outdir: str | None = None) -> List[Dict]:
         doc = fitz.open(pdf_path)
         outdir = outdir or self._bucket_dir(pdf_path)
+        _ensure_dir(outdir)
         exported: List[Dict] = []
         fig_i = 0
         tab_i = 0
@@ -61,18 +62,60 @@ class ImageExporter:
         doc.close()
         return exported
 
-    def export_page_images(self, pdf_path: str, outdir: str | None = None) -> List[Dict]:
+    def export_page_images(
+        self,
+        pdf_path: str,
+        outdir: str | None = None,
+        *,
+        min_width_px: int | None = None,
+        min_height_px: int | None = None,
+        min_area_px: int | None = None,
+        skip_full_page: bool = False,
+    ) -> List[Dict]:
         doc = fitz.open(pdf_path)
         outdir = outdir or self._bucket_dir(pdf_path)
+        _ensure_dir(outdir)
         out: List[Dict] = []
         for pno in range(len(doc)):
             page = doc[pno]
-            for j, info in enumerate(page.get_images(full=True), start=1):
-                xref = info[0]
-                pix = fitz.Pixmap(doc, xref)
-                if pix.n > 4:
-                    pix = fitz.Pixmap(fitz.csRGB, pix)
-                img_name = f"page{pno+1:03d}_img{j:02d}.png"
+            imgs = page.get_images(full=True)
+            if imgs:
+                for j, info in enumerate(imgs, start=1):
+                    xref = info[0]
+                    pix = fitz.Pixmap(doc, xref)
+                    if pix.n > 4:
+                        pix = fitz.Pixmap(fitz.csRGB, pix)
+                    w, h = pix.width, pix.height
+                    area = w * h
+                    if (
+                        (min_width_px and w < min_width_px)
+                        or (min_height_px and h < min_height_px)
+                        or (min_area_px and area < min_area_px)
+                    ):
+                        continue
+                    img_name = f"page{pno+1:03d}_img{j:02d}.png"
+                    img_path = os.path.join(outdir, img_name)
+                    pix.save(img_path)
+                    sha1 = hashlib.sha1(open(img_path, "rb").read()).hexdigest()[:8]
+                    out.append({
+                        "type": "page-image",
+                        "label": None,
+                        "caption": None,
+                        "page": pno + 1,
+                        "bbox": None,
+                        "image_path": os.path.relpath(img_path),
+                        "sha1": sha1,
+                        "width_px": w,
+                        "height_px": h,
+                        "source": "page-image",
+                    })
+                    pix = None
+            else:
+                # Fallback: render whole page if no embedded images found
+                if skip_full_page:
+                    continue
+                pix = page.get_pixmap(dpi=200)
+                img_name = f"page{pno+1:03d}_full.png"
                 img_path = os.path.join(outdir, img_name)
                 pix.save(img_path)
                 sha1 = hashlib.sha1(open(img_path, "rb").read()).hexdigest()[:8]
@@ -86,8 +129,7 @@ class ImageExporter:
                     "sha1": sha1,
                     "width_px": pix.width,
                     "height_px": pix.height,
-                    "source": "page-image",
+                    "source": "page-render",
                 })
-                pix = None
         doc.close()
         return out

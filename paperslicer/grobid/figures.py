@@ -119,3 +119,29 @@ def parse_figures_tables_from_root(root: etree._Element) -> List[Dict]:
 
     return items
 
+
+def parse_table_data(tei_path: str) -> List[Dict]:
+    """Parse TEI table structures to rows of cell text (best-effort).
+
+    Returns a list like [{label: str|None, caption: str|None, rows: [[...]]}].
+    """
+    parser = etree.XMLParser(recover=True)
+    root = etree.parse(tei_path, parser).getroot()
+    return parse_table_data_from_root(root)
+
+
+def parse_table_data_from_root(root: etree._Element) -> List[Dict]:
+    out: List[Dict] = []
+    for tab in root.findall(".//tei:text//tei:table", TEI_NS):
+        head = _norm_text(tab.find("./tei:head", TEI_NS)) or None
+        caption = _norm_text(tab.find("./tei:figDesc", TEI_NS)) or None
+        rows: List[List[str]] = []
+        for row in tab.findall(".//tei:row", TEI_NS):
+            cells: List[str] = []
+            for cell in row.findall("./tei:cell", TEI_NS):
+                cells.append(_norm_text(cell))
+            if cells:
+                rows.append(cells)
+        if rows:
+            out.append({"label": head, "caption": caption, "rows": rows})
+    return out
