@@ -140,3 +140,7 @@ out/*
 
 # PDFs anywhere (keep ignored by default)
 *.pdf
+
+# Media outputs
+media/*
+!media/.gitkeep

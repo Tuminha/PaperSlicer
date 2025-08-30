@@ -31,6 +31,7 @@ class GrobidClient:
         include_raw_affils: int = 1,
         save_dir: Optional[str] = None,
         basename: Optional[str] = None,
+        tei_coordinates: Optional[str] = "fig,table",
     ) -> Tuple[bytes, Optional[str]]:
         """
         Calls /api/processFulltextDocument and returns TEI XML (bytes).
@@ -44,6 +45,8 @@ class GrobidClient:
                 "consolidateCitations": str(consolidate_citations),
                 "includeRawAffiliations": str(include_raw_affils),
             }
+            if tei_coordinates:
+                data["teiCoordinates"] = tei_coordinates
             r = requests.post(url, files=files, data=data, timeout=self.timeout)
         r.raise_for_status()
         tei_bytes = r.content
