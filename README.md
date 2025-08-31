@@ -50,6 +50,7 @@ The project has been significantly enhanced with the following major features:
 - **Advanced Section Mapping**: Centralized canonical section normalization with extensive mapping rules
 - **Review Paper Processing**: Special handling for review/consensus papers with section augmentation
 - **TEI Coordinate Cropping**: Precise image extraction using GROBID coordinates
+- **Corpus Cleanup Utilities**: Automated cleanup scripts for fresh processing runs
 
 ---
 
@@ -93,6 +94,7 @@ cp .env.example .env
 - **Advanced Section Mapping**: Centralized canonical section normalization with extensive mapping rules
 - **Review Paper Processing**: Special handling for review/consensus papers with section augmentation
 - **TEI Coordinate Cropping**: Precise image extraction using GROBID coordinates
+- **Corpus Cleanup Utilities**: Automated cleanup scripts for fresh processing runs
 - **Reference Parsing**: Extract and format bibliographic references
 
 ---
@@ -110,6 +112,11 @@ PaperSlicer/
 │   ├── meta/         # Enriched JSON metadata
 │   ├── rag/          # RAG-ready chunked JSONL files
 │   └── tests/        # Processing reports and summaries
+├── scripts/          # Utility scripts
+│   ├── start_grobid.sh      # GROBID service startup helper
+│   ├── e2e_three.sh         # End-to-end processing script
+│   ├── evaluate_corpus.py   # Corpus quality evaluation
+│   └── clean_corpus.sh      # Cleanup utilities for fresh runs
 └── paperslicer/      # Core package
     ├── journals/     # Journal-specific handlers
     └── utils/        # Utilities including exports
@@ -235,6 +242,18 @@ python project.py data/pdf --e2e --review-mode --mailto "your@email.com"
 scripts/evaluate_corpus.py
 ```
 
+**Corpus Cleanup**
+```bash
+# Clean all outputs to start fresh (interactive)
+scripts/clean_corpus.sh
+
+# Clean without confirmation
+scripts/clean_corpus.sh --yes
+
+# Show what would be cleaned (dry run)
+scripts/clean_corpus.sh --dry-run
+```
+
 ## Usage Examples
 
 ### Basic Operations
@@ -315,6 +334,15 @@ Precise image extraction using GROBID coordinates:
 - Source tracking: "grobid+crop", "embedded-image", "page-image"
 - **Improved media processing** with better fallback logic
 - **Reduced page previews** (max 2 pages) when other sources available
+
+**Corpus Cleanup Utilities**
+Automated cleanup for fresh processing runs:
+- **Interactive cleanup**: `scripts/clean_corpus.sh` with confirmation prompts
+- **Non-interactive**: `scripts/clean_corpus.sh --yes` for automated runs
+- **Dry-run mode**: `scripts/clean_corpus.sh --dry-run` to preview changes
+- **Targets cleaned**: out/meta, out/tests, out/rag, data/xml, media
+- **Safe operation**: Preserves .gitkeep files and directory structure
+- **Cross-platform**: Works on Unix-like systems with find command
 
 **Section Harvesting**
 ```bash
