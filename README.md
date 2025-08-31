@@ -5,7 +5,7 @@
 #### GitHub Username: Tuminha  
 #### edX Username: Tuminha  
 #### Location: Basel, Switzerland  
-#### Date: <DATE YOU RECORD VIDEO>  
+#### Date: August 31, 2025  
 
 ---
 
@@ -23,6 +23,19 @@ For a researcher, student, or developer working with large collections of papers
 
 This project is also the foundation for a larger goal: building a structured corpus of dental research literature that could later be used for training large language models (LLMs) in dentistry.
 
+## Recent Updates (August 2025)
+
+The project has been significantly enhanced with the following major features:
+
+- **Complete GROBID Integration**: Full TEI XML parsing system with automatic service management
+- **Metadata Enrichment**: Crossref and PubMed integration for DOI, abstracts, and keywords
+- **Media Processing**: Advanced image and table extraction with multiple export modes
+- **Pipeline Architecture**: End-to-end processing pipeline with progress tracking
+- **Enhanced CLI**: Sophisticated command-line interface with batch processing capabilities
+- **Testing Framework**: Comprehensive test suite covering all major components
+- **Helper Scripts**: Automated GROBID setup and E2E processing scripts
+- **RAG Export**: Generate chunked JSONL files ready for retrieval-augmented generation
+
 ---
 
 ## Requirements
@@ -32,6 +45,17 @@ This project is also the foundation for a larger goal: building a structured cor
 - requests (for GROBID integration and metadata APIs)
 - lxml (for XML parsing)
 - Docker (optional, for GROBID)
+
+### Installation
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment (optional)
+cp .env.example .env
+# Edit .env with your email for Crossref API
+```
 
 ---
 
@@ -79,6 +103,20 @@ PaperSlicer uses GROBID to convert PDFs into structured TEI XML, which greatly i
 
 **Run GROBID (choose one):**
 
+• **Helper Script (Local Gradle or Docker)**
+```bash
+# from repo root
+scripts/start_grobid.sh /absolute/path/to/grobid
+# or if you have exported GROBID_HOME
+export GROBID_HOME=/absolute/path/to/grobid
+scripts/start_grobid.sh
+```
+This will attempt, in order:
+- Gradle wrapper at repo root: `./gradlew :grobid-service:run`
+- Gradle wrapper from service folder: `(cd grobid-service && ../gradlew run)`
+- System gradle: `gradle :grobid-service:run`
+- Docker fallback: `docker run -d --rm -p 8070:8070 lfoppiano/grobid:0.8.1`
+
 • **Docker (Recommended)**
 ```bash
 docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.8.1
@@ -110,6 +148,17 @@ pytest -k grobid_client -vv
 
 If GROBID_URL is not set or the service isn't reachable, the test is skipped.
 
+**Tuning consolidation (avoid 429s and JSON parse logs)**
+Some runs can trigger heavy Crossref consolidation inside GROBID, causing
+"Too Many Requests" or JSON parse messages. You can ask PaperSlicer to request
+minimal consolidation when calling the service:
+
+```bash
+export GROBID_CONSOLIDATE_HEADER=0
+export GROBID_CONSOLIDATE_CITATIONS=0
+```
+This does not affect figure/table coordinates extraction.
+
 **Troubleshooting**
 • Build error "Unsupported class file major version 67": switch to Java 17 (Temurin) and retry:
 ```bash
@@ -132,6 +181,30 @@ cp .env.example .env
 ```
 
 ---
+
+## Quick Start
+
+### Helper Scripts
+
+**Start GROBID Service**
+```bash
+# Using helper script (tries Gradle, falls back to Docker)
+scripts/start_grobid.sh /path/to/grobid
+# or if GROBID_HOME is set
+scripts/start_grobid.sh
+
+# Direct Docker (recommended)
+docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.8.1
+```
+
+**End-to-End Processing**
+```bash
+# Process all PDFs in data/pdf with full pipeline
+scripts/e2e_three.sh
+
+# Or manually
+python project.py data/pdf --e2e --export-images --mailto "your@email.com"
+```
 
 ## Usage Examples
 
@@ -320,6 +393,9 @@ The handler is automatically applied when `--review-mode` is enabled or when Per
 ## Testing
 
 ```bash
+# Run all tests
+pytest -vv
+
 # Unit tests (no network required)
 pytest -k "not grobid_client and not resolver" -vv
 
@@ -335,6 +411,12 @@ pytest -k saves_xml -vv
 
 # Journal handler tests
 pytest -k periodontology -vv
+
+# Media exporter tests
+pytest -k media_exporter -vv
+
+# Pipeline tests
+pytest -k pipeline -vv
 ```
 
 ---

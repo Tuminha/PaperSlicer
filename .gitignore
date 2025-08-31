@@ -140,3 +140,9 @@ out/*
 
 # PDFs anywhere (keep ignored by default)
 *.pdf
+
+# Local helper notes
+run_grobid_instructions.txt
+
+# Generated media files
+media/

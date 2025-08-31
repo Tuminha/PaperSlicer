@@ -11,10 +11,11 @@ class GrobidClient:
     - is_available(): quick health check (returns True/False)
     - process_fulltext(pdf_path): returns TEI XML bytes for a PDF
     """
-    def __init__(self, base_url: Optional[str] = None, timeout: int = 120):
+    def __init__(self, base_url: Optional[str] = None, timeout: int = 120, autostart: bool = True):
         # Use env var if provided, else default localhost
         self.base_url = (base_url or os.getenv("GROBID_URL") or DEFAULT_URL).rstrip("/")
         self.timeout = timeout
+        self.autostart = autostart
 
     def is_available(self) -> bool:
         try:
@@ -31,19 +32,33 @@ class GrobidClient:
         include_raw_affils: int = 1,
         save_dir: Optional[str] = None,
         basename: Optional[str] = None,
+        tei_coordinates: Optional[str] = "fig,table",
     ) -> Tuple[bytes, Optional[str]]:
         """
         Calls /api/processFulltextDocument and returns TEI XML (bytes).
         Raises requests.HTTPError on failure.
         """
+        # Ensure service is up if requested
+        if not self.is_available() and self.autostart:
+            try:
+                from .manager import GrobidManager
+                GrobidManager(base_url=self.base_url).ensure_running()
+            except Exception:
+                pass
         url = f"{self.base_url}/api/processFulltextDocument"
         with open(pdf_path, "rb") as fh:
             files = {"input": fh}
+            # Allow environment overrides to mitigate 429/JSON parsing in consolidation
+            ch = int(os.getenv("GROBID_CONSOLIDATE_HEADER", str(consolidate_header)))
+            cc = int(os.getenv("GROBID_CONSOLIDATE_CITATIONS", str(consolidate_citations)))
+            ira = int(os.getenv("GROBID_INCLUDE_RAW_AFFILS", str(include_raw_affils)))
             data = {
-                "consolidateHeader": str(consolidate_header),
-                "consolidateCitations": str(consolidate_citations),
-                "includeRawAffiliations": str(include_raw_affils),
+                "consolidateHeader": str(ch),
+                "consolidateCitations": str(cc),
+                "includeRawAffiliations": str(ira),
             }
+            if tei_coordinates:
+                data["teiCoordinates"] = tei_coordinates
             r = requests.post(url, files=files, data=data, timeout=self.timeout)
         r.raise_for_status()
         tei_bytes = r.content

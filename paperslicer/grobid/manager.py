@@ -4,6 +4,7 @@ import requests
 
 DEFAULT_IMAGE = "lfoppiano/grobid:0.8.1"
 DEFAULT_URL = "http://localhost:8070"
+DEFAULT_CONTAINER = os.getenv("GROBID_CONTAINER_NAME", "paperslicer-grobid")
 
 class GrobidManager:
     """
@@ -22,24 +23,68 @@ class GrobidManager:
         except Exception:
             return False
 
-    def start(self, port: int = 8070, wait_ready_s: int = 20) -> bool:
-        """Attempt to start GROBID via Docker; returns True if becomes ready."""
+    def start(self, port: int = 8070, wait_ready_s: int = 20, detach: bool = True) -> bool:
+        """Attempt to start GROBID via Docker; returns True if becomes ready.
+
+        Uses a named container (paperslicer-grobid by default) and detaches by default.
+        """
         if self.is_available():
             return True
-        if shutil.which("docker") is None:
-            return False  # no docker, can’t autostart
-        # start detached
-        try:
-            subprocess.Popen(
-                ["docker", "run", "-t", "--rm", "-p", f"{port}:8070", self.image],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
-        except Exception:
-            return False
-        # wait until healthy
-        for _ in range(wait_ready_s):
-            if self.is_available(timeout_s=0.5):
-                return True
-            time.sleep(1)
+        # 1) Try Docker if available
+        if shutil.which("docker") is not None:
+            try:
+                args = [
+                    "docker", "run",
+                    "--rm",
+                    "-p", f"{port}:8070",
+                    "--name", DEFAULT_CONTAINER,
+                ]
+                if detach:
+                    args.insert(2, "-d")
+                # pull image if missing; ignore errors
+                try:
+                    subprocess.run(["docker", "pull", self.image], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                except Exception:
+                    pass
+                args.append(self.image)
+                subprocess.Popen(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                # wait until healthy
+                for _ in range(wait_ready_s):
+                    if self.is_available(timeout_s=0.5):
+                        return True
+                    time.sleep(1)
+            except Exception:
+                # fall through to local start
+                pass
+        # 2) Try local command via env GROBID_RUN_CMD
+        run_cmd = os.getenv("GROBID_RUN_CMD")
+        if run_cmd:
+            try:
+                subprocess.Popen(run_cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                for _ in range(wait_ready_s):
+                    if self.is_available(timeout_s=0.5):
+                        return True
+                    time.sleep(1)
+            except Exception:
+                pass
+        # 3) Try GROBID_HOME with Gradle runner
+        grobid_home = os.getenv("GROBID_HOME")
+        if grobid_home:
+            svc = os.path.join(grobid_home, "grobid-service")
+            gradlew = os.path.join(svc, "gradlew")
+            if os.path.isfile(gradlew):
+                try:
+                    subprocess.Popen(["./gradlew", "run"], cwd=svc, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    for _ in range(wait_ready_s):
+                        if self.is_available(timeout_s=0.5):
+                            return True
+                        time.sleep(1)
+                except Exception:
+                    pass
         return False
+
+    def ensure_running(self) -> bool:
+        """Ensure a GROBID service is reachable; try to start if not available."""
+        if self.is_available():
+            return True
+        return self.start()
