@@ -45,8 +45,9 @@ def export_embedded_images(pdf_path: str, media_root: Optional[str] = None, max_
                 if pix.n > 4:  # CMYK or similar -> convert to RGB
                     pix = fitz.Pixmap(fitz.csRGB, pix)
                 out_name = f"page{page_index+1:03d}_img{img_index:02d}.png"
-                out_path = os.path.join(out_dir, out_name)
-                pix.save(out_path)
+            out_path = os.path.join(out_dir, out_name)
+            pix.save(out_path)
+            out_path = os.path.abspath(out_path)
             except Exception:
                 continue
             results.append({
@@ -90,6 +91,7 @@ def export_page_previews(pdf_path: str, media_root: Optional[str] = None, dpi: i
         out_name = f"page{page_index+1:03d}.png"
         out_path = os.path.join(out_dir, out_name)
         pix.save(out_path)
+        out_path = os.path.abspath(out_path)
         results.append({
             "label": f"Page {page_index+1}",
             "caption": None,
@@ -167,6 +169,7 @@ def export_from_tei_coords(pdf_path: str, coords_str: str, media_root: Optional[
             pix.save(out_path)
         except Exception:
             continue
+        out_path = os.path.abspath(out_path)
         out.append({
             "label": None,
             "caption": None,

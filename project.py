@@ -79,6 +79,7 @@ def main():
     parser.add_argument("--e2e", action="store_true",
                         help="Enable TEI + metadata resolution + image export (auto); defaults TEI dir to data/xml")
     parser.add_argument("--dedup", action="store_true", help="Skip duplicates by DOI or normalized title")
+    parser.add_argument("--review-mode", action="store_true", help="Force review-profile augmentation")
     args = parser.parse_args()
 
     # Allow setting TEI output dir
@@ -88,6 +89,8 @@ def main():
         os.environ["PAPERSLICER_XML_DIR"] = args.tei_out
     if args.mailto:
         os.environ["CROSSREF_MAILTO"] = args.mailto
+    if args.review_mode:
+        os.environ["REVIEW_MODE"] = "1"
 
     if not args.path:
         parser.print_help()

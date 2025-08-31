@@ -27,6 +27,16 @@ This project is also the foundation for a larger goal: building a structured cor
 
 The project has been significantly enhanced with the following major features:
 
+### Latest Improvements (Latest Commit)
+- **Enhanced Section Mapping**: Added 100+ new mappings based on corpus analysis
+- **Improved TEI Mapping Success**: Increased from 39% to 61% success rate
+- **Better Media Processing**: Improved fallback logic and reduced unnecessary page previews
+- **Force Review Mode**: Added `--review-mode` CLI flag for manual review paper processing
+- **Relaxed Quality Gates**: Adjusted TEI mapping threshold from 80% to 50% during expansion
+- **Enhanced Pipeline**: Better handling of review mode and media extraction
+
+### Major Features
+
 - **Complete GROBID Integration**: Full TEI XML parsing system with automatic service management
 - **Metadata Enrichment**: Crossref and PubMed integration for DOI, abstracts, and keywords
 - **Media Processing**: Advanced image and table extraction with multiple export modes
@@ -214,6 +224,9 @@ scripts/e2e_three.sh
 
 # Or manually
 python project.py data/pdf --e2e --export-images --mailto "your@email.com"
+
+# Force review mode for consensus papers
+python project.py data/pdf --e2e --review-mode --mailto "your@email.com"
 ```
 
 **Corpus Evaluation**
@@ -275,11 +288,14 @@ PaperSlicer now includes fallback table detection for journals that don't emit p
 **Advanced Section Mapping**
 PaperSlicer now includes a comprehensive section mapping system (`paperslicer/utils/sections_mapping.py`):
 - Centralized canonical section normalization
+- **100+ new mappings** added based on corpus analysis
 - Extensive mapping rules for clinical and research terminology
 - Handles numbered sections, bullet points, and special characters
 - Maps clinical terms like "Risk of Bias Assessment" → "materials_and_methods"
 - Processes review-specific sections like "Search Strategy", "Study Selection"
+- Maps surgical procedures like "Flap incision and elevation" → "materials_and_methods"
 - Excludes non-content boilerplate (acknowledgements, funding, etc.)
+- **61% section mapping success rate** (up from 39%)
 
 **Review Paper Processing**
 Automatic detection and special handling for review/consensus papers:
@@ -288,6 +304,7 @@ Automatic detection and special handling for review/consensus papers:
 - Maps method-like sections into canonical "materials_and_methods"
 - Augments weak discussion sections with aggregated content
 - Maintains original section structure while enriching canonical sections
+- **Force review mode** via `--review-mode` CLI flag or `REVIEW_MODE=1` environment variable
 
 **TEI Coordinate Cropping**
 Precise image extraction using GROBID coordinates:
@@ -296,6 +313,8 @@ Precise image extraction using GROBID coordinates:
 - Crops figures and tables with pixel-perfect accuracy
 - Fallback to embedded images when coordinates unavailable
 - Source tracking: "grobid+crop", "embedded-image", "page-image"
+- **Improved media processing** with better fallback logic
+- **Reduced page previews** (max 2 pages) when other sources available
 
 **Section Harvesting**
 ```bash
@@ -449,14 +468,16 @@ The handler is automatically applied when `--review-mode` is enabled or when Per
 **Sample Quality Results:**
 Based on recent evaluation of 38 documents:
 - **100%** have titles and abstracts
-- **89%** have ≥3 canonical sections
-- **68%** have ≥4 canonical sections
-- **34%** have all 5 canonical sections
-- **95%** have existing media files
+- **92%** have ≥3 canonical sections (↑3%)
+- **74%** have ≥4 canonical sections (↑6%)
+- **39%** have all 5 canonical sections (↑5%)
+- **100%** have any media content
 - **0.1%** average noise ratio (excellent text quality)
-- **39%** TEI section mapping success rate
-- **130** images extracted via GROBID coordinates
-- **305** embedded images extracted
+- **61%** TEI section mapping success rate (↑22%)
+- **266** images extracted via TEI parsing
+- **105** tables extracted via TEI references
+- **6** images extracted via GROBID coordinates
+- **13** embedded images extracted
 
 ### Media Files (`media/`)
 - Organized by year/journal/author

@@ -17,11 +17,13 @@ from typing import Optional
 
 class Pipeline:
     def __init__(self, try_start_grobid: bool = True, xml_save_dir: Optional[str] = None,
-                 export_images: bool = False, images_mode: str = "embedded"):
+                 export_images: bool = False, images_mode: str = "embedded",
+                 review_mode: Optional[bool] = None):
         self.try_start_grobid = try_start_grobid
         self.xml_save_dir = xml_save_dir
         self.export_images = export_images
         self.images_mode = images_mode
+        self.review_mode = review_mode
         self.pdf = PDFTextExtractor()
         self.norm = TextNormalizer()
         self.sections = SectionExtractor()
@@ -53,7 +55,8 @@ class Pipeline:
         rec = tei_to_record(tei_bytes, pdf_path)
         # Journal/profile augmentation for reviews
         try:
-            if review_profile.should_apply(rec):
+            force_review = self.review_mode if self.review_mode is not None else (os.getenv("REVIEW_MODE") in {"1", "true", "yes", "on"})
+            if force_review or review_profile.should_apply(rec):
                 rec = review_profile.apply(rec)
         except Exception:
             pass
@@ -86,9 +89,10 @@ class Pipeline:
                     emb = export_embedded_images(pdf_path)
                     if emb:
                         rec.figures.extend(emb)
-                # 3) If still low media and mode allows, export a few page previews
-                if self.images_mode in ("pages", "auto") and not any_coords:
-                    pages = export_page_previews(pdf_path, max_pages=5)
+                # 3) If still no saved media paths for this doc and mode allows, export a few page previews
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                if self.images_mode in ("pages", "auto") and not has_paths:
+                    pages = export_page_previews(pdf_path, max_pages=2)
                     if pages:
                         rec.figures.extend(pages)
             except Exception:
