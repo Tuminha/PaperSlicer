@@ -199,4 +199,61 @@ def tei_to_record(tei_bytes: bytes, pdf_path: str) -> PaperRecord:
                 "source": "tei"
             })
 
+    # Fallback: Some journals don't emit <table>; use textual cues and <ref type="table">
+    try:
+        import re
+        existing_labels = {t.get("label") for t in tables if t.get("label")}
+        # A) refs like: Table <ref type="table">1</ref>
+        for ref in _all(root, "//tei:text//tei:ref[@type='table']"):
+            num = _txt(ref)
+            if not num:
+                continue
+            label = f"Table {num}"
+            if label in existing_labels:
+                continue
+            # find ancestor paragraph
+            par = ref.getparent()
+            while par is not None and par.tag != "{http://www.tei-c.org/ns/1.0}p":
+                par = par.getparent()
+            caption = None
+            if par is not None:
+                ptxt = _txt(par)
+                # strip the label text if present at start
+                m = re.search(r"(?i)\btable\s*" + re.escape(num) + r"\s*[:\.\-]\s*(.+)", ptxt)
+                if m:
+                    caption = m.group(1).strip()
+                else:
+                    # otherwise, use paragraph text without the-word 'Table <num>'
+                    caption = re.sub(r"(?i)\btable\s*" + re.escape(num) + r"\b", "", ptxt).strip()
+            tables.append({
+                "label": label,
+                "caption": caption or None,
+                "path": None,
+                "source": "tei-ref",
+            })
+            existing_labels.add(label)
+
+        # B) paragraphs starting with "Table 2. ..."
+        for p in _all(root, "//tei:text//tei:p"):
+            t = _txt(p)
+            if not t:
+                continue
+            m = re.match(r"(?is)^table\s+([A-Za-z0-9IVXLC]+)\s*[:\.\-]\s*(.+)", t.strip())
+            if not m:
+                continue
+            num = m.group(1)
+            label = f"Table {num}"
+            if label in existing_labels:
+                continue
+            caption = m.group(2).strip()
+            tables.append({
+                "label": label,
+                "caption": caption or None,
+                "path": None,
+                "source": "tei-text",
+            })
+            existing_labels.add(label)
+    except Exception:
+        pass
+
     return PaperRecord(meta=meta, sections=sections, figures=figures, tables=tables)

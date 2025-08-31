@@ -54,3 +54,20 @@ def test_tei_to_record_basic_mapping():
     assert len(rec.figures) >= 1
     assert len(rec.tables) >= 1
 
+
+def test_fallback_table_detection_from_text_and_refs():
+    tei = ("""
+    <TEI xmlns=\"http://www.tei-c.org/ns/1.0\">
+      <teiHeader><fileDesc><titleStmt><title>T</title></titleStmt></fileDesc></teiHeader>
+      <text><body>
+        <div>
+          <p>Table 2. Caption for two.</p>
+          <p>As shown in Table <ref type=\"table\">3</ref>, values increased.</p>
+        </div>
+      </body></text>
+    </TEI>
+    """).encode("utf-8")
+    rec = tei_to_record(tei, pdf_path="/p.pdf")
+    labels = {t.get('label') for t in rec.tables}
+    assert "Table 2" in labels
+    assert "Table 3" in labels

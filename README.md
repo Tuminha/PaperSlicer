@@ -35,6 +35,8 @@ The project has been significantly enhanced with the following major features:
 - **Testing Framework**: Comprehensive test suite covering all major components
 - **Helper Scripts**: Automated GROBID setup and E2E processing scripts
 - **RAG Export**: Generate chunked JSONL files ready for retrieval-augmented generation
+- **Corpus Quality Evaluation**: Comprehensive quality assessment for RAG/LLM fine-tuning
+- **Enhanced Table Detection**: Fallback table extraction from text and references
 
 ---
 
@@ -73,6 +75,8 @@ cp .env.example .env
 - **Review Mode**: Special handling for review/consensus papers with section augmentation
 - **Advanced Image Processing**: Multiple modes for figure/table extraction
 - **RAG Export**: Generate chunked JSONL files ready for retrieval-augmented generation
+- **Corpus Quality Evaluation**: Comprehensive quality assessment for RAG/LLM fine-tuning
+- **Enhanced Table Detection**: Fallback table extraction from text and references
 - **Reference Parsing**: Extract and format bibliographic references
 
 ---
@@ -206,6 +210,12 @@ scripts/e2e_three.sh
 python project.py data/pdf --e2e --export-images --mailto "your@email.com"
 ```
 
+**Corpus Evaluation**
+```bash
+# Evaluate corpus quality for RAG/LLM training
+scripts/evaluate_corpus.py
+```
+
 ## Usage Examples
 
 ### Basic Operations
@@ -249,6 +259,13 @@ python project.py data/pdf --e2e --export-images --images-mode coords-only
 python project.py data/pdf --e2e --export-images --images-mode pages-large
 ```
 
+**Enhanced Table Detection**
+PaperSlicer now includes fallback table detection for journals that don't emit proper `<table>` elements in TEI:
+- Extracts tables from `<ref type="table">` references
+- Detects table captions from paragraph text patterns
+- Handles various table numbering formats (Arabic, Roman numerals)
+- Maintains consistency with existing table extraction
+
 **Section Harvesting**
 ```bash
 # Analyze section headings across TEI files
@@ -264,6 +281,19 @@ python project.py --rag-jsonl out/rag/corpus.jsonl
 
 # Custom chunk size (default: 4800 characters)
 python project.py --rag-jsonl out/rag/corpus.jsonl --chunk-chars 6000
+```
+
+**Corpus Quality Evaluation**
+```bash
+# Evaluate processed corpus quality for RAG/LLM fine-tuning
+python scripts/evaluate_corpus.py
+
+# Custom directories
+python scripts/evaluate_corpus.py \
+    --meta-dir out/meta \
+    --tei-dir data/xml \
+    --media-root media \
+    --out-dir out/tests
 ```
 
 **Image Summary**
@@ -368,6 +398,22 @@ The handler is automatically applied when `--review-mode` is enabled or when Per
 - Media extraction summary
 - Missing sections by article
 - Image summary CSV with extraction statistics
+
+### Corpus Quality Evaluation (`out/tests/`)
+- **corpus_quality.json**: Aggregate quality metrics and pass/fail gates
+- **corpus_quality.csv**: Per-document quality summary
+- **unmapped_heads.txt**: TEI section headings not mapped to canonical keys
+- **images_summary.csv**: Per-image existence and file size statistics
+
+**Quality Metrics Include:**
+- Title, DOI, and journal presence rates
+- Abstract completeness (length ≥30 characters)
+- Canonical section coverage (Introduction, Methods, Results, Discussion, Conclusions)
+- TEI section mapping success rate
+- Media file existence and source tracking
+- Text noise ratio assessment
+- Duplicate detection (DOI and title-based)
+- Quality gates for RAG/LLM training readiness
 
 ### Media Files (`media/`)
 - Organized by year/journal/author
