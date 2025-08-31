@@ -71,3 +71,17 @@ def test_fallback_table_detection_from_text_and_refs():
     labels = {t.get('label') for t in rec.tables}
     assert "Table 2" in labels
     assert "Table 3" in labels
+
+
+def test_other_sections_capture_when_unmapped():
+    tei = ("""
+    <TEI xmlns=\"http://www.tei-c.org/ns/1.0\">
+      <teiHeader><fileDesc><titleStmt><title>T</title></titleStmt></fileDesc></teiHeader>
+      <text><body>
+        <div><head>Novel Protocol</head><p>Details of a unique protocol not in mapping.</p></div>
+      </body></text>
+    </TEI>
+    """).encode("utf-8")
+    rec = tei_to_record(tei, pdf_path="/p.pdf")
+    assert "Novel Protocol" in rec.other_sections
+    assert "unique protocol" in rec.other_sections["Novel Protocol"].lower()

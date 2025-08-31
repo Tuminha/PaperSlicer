@@ -16,6 +16,7 @@ class Meta:
 class PaperRecord:
     meta: Meta
     sections: Dict[str, str] = field(default_factory=dict)
+    other_sections: Dict[str, str] = field(default_factory=dict)
     figures: List[Dict[str, Any]] = field(default_factory=list)
     tables: List[Dict[str, Any]] = field(default_factory=list)
 
@@ -23,6 +24,7 @@ class PaperRecord:
         return {
             "meta": asdict(self.meta),
             "sections": self.sections,
+            "other_sections": self.other_sections,
             "figures": self.figures,
             "tables": self.tables,
         }

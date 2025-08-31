@@ -78,6 +78,7 @@ def main():
                         help="Image export mode")
     parser.add_argument("--e2e", action="store_true",
                         help="Enable TEI + metadata resolution + image export (auto); defaults TEI dir to data/xml")
+    parser.add_argument("--dedup", action="store_true", help="Skip duplicates by DOI or normalized title")
     args = parser.parse_args()
 
     # Allow setting TEI output dir
@@ -124,8 +125,23 @@ def main():
     if args.jsonl or (out.lower().endswith(".jsonl")):
         os.makedirs(os.path.dirname(out), exist_ok=True)
         count = 0
+        seen_doi = set()
+        seen_title = set()
         with open(out, "w", encoding="utf-8") as fh:
             for d in _iter_json_dicts(pdfs):
+                if args.dedup and isinstance(d, dict):
+                    doi = ((d.get("meta") or {}).get("doi") or "").strip().lower()
+                    title = ((d.get("meta") or {}).get("title") or "").strip().lower()
+                    key = doi or title
+                    if key:
+                        if doi and doi in seen_doi:
+                            continue
+                        if (not doi) and title and title in seen_title:
+                            continue
+                        if doi:
+                            seen_doi.add(doi)
+                        elif title:
+                            seen_title.add(title)
                 fh.write(json.dumps(d, ensure_ascii=False) + "\n")
                 count += 1
         print(f"Wrote {count} records to {out}")
@@ -134,11 +150,28 @@ def main():
     # If output is a directory, write one JSON per PDF
     if os.path.isdir(out) or not out.lower().endswith(".json"):
         os.makedirs(out, exist_ok=True)
+        seen_doi = set()
+        seen_title = set()
+        written = 0
         for p in pdfs:
             d = process_pdf_to_record(p)
+            if args.dedup and isinstance(d, dict):
+                doi = ((d.get("meta") or {}).get("doi") or "").strip().lower()
+                title = ((d.get("meta") or {}).get("title") or "").strip().lower()
+                key = doi or title
+                if key:
+                    if doi and doi in seen_doi:
+                        continue
+                    if (not doi) and title and title in seen_title:
+                        continue
+                    if doi:
+                        seen_doi.add(doi)
+                    elif title:
+                        seen_title.add(title)
             stem = os.path.splitext(os.path.basename(p))[0]
             _write_json(d, os.path.join(out, f"{stem}.json"))
-        print(f"Wrote {len(pdfs)} JSON files to {out}")
+            written += 1
+        print(f"Wrote {written} JSON files to {out}")
         return
 
     # If a single .json path provided

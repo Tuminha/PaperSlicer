@@ -10,6 +10,7 @@ from paperslicer.grobid.client import GrobidClient
 from paperslicer.grobid.manager import GrobidManager
 from lxml import etree  # for checking parseability of TEI
 from paperslicer.metadata.resolver import ensure_abstract
+from paperslicer.journals import review as review_profile
 
 from typing import Optional
 
@@ -50,6 +51,12 @@ class Pipeline:
         # Very light TEI mapping for now (you’ll expand later)
         from paperslicer.grobid.parser import tei_to_record  # add this file when ready
         rec = tei_to_record(tei_bytes, pdf_path)
+        # Journal/profile augmentation for reviews
+        try:
+            if review_profile.should_apply(rec):
+                rec = review_profile.apply(rec)
+        except Exception:
+            pass
         # Ensure abstract exists via Crossref/PubMed if TEI lacks it
         mailto = os.getenv("CROSSREF_MAILTO")
         try:
@@ -59,14 +66,31 @@ class Pipeline:
         # Basic image export if requested
         if self.export_images:
             try:
-                from paperslicer.media.exporter import export_embedded_images, export_page_previews
-                media = []
+                from paperslicer.media.exporter import export_embedded_images, export_page_previews, export_from_tei_coords
+                # 1) Try TEI coords-based crops for figures/tables that have coords
+                any_coords = False
+                for coll in (rec.figures, rec.tables):
+                    for item in coll:
+                        coords = item.get("coords") if isinstance(item, dict) else None
+                        if coords:
+                            crops = export_from_tei_coords(pdf_path, coords)
+                            if crops:
+                                # attach first crop to this item; add extras as separate figures
+                                item["path"] = crops[0].get("path")
+                                item["source"] = "grobid+crop"
+                                for extra in crops[1:]:
+                                    rec.figures.append(extra)
+                                any_coords = True
+                # 2) If no coords-derived media found and mode is embedded/auto, export embedded images
                 if self.images_mode in ("embedded", "auto"):
-                    media = export_embedded_images(pdf_path)
-                if (self.images_mode in ("pages", "auto") and not media):
-                    media = export_page_previews(pdf_path, max_pages=5)
-                # Attach as figures (page or embedded images)
-                rec.figures.extend(media)
+                    emb = export_embedded_images(pdf_path)
+                    if emb:
+                        rec.figures.extend(emb)
+                # 3) If still low media and mode allows, export a few page previews
+                if self.images_mode in ("pages", "auto") and not any_coords:
+                    pages = export_page_previews(pdf_path, max_pages=5)
+                    if pages:
+                        rec.figures.extend(pages)
             except Exception:
                 pass
         return rec
