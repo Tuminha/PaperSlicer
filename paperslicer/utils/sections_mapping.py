@@ -254,6 +254,28 @@ EXACT_MAP = {
     "analysis of subdomain-feedback": "results",
     "case report": "results",
     "follow-up": "results",
+    # --- Generalizable additions from evaluation suggestions ---
+    # Methods-oriented
+    "assessment of heterogeneity": "materials_and_methods",
+    "heterogeneity assessment": "materials_and_methods",
+    "heterogeneity analysis": "materials_and_methods",
+    "rob assessment": "materials_and_methods",
+    "risk of bias assessment": "materials_and_methods",
+    "correlation analysis": "materials_and_methods",
+    "protocol registration and reporting format": "materials_and_methods",
+    "clinical assessment of primary and secondary outcomes": "materials_and_methods",
+    "clinical assessment": "materials_and_methods",
+    # Discussion / Conclusions
+    "strengths": "discussion",
+    "strengths and limitations": "discussion",
+    "limitations and strengths": "discussion",
+    "study strengths": "discussion",
+    "implications for clinical practice and future research": "conclusions",
+    "implications for clinical practice": "conclusions",
+    "clinical implications": "conclusions",
+    "future directions": "conclusions",
+    "future perspectives": "conclusions",
+    "implications and future directions": "conclusions",
 }
 
 
@@ -264,33 +286,7 @@ def canonical_section_name(name: str) -> str:
     # Exact matches first
     if n in EXACT_MAP:
         return EXACT_MAP[n]
-    # Targeted generalizable additions from evaluation suggestions
-    # (kept here to keep EXACT_MAP compact above)
-    GENERAL_SUGGESTIONS = {
-        # Methods-oriented, broadly used across scientific articles
-        "assessment of heterogeneity": "materials_and_methods",
-        "heterogeneity assessment": "materials_and_methods",
-        "rob assessment": "materials_and_methods",  # risk-of-bias (RoB)
-        "risk of bias assessment": "materials_and_methods",
-        "correlation analysis": "materials_and_methods",
-        "heterogeneity analysis": "materials_and_methods",
-        "protocol registration and reporting format": "materials_and_methods",
-        "clinical assessment of primary and secondary outcomes": "materials_and_methods",
-        "clinical assessment": "materials_and_methods",
-        # Discussion / Conclusions commonplace headings
-        "strengths": "discussion",
-        "strengths and limitations": "discussion",
-        "limitations and strengths": "discussion",
-        "study strengths": "discussion",
-        "implications for clinical practice and future research": "conclusions",
-        "implications for clinical practice": "conclusions",
-        "clinical implications": "conclusions",
-        "future directions": "conclusions",
-        "future perspectives": "conclusions",
-        "implications and future directions": "conclusions",
-    }
-    if n in GENERAL_SUGGESTIONS:
-        return GENERAL_SUGGESTIONS[n]
+    # (additional exact titles added in EXACT_MAP below)
     # Composite and fuzzy matches
     # e.g., "results and discussion" variants
     if "results" in n and "discussion" in n:

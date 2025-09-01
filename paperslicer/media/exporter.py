@@ -45,15 +45,15 @@ def export_embedded_images(pdf_path: str, media_root: Optional[str] = None, max_
                 if pix.n > 4:  # CMYK or similar -> convert to RGB
                     pix = fitz.Pixmap(fitz.csRGB, pix)
                 out_name = f"page{page_index+1:03d}_img{img_index:02d}.png"
-            out_path = os.path.join(out_dir, out_name)
-            pix.save(out_path)
-            out_path = os.path.abspath(out_path)
+                out_path = os.path.join(out_dir, out_name)
+                pix.save(out_path)
+                out_abs = os.path.abspath(out_path)
             except Exception:
                 continue
             results.append({
                 "label": f"Page {page_index+1} Image {img_index}",
                 "caption": None,
-                "path": out_path,
+                "path": out_abs,
                 "source": "embedded-image",
             })
             count += 1
