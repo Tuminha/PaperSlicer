@@ -35,6 +35,14 @@ The project has been significantly enhanced with the following major features:
 - **Relaxed Quality Gates**: Adjusted TEI mapping threshold from 80% to 50% during expansion
 - **Enhanced Pipeline**: Better handling of review mode and media extraction
 
+### Recent Enhancements (Current)
+- **Generalizable Mappings**: Added new mappings from evaluation suggestions
+- **Heterogeneity Assessment**: Maps "Assessment of Heterogeneity" → "materials_and_methods"
+- **Risk of Bias**: Maps "ROB Assessment" → "materials_and_methods"
+- **Discussion Sections**: Maps "Strengths and Limitations" → "discussion"
+- **Clinical Assessments**: Maps "Clinical Assessment" → "materials_and_methods"
+- **Protocol Registration**: Enhanced mapping for research protocols
+
 ### Major Features
 
 - **Complete GROBID Integration**: Full TEI XML parsing system with automatic service management
@@ -308,11 +316,13 @@ PaperSlicer now includes fallback table detection for journals that don't emit p
 PaperSlicer now includes a comprehensive section mapping system (`paperslicer/utils/sections_mapping.py`):
 - Centralized canonical section normalization
 - **100+ new mappings** added based on corpus analysis
+- **Latest additions**: New generalizable mappings from evaluation suggestions
 - Extensive mapping rules for clinical and research terminology
 - Handles numbered sections, bullet points, and special characters
 - Maps clinical terms like "Risk of Bias Assessment" → "materials_and_methods"
 - Processes review-specific sections like "Search Strategy", "Study Selection"
 - Maps surgical procedures like "Flap incision and elevation" → "materials_and_methods"
+- **New mappings include**: "Assessment of Heterogeneity", "ROB Assessment", "Strengths and Limitations"
 - Excludes non-content boilerplate (acknowledgements, funding, etc.)
 - **61% section mapping success rate** (up from 39%)
 
