@@ -69,7 +69,38 @@ class Pipeline:
         # Basic image export if requested
         if self.export_images:
             try:
-                from paperslicer.media.exporter import export_embedded_images, export_page_previews, export_from_tei_coords
+                from paperslicer.media.exporter import (
+                    export_embedded_images,
+                    export_page_previews,
+                    export_from_tei_coords,
+                    export_pages_with_keywords,
+                    export_crops_by_labels,
+                )
+                # YOLO PubLayNet detector (optional dependency)
+                try:
+                    from paperslicer.media.detector_hf import detect_publaynet_crops
+                except Exception:
+                    detect_publaynet_crops = None  # type: ignore
+                # Table Transformer detector (optional dependency)
+                try:
+                    from paperslicer.media.detector_tables import detect_table_crops
+                except Exception:
+                    detect_table_crops = None  # type: ignore
+                # pdfplumber tables (deterministic bboxes)
+                try:
+                    from paperslicer.media.tables_pdfplumber import extract_tables_pdfplumber
+                except Exception:
+                    extract_tables_pdfplumber = None  # type: ignore
+                # Docling adapter (optional)
+                try:
+                    from paperslicer.media.docling_adapter import extract_tables_docling
+                except Exception:
+                    extract_tables_docling = None  # type: ignore
+                # TEI -> table renderer (matplotlib) as last resort for tables
+                try:
+                    from paperslicer.media.tei_table_render import render_tei_tables_to_images
+                except Exception:
+                    render_tei_tables_to_images = None  # type: ignore
                 # 1) Try TEI coords-based crops for figures/tables that have coords
                 any_coords = False
                 for coll in (rec.figures, rec.tables):
@@ -84,14 +115,104 @@ class Pipeline:
                                 for extra in crops[1:]:
                                     rec.figures.append(extra)
                                 any_coords = True
+                # Prefer TEI-rendered tables before other strategies
+                tables_have_paths = any((isinstance(t, dict) and t.get("path")) for t in rec.tables)
+                if not tables_have_paths and render_tei_tables_to_images is not None and tei_path:
+                    try:
+                        tei_renders = render_tei_tables_to_images(pdf_path, tei_path)
+                        if tei_renders:
+                            rec.tables.extend(tei_renders)
+                            tables_have_paths = True
+                    except Exception:
+                        pass
                 # 2) If no coords-derived media found and mode is embedded/auto, export embedded images
                 if self.images_mode in ("embedded", "auto"):
                     emb = export_embedded_images(pdf_path)
                     if emb:
                         rec.figures.extend(emb)
-                # 3) If still no saved media paths for this doc and mode allows, export a few page previews
+                # 2.5) Docling tables (optional; content-based) if requested and still no tables
+                use_docling = (os.getenv("USE_DOCLING") in {"1","true","yes","on"})
+                tables_have_paths = any((isinstance(t, dict) and t.get("path")) for t in rec.tables)
+                if use_docling and extract_tables_docling is not None and not tables_have_paths:
+                    try:
+                        dlt = extract_tables_docling(pdf_path)
+                        if dlt:
+                            rec.tables.extend(dlt)
+                            tables_have_paths = True
+                    except Exception:
+                        pass
+                # 2.6) pdfplumber table crops (preferred deterministic) if still no table paths
+                tables_have_paths = any((isinstance(t, dict) and t.get("path")) for t in rec.tables)
+                disable_plumber = (os.getenv("PAPERSLICER_DISABLE_PLUMBER") in {"1","true","yes","on"})
+                if not tables_have_paths and extract_tables_pdfplumber is not None and not disable_plumber:
+                    try:
+                        pdet = extract_tables_pdfplumber(pdf_path)
+                        if pdet:
+                            rec.tables.extend(pdet)
+                    except Exception:
+                        pass
+                # 2.7) Detector-based crops (figures/tables) if still no paths
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                disable_detectors = (os.getenv("PAPERSLICER_DISABLE_DETECTORS") in {"1","true","yes","on"})
+                if not has_paths and detect_publaynet_crops is not None and not disable_detectors:
+                    try:
+                        det_figs, det_tabs = detect_publaynet_crops(pdf_path, conf=None)
+                        if det_figs:
+                            rec.figures.extend(det_figs)
+                        if det_tabs:
+                            rec.tables.extend(det_tabs)
+                    except Exception:
+                        pass
+                # 2.8) Table Transformer crops if still no paths
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                if not has_paths and detect_table_crops is not None and not disable_detectors:
+                    try:
+                        tdet = detect_table_crops(pdf_path, dpi=None, conf=None, tiles=None)
+                        if tdet:
+                            # Add as tables for consistency
+                            rec.tables.extend(tdet)
+                    except Exception:
+                        pass
+                # 2.9) TEI-render moved earlier; keep here as safety no-op if nothing added
+                tables_have_paths = any((isinstance(t, dict) and t.get("path")) for t in rec.tables)
+                # 3) If still no saved media paths, try label-based crops using detected labels
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                if not has_paths:
+                    labels = []
+                    for coll in (rec.figures, rec.tables):
+                        for it in coll:
+                            lbl = it.get("label") if isinstance(it, dict) else None
+                            if not lbl:
+                                continue
+                            s = str(lbl).strip()
+                            if not s:
+                                continue
+                            if not s.lower().startswith(("figure", "fig", "table", "tab")):
+                                # Prefix based on source hint
+                                if it.get("source") == "tei" and it in rec.tables:
+                                    s = f"Table {s}"
+                                elif it.get("source") == "tei" and it in rec.figures:
+                                    s = f"Figure {s}"
+                            labels.append(s)
+                    if labels:
+                        crops = export_crops_by_labels(pdf_path, labels, max_crops=8)
+                        if crops:
+                            rec.figures.extend(crops)
+                # 4) If still no saved media paths, try keyword-targeted page previews (Figure/Table)
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                if not has_paths:
+                    kw_pages = export_pages_with_keywords(pdf_path, ["figure", "table"], max_pages=6)
+                    if kw_pages:
+                        rec.figures.extend(kw_pages)
+                # 5) If still no saved media paths for this doc and mode allows, export a few page previews
                 has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
                 if self.images_mode in ("pages", "auto") and not has_paths:
+                    pages = export_page_previews(pdf_path, max_pages=2)
+                    if pages:
+                        rec.figures.extend(pages)
+                # 6) Last-resort safety: if still no saved paths, force minimal page previews
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                if not has_paths:
                     pages = export_page_previews(pdf_path, max_pages=2)
                     if pages:
                         rec.figures.extend(pages)
@@ -119,12 +240,49 @@ class Pipeline:
         rec = PaperRecord(meta=meta, sections=sec, figures=figs, tables=tabs)
         if self.export_images:
             try:
-                from paperslicer.media.exporter import export_embedded_images, export_page_previews
+                from paperslicer.media.exporter import export_embedded_images, export_page_previews, export_pages_with_keywords, export_crops_by_labels
+                # YOLO PubLayNet detector (optional dependency)
+                try:
+                    from paperslicer.media.detector_hf import detect_publaynet_crops
+                except Exception:
+                    detect_publaynet_crops = None  # type: ignore
+                # Table Transformer detector (optional dependency)
+                try:
+                    from paperslicer.media.detector_tables import detect_table_crops
+                except Exception:
+                    detect_table_crops = None  # type: ignore
                 media = []
                 if self.images_mode in ("embedded", "auto"):
                     media = export_embedded_images(pdf_path)
+                # If none found, try detector crops first
+                if not media and detect_publaynet_crops is not None:
+                    try:
+                        det_figs, det_tabs = detect_publaynet_crops(pdf_path, conf=None)
+                        # extend figures first; pipeline fallback path does not keep separate tables list from detector
+                        media = det_figs + det_tabs
+                    except Exception:
+                        pass
+                # If still none, try table transformer
+                if not media and detect_table_crops is not None:
+                    try:
+                        media = detect_table_crops(pdf_path, dpi=None, conf=None, tiles=None)
+                    except Exception:
+                        pass
+                # If none found, try keyword-targeted previews first for relevance
+                if not media:
+                    # Try crops by labels harvested from regex sections (if any)
+                    labels = []
+                    # no structured rec.tables here; rely on captions extractor if present
+                    # fall back to generic keywords next
+                    if labels:
+                        media = export_crops_by_labels(pdf_path, labels, max_crops=6)
+                if not media:
+                    media = export_pages_with_keywords(pdf_path, ["figure", "table"], max_pages=6)
                 if (self.images_mode in ("pages", "auto") and not media):
                     media = export_page_previews(pdf_path, max_pages=5)
+                # Safety fallback: if still empty, force minimal previews
+                if not media:
+                    media = export_page_previews(pdf_path, max_pages=2)
                 rec.figures.extend(media)
             except Exception:
                 pass

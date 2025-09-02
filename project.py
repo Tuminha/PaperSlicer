@@ -80,6 +80,8 @@ def main():
                         help="Enable TEI + metadata resolution + image export (auto); defaults TEI dir to data/xml")
     parser.add_argument("--dedup", action="store_true", help="Skip duplicates by DOI or normalized title")
     parser.add_argument("--review-mode", action="store_true", help="Force review-profile augmentation")
+    parser.add_argument("--tables", choices=["auto", "tei", "plumber", "detector", "docling"], default="auto",
+                        help="Table extraction strategy preference")
     args = parser.parse_args()
 
     # Allow setting TEI output dir
@@ -91,6 +93,19 @@ def main():
         os.environ["CROSSREF_MAILTO"] = args.mailto
     if args.review_mode:
         os.environ["REVIEW_MODE"] = "1"
+    # Table strategy toggles
+    if args.tables == "tei":
+        os.environ["PAPERSLICER_DISABLE_PLUMBER"] = "1"
+        os.environ["PAPERSLICER_DISABLE_DETECTORS"] = "1"
+    elif args.tables == "plumber":
+        os.environ["PAPERSLICER_DISABLE_DETECTORS"] = "1"
+    elif args.tables == "detector":
+        os.environ["PAPERSLICER_DISABLE_PLUMBER"] = "1"
+    elif args.tables == "docling":
+        os.environ["USE_DOCLING"] = "1"
+        # default: isolate docling results unless user opts in for others
+        os.environ["PAPERSLICER_DISABLE_PLUMBER"] = os.environ.get("PAPERSLICER_DISABLE_PLUMBER", "1")
+        os.environ["PAPERSLICER_DISABLE_DETECTORS"] = os.environ.get("PAPERSLICER_DISABLE_DETECTORS", "1")
 
     if not args.path:
         parser.print_help()

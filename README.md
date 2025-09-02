@@ -43,6 +43,15 @@ The project has been significantly enhanced with the following major features:
 - **Clinical Assessments**: Maps "Clinical Assessment" → "materials_and_methods"
 - **Protocol Registration**: Enhanced mapping for research protocols
 
+### Major AI/ML Integration (Latest)
+- **YOLO PubLayNet Detection**: AI-powered figure/table detection using YOLOv8
+- **Table Transformer**: Microsoft's table detection model integration
+- **PDFPlumber Tables**: Deterministic table extraction with bounding boxes
+- **Docling Adapter**: Advanced document understanding integration
+- **TEI Table Rendering**: Matplotlib-based table visualization
+- **Multi-Strategy Table Extraction**: Configurable table extraction strategies
+- **Keyword-Based Page Export**: Smart page selection based on content keywords
+
 ### Major Features
 
 - **Complete GROBID Integration**: Full TEI XML parsing system with automatic service management
@@ -59,6 +68,8 @@ The project has been significantly enhanced with the following major features:
 - **Review Paper Processing**: Special handling for review/consensus papers with section augmentation
 - **TEI Coordinate Cropping**: Precise image extraction using GROBID coordinates
 - **Corpus Cleanup Utilities**: Automated cleanup scripts for fresh processing runs
+- **AI-Powered Media Detection**: YOLO PubLayNet and Table Transformer integration
+- **Multi-Strategy Table Extraction**: PDFPlumber, Docling, and TEI rendering
 
 ---
 
@@ -69,6 +80,15 @@ The project has been significantly enhanced with the following major features:
 - requests (for GROBID integration and metadata APIs)
 - lxml (for XML parsing)
 - Docker (optional, for GROBID)
+
+### AI/ML Dependencies (Optional)
+- ultralytics (for YOLO PubLayNet detection)
+- transformers (for Table Transformer)
+- torch (PyTorch for AI models)
+- pillow (PIL for image processing)
+- timm (for model utilities)
+- matplotlib (for table rendering)
+- pdfplumber (for deterministic table extraction)
 
 ### Installation
 
@@ -103,6 +123,8 @@ cp .env.example .env
 - **Review Paper Processing**: Special handling for review/consensus papers with section augmentation
 - **TEI Coordinate Cropping**: Precise image extraction using GROBID coordinates
 - **Corpus Cleanup Utilities**: Automated cleanup scripts for fresh processing runs
+- **AI-Powered Media Detection**: YOLO PubLayNet and Table Transformer integration
+- **Multi-Strategy Table Extraction**: PDFPlumber, Docling, and TEI rendering
 - **Reference Parsing**: Extract and format bibliographic references
 
 ---
@@ -305,6 +327,24 @@ python project.py data/pdf --e2e --export-images --images-mode coords-only
 python project.py data/pdf --e2e --export-images --images-mode pages-large
 ```
 
+**AI-Powered Table Extraction**
+```bash
+# Auto mode: try all strategies in order
+python project.py data/pdf --e2e --export-images --tables auto
+
+# TEI-only (no AI detection)
+python project.py data/pdf --e2e --export-images --tables tei
+
+# PDFPlumber tables (deterministic)
+python project.py data/pdf --e2e --export-images --tables plumber
+
+# AI table detection (Table Transformer)
+python project.py data/pdf --e2e --export-images --tables detector
+
+# Docling integration
+python project.py data/pdf --e2e --export-images --tables docling
+```
+
 **Enhanced Table Detection**
 PaperSlicer now includes fallback table detection for journals that don't emit proper `<table>` elements in TEI:
 - Extracts tables from `<ref type="table">` references
@@ -344,6 +384,16 @@ Precise image extraction using GROBID coordinates:
 - Source tracking: "grobid+crop", "embedded-image", "page-image"
 - **Improved media processing** with better fallback logic
 - **Reduced page previews** (max 2 pages) when other sources available
+
+**AI-Powered Media Detection**
+Advanced AI/ML integration for media extraction:
+- **YOLO PubLayNet**: YOLOv8-based figure/table detection using PubLayNet dataset
+- **Table Transformer**: Microsoft's specialized table detection model
+- **PDFPlumber Tables**: Deterministic table extraction with bounding boxes
+- **Docling Adapter**: Advanced document understanding for complex layouts
+- **TEI Table Rendering**: Matplotlib-based table visualization from TEI data
+- **Multi-Strategy Fallback**: Configurable extraction strategy preferences
+- **Keyword-Based Export**: Smart page selection based on content keywords
 
 **Corpus Cleanup Utilities**
 Automated cleanup for fresh processing runs:

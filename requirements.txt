@@ -1,3 +1,10 @@
 requests
 lxml
 PyMuPDF
+ultralytics
+pillow
+transformers
+timm
+torch
+matplotlib
+pdfplumber

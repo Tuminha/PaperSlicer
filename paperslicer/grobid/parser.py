@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Dict, Any, List, Optional
 from lxml import etree
+import re
 
 from paperslicer.models import PaperRecord, Meta
 from paperslicer.utils.sections_mapping import canonical_section_name, NON_CONTENT_KEYS
@@ -28,6 +29,124 @@ NON_CONTENT_KEYS = NON_CONTENT_KEYS
 
 def _canonical_section_name(name: str) -> str:
     return canonical_section_name(name)
+
+
+def _normalize_label(kind: str, raw_label: Optional[str], head_text: str, caption_text: str) -> Optional[str]:
+    """
+    Normalize figure/table labels to a consistent form like "Figure 1" or "Table 2".
+    Some TEI exports (certain journals) produce concatenated digits like "51" for
+    "Figure 1" due to running headers. Prefer extracting from head/caption.
+    """
+    kind_lc = (kind or "").strip().lower()
+    # 1) Try to parse from head_text (e.g., "Figure 1 .", "Table 3.")
+    head = (head_text or "").strip()
+    cap = (caption_text or "").strip()
+    patterns = []
+    if kind_lc == "figure":
+        patterns = [r"(?i)\bfig(?:ure)?\s*([A-Za-z0-9IVXLC]+)"]
+    elif kind_lc == "table":
+        patterns = [r"(?i)\btab(?:le)?\s*([A-Za-z0-9IVXLC]+)"]
+    for s in (head, cap):
+        for pat in patterns:
+            m = re.search(pat, s)
+            if m:
+                num = m.group(1).strip().rstrip(".:)")
+                return f"{kind_lc.capitalize()} {num}"
+    # 2) Fall back to raw_label numeric token if it looks sane
+    rl = (raw_label or "").strip()
+    # If TEI label is something like "51" but head/caption contained a match above, we'd have returned already.
+    # Accept a simple integer token
+    m2 = re.fullmatch(r"\d{1,3}", rl)
+    if m2:
+        return f"{kind_lc.capitalize()} {rl}"
+    # 3) Last resort: use head/caption without number
+    if kind_lc == "figure" and head:
+        return "Figure"
+    if kind_lc == "table" and head:
+        return "Table"
+    return None
+
+
+def _nearest_page_number(el: etree._Element) -> Optional[int]:
+    """Best-effort page number for an element using nearest preceding tei:pb/@n.
+    Falls back to None if not found or unparsable.
+    """
+    try:
+        pb = el.xpath("preceding::tei:pb[1]", namespaces=NS)
+        if pb:
+            n = pb[0].get("n")
+            if n and str(n).strip().isdigit():
+                return int(str(n).strip())
+    except Exception:
+        pass
+    return None
+
+
+def _coords_with_page(el: etree._Element, coords: Optional[str]) -> Optional[str]:
+    """Normalize coords to "page,x,y,w,h" if possible.
+    If coords already contains 5 numbers, return as-is. If 4 numbers, prefix the
+    nearest page number if available.
+    """
+    if not coords:
+        return None
+    # extract numbers from coords (space/comma/semicolon separated)
+    parts = re.split(r"[;,\s]+", coords.strip())
+    nums: List[float] = []
+    for p in parts:
+        if not p:
+            continue
+        try:
+            nums.append(float(p))
+        except Exception:
+            pass
+    if len(nums) >= 5:
+        # assume already includes page
+        return ",".join(str(int(nums[0] if i == 0 else nums[i])) if i == 0 else (str(nums[i])) for i in range(5))
+    if len(nums) >= 4:
+        page = _nearest_page_number(el)
+        if page is not None:
+            x, y, w, h = nums[:4]
+            return f"{page},{x},{y},{w},{h}"
+    return None
+
+
+def _coords_from_facs(root: etree._Element, el: etree._Element) -> Optional[str]:
+    """
+    Resolve coordinates via facsimile/zone when element carries @facs="#zoneId".
+    Returns "page,x,y,w,h" string when resolvable.
+    """
+    try:
+        facs = el.get("facs")
+        if not facs and el.attrib:
+            # try namespaced attribute if any (some TEI exports)
+            facs = el.attrib.get("{http://www.w3.org/2000/xmlns/}facs")
+        if not facs or not facs.startswith("#"):
+            return None
+        zone_id = facs[1:]
+        z = root.xpath(f"//tei:zone[@xml:id='{zone_id}']", namespaces=NS)
+        if not z:
+            return None
+        zone = z[0]
+        surface = zone.getparent()
+        if surface is None or not surface.tag.endswith("surface"):
+            return None
+        page_n = surface.get("n")
+        try:
+            page = int(str(page_n)) if page_n and str(page_n).strip().isdigit() else None
+        except Exception:
+            page = None
+        ulx = float(zone.get("ulx"))
+        uly = float(zone.get("uly"))
+        lrx = float(zone.get("lrx"))
+        lry = float(zone.get("lry"))
+        w = max(0.0, lrx - ulx)
+        h = max(0.0, lry - uly)
+        if page is not None:
+            return f"{page},{ulx},{uly},{w},{h}"
+        # if page unknown, leave None; exporter requires page
+        return None
+    except Exception:
+        return None
 
 
 def tei_to_record(tei_bytes: bytes, pdf_path: str) -> PaperRecord:
@@ -108,39 +227,73 @@ def tei_to_record(tei_bytes: bytes, pdf_path: str) -> PaperRecord:
 
     # ---- Figures and Tables (basic caption harvest)
     figures: List[Dict[str, Any]] = []
+    tables: List[Dict[str, Any]] = []
+    fig_labels_seen = set()
+    tab_labels_seen = set()
+
     for fig in _all(root, "//tei:text//tei:figure"):
-        label = _txt(_first(fig, "./tei:label"))
-        caption = _txt(_first(fig, "./tei:figDesc")) or _txt(_first(fig, "./tei:head"))
+        ftype = (fig.get("type") or "").strip().lower()
+        label_raw = _txt(_first(fig, "./tei:label"))
+        head_text = _txt(_first(fig, "./tei:head"))
+        caption_text = _txt(_first(fig, "./tei:figDesc")) or head_text
         coords = None
         g = _first(fig, ".//tei:graphic")
         if g is not None:
-            coords = g.get("coords")
-        if caption or label:
-            figures.append({
-                "label": label or None,
-                "caption": caption or None,
-                "path": None,
-                "source": "tei",
-                "coords": coords,
-            })
+            coords = _coords_with_page(fig, g.get("coords"))
+        if not coords:
+            coords = _coords_from_facs(root, fig)
 
-    tables: List[Dict[str, Any]] = []
+        if ftype == "table":
+            label = _normalize_label("table", label_raw, head_text, caption_text)
+            if (caption_text or label):
+                key = label or caption_text or ""
+                if key not in tab_labels_seen:
+                    tables.append({
+                        "label": label or None,
+                        "caption": caption_text or None,
+                        "path": None,
+                        "source": "tei",
+                        "coords": coords,
+                    })
+                    tab_labels_seen.add(key)
+            continue
+
+        # default: treat as figure
+        label = _normalize_label("figure", label_raw, head_text, caption_text)
+        if (caption_text or label):
+            key = label or caption_text or ""
+            if key not in fig_labels_seen:
+                figures.append({
+                    "label": label or None,
+                    "caption": caption_text or None,
+                    "path": None,
+                    "source": "tei",
+                    "coords": coords,
+                })
+                fig_labels_seen.add(key)
     for tab in _all(root, "//tei:text//tei:table"):
         # GROBID table may have head/caption as preceding sibling div, but we try head inside table
-        label = _txt(_first(tab, "./tei:head/tei:label")) or None
-        caption = _txt(_first(tab, "./tei:head"))
+        label_raw = _txt(_first(tab, "./tei:head/tei:label")) or None
+        head_text = _txt(_first(tab, "./tei:head"))
+        caption = head_text
+        label = _normalize_label("table", label_raw, head_text, caption)
         coords = None
         g = _first(tab, ".//tei:graphic")
         if g is not None:
-            coords = g.get("coords")
+            coords = _coords_with_page(tab, g.get("coords"))
+        if not coords:
+            coords = _coords_from_facs(root, tab)
         if caption or label:
-            tables.append({
-                "label": label or None,
-                "caption": caption or None,
-                "path": None,
-                "source": "tei",
-                "coords": coords,
-            })
+            key = label or caption or ""
+            if key not in tab_labels_seen:
+                tables.append({
+                    "label": label or None,
+                    "caption": caption or None,
+                    "path": None,
+                    "source": "tei",
+                    "coords": coords,
+                })
+                tab_labels_seen.add(key)
 
     # Fallback: Some journals don't emit <table>; use textual cues and <ref type="table">
     try:

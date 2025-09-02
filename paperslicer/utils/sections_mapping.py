@@ -254,6 +254,30 @@ EXACT_MAP = {
     "analysis of subdomain-feedback": "results",
     "case report": "results",
     "follow-up": "results",
+    # --- Domain additions (generalizable across articles) ---
+    # Results-like
+    "histological outcomes": "results",
+    "implant survival": "results",
+    "general characteristics": "results",
+    "key findings": "conclusions",
+    # Discussion-like
+    "identified gaps": "discussion",
+    # Methods-like
+    "patient flow": "materials_and_methods",
+    "surgical and prosthetic procedures": "materials_and_methods",
+    "postoperative care": "materials_and_methods",
+    "preparation of experimental materials": "materials_and_methods",
+    "interventions": "materials_and_methods",
+    "prom's": "materials_and_methods",
+    "proms": "materials_and_methods",
+    # Intro / background
+    "general epidemiological insights and risk factors": "introduction",
+    "focused question": "introduction",
+    "focus question": "introduction",
+    "hypotheses": "introduction",
+    "summary": "conclusions",
+    # Ethics / non-content
+    "informed consent": "ethical_statement",
     # --- Generalizable additions from evaluation suggestions ---
     # Methods-oriented
     "assessment of heterogeneity": "materials_and_methods",
@@ -303,7 +327,10 @@ def canonical_section_name(name: str) -> str:
     ]):
         return "materials_and_methods"
     # Intro-like
-    if any(k in n for k in ["introduc", "aim", "objective", "objectives", "purpose", "background"]):
+    if any(k in n for k in [
+        "introduc", "aim", "objective", "objectives", "purpose", "background",
+        "hypothesis", "hypotheses", "focused question", "focus question"
+    ]):
         return "introduction"
     # Conclusions-like
     if "conclusion" in n or "clinical significance" in n:
