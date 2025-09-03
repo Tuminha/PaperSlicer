@@ -34,6 +34,7 @@ The project has been significantly enhanced with the following major features:
 - **Force Review Mode**: Added `--review-mode` CLI flag for manual review paper processing
 - **Relaxed Quality Gates**: Adjusted TEI mapping threshold from 80% to 50% during expansion
 - **Enhanced Pipeline**: Better handling of review mode and media extraction
+- **Standalone Media Export**: New dedicated script for batch media extraction with configurable strategies
 
 ### Recent Enhancements (Current)
 - **Generalizable Mappings**: Added new mappings from evaluation suggestions
@@ -42,6 +43,7 @@ The project has been significantly enhanced with the following major features:
 - **Discussion Sections**: Maps "Strengths and Limitations" → "discussion"
 - **Clinical Assessments**: Maps "Clinical Assessment" → "materials_and_methods"
 - **Protocol Registration**: Enhanced mapping for research protocols
+- **Media Export Script**: New standalone script for batch media extraction with pipeline integration
 
 ### Major AI/ML Integration (Latest)
 - **YOLO PubLayNet Detection**: AI-powered figure/table detection using YOLOv8
@@ -51,6 +53,7 @@ The project has been significantly enhanced with the following major features:
 - **TEI Table Rendering**: Matplotlib-based table visualization
 - **Multi-Strategy Table Extraction**: Configurable table extraction strategies
 - **Keyword-Based Page Export**: Smart page selection based on content keywords
+- **Standalone Media Export**: Dedicated script with full pipeline integration and configurable strategies
 
 ### Major Features
 
@@ -70,6 +73,7 @@ The project has been significantly enhanced with the following major features:
 - **Corpus Cleanup Utilities**: Automated cleanup scripts for fresh processing runs
 - **AI-Powered Media Detection**: YOLO PubLayNet and Table Transformer integration
 - **Multi-Strategy Table Extraction**: PDFPlumber, Docling, and TEI rendering
+- **Standalone Media Export**: Dedicated script for batch media extraction with configurable strategies
 
 ---
 
@@ -126,6 +130,8 @@ cp .env.example .env
 - **AI-Powered Media Detection**: YOLO PubLayNet and Table Transformer integration
 - **Multi-Strategy Table Extraction**: PDFPlumber, Docling, and TEI rendering
 - **Reference Parsing**: Extract and format bibliographic references
+- **Standalone Media Export**: Dedicated script for batch media extraction with configurable strategies
+- **Standalone Media Export**: Dedicated script for batch media extraction with configurable strategies
 
 ---
 
@@ -146,7 +152,8 @@ PaperSlicer/
 │   ├── start_grobid.sh      # GROBID service startup helper
 │   ├── e2e_three.sh         # End-to-end processing script
 │   ├── evaluate_corpus.py   # Corpus quality evaluation
-│   └── clean_corpus.sh      # Cleanup utilities for fresh runs
+│   ├── clean_corpus.sh      # Cleanup utilities for fresh runs
+│   └── export_media.py      # Media extraction script with pipeline integration
 └── paperslicer/      # Core package
     ├── journals/     # Journal-specific handlers
     └── utils/        # Utilities including exports
@@ -284,6 +291,21 @@ scripts/clean_corpus.sh --yes
 scripts/clean_corpus.sh --dry-run
 ```
 
+**Media Export Script**
+```bash
+# Extract images and tables from PDFs using PaperSlicer pipeline
+python scripts/export_media.py data/pdf --images-mode auto --tables auto
+
+# Use specific extraction strategies
+python scripts/export_media.py data/pdf --images-mode embedded --tables plumber
+
+# Generate CSV summaries of extracted media
+python scripts/export_media.py data/pdf --out-summary out/media_summary
+
+# Use GROBID for enhanced extraction
+python scripts/export_media.py data/pdf --grobid --tei-dir data/xml
+```
+
 ## Usage Examples
 
 ### Basic Operations
@@ -343,6 +365,24 @@ python project.py data/pdf --e2e --export-images --tables detector
 
 # Docling integration
 python project.py data/pdf --e2e --export-images --tables docling
+```
+
+**Standalone Media Export**
+```bash
+# Extract media using PaperSlicer pipeline with auto strategies
+python scripts/export_media.py data/pdf --images-mode auto --tables auto
+
+# Use specific extraction strategies
+python scripts/export_media.py data/pdf --images-mode embedded --tables plumber
+
+# Generate CSV summaries of extracted media
+python scripts/export_media.py data/pdf --out-summary out/media_summary
+
+# Use GROBID for enhanced extraction with TEI coordinates
+python scripts/export_media.py data/pdf --grobid --tei-dir data/xml
+
+# Skip CSV summary generation
+python scripts/export_media.py data/pdf --no-summaries
 ```
 
 **Enhanced Table Detection**
