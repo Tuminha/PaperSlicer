@@ -42,6 +42,8 @@ def main() -> int:
     parser.add_argument("--tei-dir", help="Directory to save TEI XML (used when --grobid)")
     parser.add_argument("--out-summary", help="Directory for CSV summaries", default=os.path.join("out", "tests"))
     parser.add_argument("--no-summaries", action="store_true", help="Do not write CSV summaries")
+    parser.add_argument("--only-tables", action="store_true", help="Extract tables only (disable image export)")
+    parser.add_argument("--only-images", action="store_true", help="Extract images only (skip tables in summaries)")
     args = parser.parse_args()
 
     # Configure environment toggles for strategies
@@ -84,9 +86,10 @@ def main() -> int:
     # Ensure we import from the PaperSlicer package here
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from paperslicer.pipeline import Pipeline
+    export_images_flag = not args.only_tables
     pipe = Pipeline(try_start_grobid=args.grobid,
                     xml_save_dir=(args.tei_dir or os.getenv("TEI_SAVE_DIR")),
-                    export_images=True,
+                    export_images=export_images_flag,
                     images_mode=args.images_mode)
 
     images_rows: List[List[str]] = []
@@ -102,6 +105,8 @@ def main() -> int:
         for f in (rec.figures or []):
             if not isinstance(f, dict):
                 continue
+            if args.only_tables:
+                continue
             images_rows.append([
                 p,
                 f.get("label") or "",
@@ -112,6 +117,8 @@ def main() -> int:
         # Tables summary
         for t in (rec.tables or []):
             if not isinstance(t, dict):
+                continue
+            if args.only_images:
                 continue
             tables_rows.append([
                 p,
@@ -139,4 +146,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
