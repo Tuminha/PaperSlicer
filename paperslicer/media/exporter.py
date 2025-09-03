@@ -293,15 +293,12 @@ def export_from_tei_coords(
         chunks: List[tuple] = []
         if not s:
             return chunks
-        # Split by semicolon or whitespace groups
         parts = [p.strip() for p in re.split(r"[;\s]+", s) if p.strip()]
-        # Recombine into groups of 5 numbers
         nums: List[float] = []
         for p in parts:
             try:
                 nums.append(float(p))
             except ValueError:
-                # handle comma-separated as one token
                 for q in p.split(','):
                     q = q.strip()
                     if not q:
@@ -310,7 +307,6 @@ def export_from_tei_coords(
                         nums.append(float(q))
                     except ValueError:
                         pass
-        # Group into quintuples
         for i in range(0, len(nums), 5):
             if i + 4 < len(nums):
                 page, x, y, w, h = nums[i:i+5]
@@ -328,7 +324,20 @@ def export_from_tei_coords(
         if page_no <= 0 or page_no > len(doc):
             continue
         page = doc[page_no - 1]
-        rect = fitz.Rect(x, y, x + max(0, w), y + max(0, h))
+        # Accept both xywh (w,h are sizes) and xyxy (w,h are bottom-right coords)
+        # Heuristic: prefer xywh if it fits within page bounds; otherwise fall back to xyxy.
+        page_rect = page.rect
+        rx1, ry1, rx2, ry2 = x, y, x + max(0, w), y + max(0, h)
+        rect_wh = fitz.Rect(rx1, ry1, rx2, ry2) & page_rect
+        rect_xyxy = fitz.Rect(x, y, w, h) & page_rect
+        use_xyxy = False
+        if (w > page_rect.width) or (h > page_rect.height):
+            use_xyxy = True
+        elif (x + w > page_rect.x1 + 1) or (y + h > page_rect.y1 + 1):
+            use_xyxy = True
+        elif rect_wh.width <= 1 or rect_wh.height <= 1:
+            use_xyxy = True
+        rect = rect_xyxy if use_xyxy else rect_wh
         # Apply optional padding to include margins around crops
         try:
             pad = pad_pct if pad_pct is not None else float(os.getenv("PAPERSLICER_CROP_PAD_PCT", "0.06"))

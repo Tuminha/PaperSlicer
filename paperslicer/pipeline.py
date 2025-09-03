@@ -141,6 +141,18 @@ class Pipeline:
                             tables_have_paths = True
                     except Exception:
                         pass
+                # 2.55) pdfalto illustration crops (optional) if still no media paths
+                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
+                use_pdfalto = (os.getenv("PAPERSLICER_USE_PDFALTO", "1").lower() in {"1","true","yes","on"})
+                if not has_paths and use_pdfalto:
+                    try:
+                        from paperslicer.media.pdfalto_adapter import extract_illustrations_pdfalto
+                        palto = extract_illustrations_pdfalto(pdf_path)
+                        if palto:
+                            rec.figures.extend(palto)
+                            has_paths = True
+                    except Exception:
+                        pass
                 # 2.6) pdfplumber table crops (preferred deterministic) if still no table paths
                 tables_have_paths = any((isinstance(t, dict) and t.get("path")) for t in rec.tables)
                 disable_plumber = (os.getenv("PAPERSLICER_DISABLE_PLUMBER") in {"1","true","yes","on"})
@@ -240,7 +252,12 @@ class Pipeline:
         rec = PaperRecord(meta=meta, sections=sec, figures=figs, tables=tabs)
         if self.export_images:
             try:
-                from paperslicer.media.exporter import export_embedded_images, export_page_previews, export_pages_with_keywords, export_crops_by_labels
+                from paperslicer.media.exporter import (
+                    export_embedded_images,
+                    export_page_previews,
+                    export_pages_with_keywords,
+                    export_crops_by_labels,
+                )
                 # YOLO PubLayNet detector (optional dependency)
                 try:
                     from paperslicer.media.detector_hf import detect_publaynet_crops
@@ -251,11 +268,22 @@ class Pipeline:
                     from paperslicer.media.detector_tables import detect_table_crops
                 except Exception:
                     detect_table_crops = None  # type: ignore
+                # pdfplumber tables (deterministic bboxes)
+                try:
+                    from paperslicer.media.tables_pdfplumber import extract_tables_pdfplumber
+                except Exception:
+                    extract_tables_pdfplumber = None  # type: ignore
+                # Docling adapter (optional)
+                try:
+                    from paperslicer.media.docling_adapter import extract_tables_docling
+                except Exception:
+                    extract_tables_docling = None  # type: ignore
                 media = []
                 if self.images_mode in ("embedded", "auto"):
                     media = export_embedded_images(pdf_path)
                 # If none found, try detector crops first
-                if not media and detect_publaynet_crops is not None:
+                disable_detectors = (os.getenv("PAPERSLICER_DISABLE_DETECTORS") in {"1","true","yes","on"})
+                if not media and detect_publaynet_crops is not None and not disable_detectors:
                     try:
                         det_figs, det_tabs = detect_publaynet_crops(pdf_path, conf=None)
                         # extend figures first; pipeline fallback path does not keep separate tables list from detector
@@ -263,11 +291,30 @@ class Pipeline:
                     except Exception:
                         pass
                 # If still none, try table transformer
-                if not media and detect_table_crops is not None:
+                if not media and detect_table_crops is not None and not disable_detectors:
                     try:
                         media = detect_table_crops(pdf_path, dpi=None, conf=None, tiles=None)
                     except Exception:
                         pass
+                # Deterministic tables via pdfplumber
+                disable_plumber = (os.getenv("PAPERSLICER_DISABLE_PLUMBER") in {"1","true","yes","on"})
+                if extract_tables_pdfplumber is not None and not disable_plumber:
+                    try:
+                        pdet = extract_tables_pdfplumber(pdf_path)
+                        if pdet:
+                            rec.tables.extend(pdet)
+                    except Exception:
+                        pass
+                # Docling structured tables if requested
+                use_docling = (os.getenv("USE_DOCLING") in {"1","true","yes","on"})
+                if use_docling and extract_tables_docling is not None:
+                    try:
+                        dlt = extract_tables_docling(pdf_path)
+                        if dlt:
+                            rec.tables.extend(dlt)
+                    except Exception:
+                        pass
+                # (pdfalto integration removed)
                 # If none found, try keyword-targeted previews first for relevance
                 if not media:
                     # Try crops by labels harvested from regex sections (if any)
