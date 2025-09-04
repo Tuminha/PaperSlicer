@@ -175,13 +175,11 @@ class Pipeline:
                             rec.tables.extend(det_tabs)
                     except Exception:
                         pass
-                # 2.8) Table Transformer crops if still no paths
-                has_paths = any((isinstance(i, dict) and i.get("path")) for i in (rec.figures + rec.tables))
-                if not has_paths and detect_table_crops is not None and not disable_detectors:
+                # 2.8) (moved) Table Transformer crops: run regardless of figure media presence
+                if detect_table_crops is not None and not disable_detectors:
                     try:
                         tdet = detect_table_crops(pdf_path, dpi=None, conf=None, tiles=None)
                         if tdet:
-                            # Add as tables for consistency
                             rec.tables.extend(tdet)
                     except Exception:
                         pass
@@ -286,14 +284,19 @@ class Pipeline:
                 if not media and detect_publaynet_crops is not None and not disable_detectors:
                     try:
                         det_figs, det_tabs = detect_publaynet_crops(pdf_path, conf=None)
-                        # extend figures first; pipeline fallback path does not keep separate tables list from detector
-                        media = det_figs + det_tabs
+                        # Keep figures and tables separated in the fallback path
+                        if det_figs:
+                            media = det_figs
+                        if det_tabs:
+                            rec.tables.extend(det_tabs)
                     except Exception:
                         pass
-                # If still none, try table transformer
-                if not media and detect_table_crops is not None and not disable_detectors:
+                # Also try Table Transformer to add table crops regardless of image media presence
+                if detect_table_crops is not None and not disable_detectors:
                     try:
-                        media = detect_table_crops(pdf_path, dpi=None, conf=None, tiles=None)
+                        tdet = detect_table_crops(pdf_path, dpi=None, conf=None, tiles=None)
+                        if tdet:
+                            rec.tables.extend(tdet)
                     except Exception:
                         pass
                 # Deterministic tables via pdfplumber
