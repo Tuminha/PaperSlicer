@@ -35,6 +35,7 @@ The project has been significantly enhanced with the following major features:
 - **Relaxed Quality Gates**: Adjusted TEI mapping threshold from 80% to 50% during expansion
 - **Enhanced Pipeline**: Better handling of review mode and media extraction
 - **Standalone Media Export**: New dedicated script for batch media extraction with configurable strategies
+- **Selective Media Extraction**: Added `--only-tables` and `--only-images` flags for targeted extraction
 
 ### Recent Enhancements (Current)
 - **Generalizable Mappings**: Added new mappings from evaluation suggestions
@@ -383,6 +384,12 @@ python scripts/export_media.py data/pdf --grobid --tei-dir data/xml
 
 # Skip CSV summary generation
 python scripts/export_media.py data/pdf --no-summaries
+
+# Extract tables only (disable image export)
+python scripts/export_media.py data/pdf --only-tables --tables auto
+
+# Extract images only (skip tables in summaries)
+python scripts/export_media.py data/pdf --only-images --images-mode auto
 ```
 
 **Enhanced Table Detection**
