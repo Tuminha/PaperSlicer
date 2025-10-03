@@ -1,10 +1,12 @@
 import os
+import shutil
 from paperslicer.models import PaperRecord, Meta
 from paperslicer.extractors.text_extractor import PDFTextExtractor
 from paperslicer.extractors.normalizer import TextNormalizer
 from paperslicer.extractors.sections_regex import SectionExtractor
 from paperslicer.extractors.captions import CaptionExtractor
 from paperslicer.media.filters import filter_media_collections
+from paperslicer.media.exporter import _safe_stem
 
 # NEW
 from paperslicer.grobid.client import GrobidClient
@@ -13,7 +15,7 @@ from lxml import etree  # for checking parseability of TEI
 from paperslicer.metadata.resolver import ensure_abstract
 from paperslicer.journals import review as review_profile
 
-from typing import Optional, Dict, Any, Tuple, List
+from typing import Optional, Dict, Any, Tuple, List, Iterable
 
 
 def _merge_table_entries(rec: PaperRecord) -> None:
@@ -84,6 +86,34 @@ class Pipeline:
         self.norm = TextNormalizer()
         self.sections = SectionExtractor()
         self.captions = CaptionExtractor()
+        self._cleaned_media_dirs: set[str] = set()
+
+    def _clean_media_dir(self, pdf_path: str) -> None:
+        skip = os.getenv("PAPERSLICER_SKIP_MEDIA_CLEAN", "0").lower() in {"1", "true", "yes", "on"}
+        if skip:
+            return
+        media_root = os.path.join("media")
+        stem = _safe_stem(pdf_path)
+        target = os.path.join(media_root, stem)
+        if target in self._cleaned_media_dirs:
+            return
+        self._cleaned_media_dirs.add(target)
+        if os.path.isdir(target):
+            try:
+                shutil.rmtree(target)
+            except Exception:
+                pass
+
+    @staticmethod
+    def _remove_paths(paths: Iterable[str]) -> None:
+        for path in paths:
+            if not path:
+                continue
+            try:
+                if os.path.isfile(path):
+                    os.remove(path)
+            except Exception:
+                continue
 
     def _try_grobid(self, pdf_path: str) -> Optional[PaperRecord]:
         mgr = GrobidManager()
@@ -110,7 +140,8 @@ class Pipeline:
         from paperslicer.grobid.parser import tei_to_record  # add this file when ready
         rec = tei_to_record(tei_bytes, pdf_path)
         _merge_table_entries(rec)
-        filter_media_collections(rec, pdf_path)
+        removed_paths = filter_media_collections(rec, pdf_path)
+        self._remove_paths(removed_paths)
         # Journal/profile augmentation for reviews
         try:
             force_review = self.review_mode if self.review_mode is not None else (os.getenv("REVIEW_MODE") in {"1", "true", "yes", "on"})
@@ -126,6 +157,7 @@ class Pipeline:
             pass
         # Basic image export if requested
         if self.export_images:
+            self._clean_media_dir(pdf_path)
             try:
                 from paperslicer.media.exporter import (
                     export_embedded_images,
@@ -287,7 +319,8 @@ class Pipeline:
             except Exception:
                 pass
         _merge_table_entries(rec)
-        filter_media_collections(rec, pdf_path)
+        removed_paths = filter_media_collections(rec, pdf_path)
+        self._remove_paths(removed_paths)
         return rec
 
     def process(self, pdf_path: str) -> PaperRecord:
@@ -309,6 +342,7 @@ class Pipeline:
         meta = Meta(source_path=pdf_path, title=sec.get("title"))
         rec = PaperRecord(meta=meta, sections=sec, figures=figs, tables=tabs)
         if self.export_images:
+            self._clean_media_dir(pdf_path)
             try:
                 from paperslicer.media.exporter import (
                     export_embedded_images,

@@ -104,6 +104,25 @@ def test_filter_keeps_valid_table(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
     assert len(rec.tables) == 1
 
 
+def test_filter_rejects_banner_like_page_image(tmp_path: Path):
+    banner_path = tmp_path / "page001_img01.png"
+    Image.new("RGB", (800, 80), "white").save(banner_path)
+    rec = _make_record(figures=[{"path": str(banner_path), "source": "page-image"}])
+    filter_media_collections(rec, str(tmp_path / "missing.pdf"))
+    assert rec.figures == []
+
+
+def test_filter_rejects_low_content_img(tmp_path: Path):
+    img_path = tmp_path / "page001_img02.png"
+    img = Image.new("RGB", (400, 400), "white")
+    draw = ImageDraw.Draw(img)
+    draw.rectangle((10, 10, 40, 40), fill="black")
+    img.save(img_path)
+    rec = _make_record(figures=[{"path": str(img_path), "source": "page-image"}])
+    filter_media_collections(rec, str(tmp_path / "missing.pdf"))
+    assert rec.figures == []
+
+
 def test_filters_prefer_crops_over_img(tmp_path: Path):
     crop_path = tmp_path / "page001_crop01.png"
     img_path = tmp_path / "page001_img01.png"
