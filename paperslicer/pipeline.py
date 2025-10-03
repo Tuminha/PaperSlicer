@@ -4,6 +4,7 @@ from paperslicer.extractors.text_extractor import PDFTextExtractor
 from paperslicer.extractors.normalizer import TextNormalizer
 from paperslicer.extractors.sections_regex import SectionExtractor
 from paperslicer.extractors.captions import CaptionExtractor
+from paperslicer.media.filters import filter_media_collections
 
 # NEW
 from paperslicer.grobid.client import GrobidClient
@@ -12,7 +13,62 @@ from lxml import etree  # for checking parseability of TEI
 from paperslicer.metadata.resolver import ensure_abstract
 from paperslicer.journals import review as review_profile
 
-from typing import Optional
+from typing import Optional, Dict, Any, Tuple, List
+
+
+def _merge_table_entries(rec: PaperRecord) -> None:
+    """Merge duplicate table entries and attach media paths to structured rows."""
+    if not rec.tables:
+        return
+
+    merged: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    ordered: List[Dict[str, Any]] = []
+
+    for tbl in rec.tables:
+        if not isinstance(tbl, dict):
+            continue
+        label = (tbl.get("label") or "").strip()
+        caption = (tbl.get("caption") or "").strip()
+        if caption:
+            key = ("caption", caption.lower())
+        elif label:
+            key = ("label", label.lower())
+        elif tbl.get("path"):
+            key = ("path", str(tbl.get("path")))
+        else:
+            key = ("index", str(len(ordered)))
+        existing = merged.get(key)
+        if existing is None:
+            data = dict(tbl)
+            src = data.get("source")
+            data_sources = []
+            if src:
+                data_sources.append(src)
+            data["source"] = "+".join(sorted(set(data_sources))) if data_sources else data.get("source")
+            data["_sources"] = set(data_sources)
+            ordered.append(data)
+            merged[key] = data
+            existing = data
+        else:
+            src = tbl.get("source")
+            if src:
+                existing["_sources"].add(src)
+        for field in ("label", "caption", "coords", "pdf_bbox"):
+            if not existing.get(field) and tbl.get(field):
+                existing[field] = tbl[field]
+        if not existing.get("path") and tbl.get("path"):
+            existing["path"] = tbl["path"]
+
+    for data in ordered:
+        if isinstance(data, dict) and "_sources" in data:
+            sources = sorted(s for s in data["_sources"] if s)
+            if sources:
+                data["source"] = "+".join(sources)
+            elif "source" in data and not data["source"]:
+                data.pop("source")
+            data.pop("_sources", None)
+
+    rec.tables = ordered
 
 
 class Pipeline:
@@ -53,6 +109,8 @@ class Pipeline:
         # Very light TEI mapping for now (you’ll expand later)
         from paperslicer.grobid.parser import tei_to_record  # add this file when ready
         rec = tei_to_record(tei_bytes, pdf_path)
+        _merge_table_entries(rec)
+        filter_media_collections(rec, pdf_path)
         # Journal/profile augmentation for reviews
         try:
             force_review = self.review_mode if self.review_mode is not None else (os.getenv("REVIEW_MODE") in {"1", "true", "yes", "on"})
@@ -228,6 +286,8 @@ class Pipeline:
                         rec.figures.extend(pages)
             except Exception:
                 pass
+        _merge_table_entries(rec)
+        filter_media_collections(rec, pdf_path)
         return rec
 
     def process(self, pdf_path: str) -> PaperRecord:
@@ -336,4 +396,5 @@ class Pipeline:
                 rec.figures.extend(media)
             except Exception:
                 pass
+        _merge_table_entries(rec)
         return rec

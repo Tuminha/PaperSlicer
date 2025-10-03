@@ -1,0 +1,150 @@
+{
+  "file_name": "s49_72_lin_consensus_25.pdf",
+  "metadata": {
+    "title": "Treatment of Peri-implant Mucositis: An AAP/AO Systematic Review and Meta-analysis Guo-Hao Lin, DDS, MS1,2/Leandro Chambrone, DDS, MSc, PhD3/Yogalakshmi Rajendran, BDS, MS1/ Gustavo Avila-Ortiz, DDS, MS, PhD4",
+    "authors": [
+      "According to data from seven National Health",
+      "Nutrition Examination Surveys conducted between"
+    ],
+    "journal": "Consensus Report",
+    "doi": "",
+    "year": 0,
+    "total_pages": 24
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "materials_and_methods": {
+      "heading": "Materials and Methods",
+      "first_sentence": "This systematic review was designed and conducted in accordance with the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines9 and the Cochrane Handbook of Systematic Reviews of Interventions.10 The study protocol wa",
+      "first_100_chars": "This systematic review was designed and conducted in accordance with the Preferred Reporting Items f",
+      "last_sentence": "Randomeffects meta-analyses of the data extracted from the selected studies were conducted if the I2 test showed a value > 50%, whereas fixed-effects meta-analyses were conducted if the I2 test presented a result < 50%.",
+      "last_100_chars": "e > 50%, whereas fixed-effects meta-analyses were conducted if the I2 test presented a result < 50%.",
+      "word_count": 856,
+      "pages": "TBD",
+      "subsections": [
+        "This systematic review was designed and conducted",
+        "Eligibility Criteria and Outcome Measures",
+        "Data Extraction",
+        "Data on the outcomes of interest were extracted from",
+        "Data Synthesis",
+        "Data were pooled into evidence tables and displayed",
+        "The subgroup meta-analysis estimate assessments"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Study Selection The screening process is displayed in Fig 1.",
+      "first_100_chars": "Study Selection The screening process is displayed in Fig 1. Electronic and hand searches yielded 15",
+      "last_sentence": "Note that none of the studies exclusively recruiting smokers reported data on the percentage of complete disease resolution.",
+      "last_100_chars": "udies exclusively recruiting smokers reported data on the percentage of complete disease resolution.",
+      "word_count": 964,
+      "pages": "TBD",
+      "subsections": [
+        "Study Selection",
+        "MEDLINE database searching",
+        "Effects of Interventions: Individual Study",
+        "Meta-analyses were conducted using data on PD",
+        "Studies Including Nonsmokers or Patients with",
+        "Data from 15 studies including nonsmokers or patients",
+        "Regarding BoP reduction, data from 11 studies were",
+        "Data from four studies including only smokers, vapers,"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "Summary of Main Findings The findings of this comprehensive systematic review demonstrated that the use of adjunctive treatment modalities (ie, air-polishing, aPDT, lasers, antibiotics, local antimicrobials, and probiotics) employed in conjunction wi",
+      "first_100_chars": "Summary of Main Findings The findings of this comprehensive systematic review demonstrated that the ",
+      "last_sentence": "of implants (N) Followup (months) Air-polishing Lasers aPDT s54 Volume 40, Supplement 1, 2025 Lin et al Treatment outcomes (differences) PD reduction (mm ± SD) CAL gain (mm ± SD) BoP reduction (%) PI/PS reduction (± SD) BI/BS reduction (± SD) MMP gai",
+      "last_100_chars": "tion (± SD) BI/BS reduction (± SD) MMP gain (mm ± SD) Complete resolution (%) Microbiologic outcomes",
+      "word_count": 997,
+      "pages": "TBD",
+      "subsections": [
+        "Study design"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "T: 0.79 (1.42) C: 0.92 (2.65)",
+      "first_100_chars": "T: 0.79 (1.42) C: 0.92 (2.65)",
+      "last_sentence": "T: 0.79 (1.42) C: 0.92 (2.65)",
+      "last_100_chars": "T: 0.79 (1.42) C: 0.92 (2.65)",
+      "word_count": 6,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig 1",
+      "caption": "Flowchart illustrating the article selection process",
+      "caption_length": 52,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "flowchart",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig 3",
+      "caption": "Meta-analysis for studies exclusively involving smokers or individuals using vapes/electronic cigarettes",
+      "caption_length": 104,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "The findings of one trial were reported",
+      "caption_length": 39,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Risk Assessment of Publication Bias for the Included RCTs",
+      "caption_length": 57,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors do not have any financial interests, e",
+      "last_50_chars": "n, supervision, and writing/editing of the review."
+    }
+  },
+  "structural_info": {
+    "total_sections": 4,
+    "total_figures": 2,
+    "total_tables": 2,
+    "total_references": 44,
+    "has_appendices": true,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Consensus Report | 0",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

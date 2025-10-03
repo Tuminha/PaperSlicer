@@ -1,0 +1,138 @@
+{
+  "file_name": "dmj_article3_dental_resin_composites_hydroxyapatite_2025.pdf",
+  "metadata": {
+    "title": "Synthesis and analysis Shuhan YANG1, Xinhong YU1, Dong HAN1, TianQi WANG1, Qi XIE2 and WeiLi XIE1 The First Affiliated Hospital of Harbin Medical Uhiversity, School of Stomatology, Harbin Medical University, Harbin 150001, China Department of Stomatology, Harbin Medical University, Harbin 150001, China",
+    "authors": [],
+    "journal": "Dental Materials Journal",
+    "doi": "",
+    "year": 2025,
+    "total_pages": 8
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "The dental resin composites (DRCs), characterized by their exceptional aesthetic properties, biocompatibility, and ease of manipulation, find extensive applications in clinical restorations for tooth defects resulting from dental caries and trauma1,2",
+      "first_100_chars": "The dental resin composites (DRCs), characterized by their exceptional aesthetic properties, biocomp",
+      "last_sentence": "To simulate the clinical process, after removing the specimen from the mold, it was ground with sandpaper in a gradient from coarse to fine under humid conditions (in the order of 1000, 2000, 3000 and 4000 grit), the flash was removed,",
+      "last_100_chars": "fine under humid conditions (in the order of 1000, 2000, 3000 and 4000 grit), the flash was removed,",
+      "word_count": 933,
+      "pages": "TBD",
+      "subsections": [
+        "The objective of this study was to fabricate dental"
+      ]
+    },
+    "materials_and_methods": {
+      "heading": "Materials and Methods",
+      "first_sentence": "Preparation of experimental materials The composition and grouping of the experimental resin composites are presented in Table 1.",
+      "first_100_chars": "Preparation of experimental materials The composition and grouping of the experimental resin composi",
+      "last_sentence": "Statistical significance was established at the conventional level of p<0.05.",
+      "last_100_chars": "cision of the results. Statistical significance was established at the conventional level of p<0.05.",
+      "word_count": 1165,
+      "pages": "TBD",
+      "subsections": [
+        "In this study, F represents the peak force applied",
+        "Tokyo, Japan) was used to analyze and study the",
+        "All procedures were repeated three times, and the",
+        "Statistical analysis",
+        "Statistical analyses were performed using SPSS 27.0"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Mechanical performance 1.",
+      "first_100_chars": "Mechanical performance 1. Flexural strength In the three-point bending test, fracture occurs at the ",
+      "last_sentence": "Furthermore, statistical testing revealed no significant difference (p>0.05) between experimental groups H2 and H4 and control group H0 at both time points.",
+      "last_100_chars": " difference (p>0.05) between experimental groups H2 and H4 and control group H0 at both time points.",
+      "word_count": 877,
+      "pages": "TBD",
+      "subsections": [
+        "The compressive strength and statistical test results"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "HAP constitutes the principal inorganic component of human bones and teeth, rendering it an indispensable biomaterial with exceptional biocompatibility, bioactivity, and thermal stability.",
+      "first_100_chars": "HAP constitutes the principal inorganic component of human bones and teeth, rendering it an indispen",
+      "last_sentence": "The presence of bubbles during specific testing procedures may compromise the accuracy and reliability of mechanical property test outcomes.",
+      "last_100_chars": "testing procedures may compromise the accuracy and reliability of mechanical property test outcomes.",
+      "word_count": 897,
+      "pages": "TBD",
+      "subsections": []
+    },
+    "conclusion": {
+      "heading": "Conclusion",
+      "first_sentence": "In this study, the incorporation of HAP nanofibers with an aspect ratio exceeding 10,000 at a low mass fraction into Bis-GMA/TEGDM composites (2 wt%–4 wt%) exhibited a significant enhancement in mechanical properties.",
+      "first_100_chars": "In this study, the incorporation of HAP nanofibers with an aspect ratio exceeding 10,000 at a low ma",
+      "last_sentence": "CONFLICT OF INTEREST The authors affirm that they have no known competing financial interests or personal relationships that could be perceived as exerting any influence on the findings presented in this paper.",
+      "last_100_chars": "tionships that could be perceived as exerting any influence on the findings presented in this paper.",
+      "word_count": 166,
+      "pages": "TBD",
+      "subsections": [
+        "In this study, the incorporation of HAP nanofibers with"
+      ]
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 4",
+      "caption": "The DRCs exhibited brittle fracture",
+      "caption_length": 35,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "Based on the relationship between",
+      "caption_length": 33,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "The resin matrix",
+      "caption_length": 16,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors affirm that they have no known competi",
+      "last_50_chars": "influence on the findings presented in this paper."
+    }
+  },
+  "structural_info": {
+    "total_sections": 5,
+    "total_figures": 2,
+    "total_tables": 1,
+    "total_references": 1,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dental Materials Journal | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

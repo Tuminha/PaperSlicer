@@ -27,15 +27,17 @@ This project is also the foundation for a larger goal: building a structured cor
 
 The project has been significantly enhanced with the following major features:
 
-### Latest Improvements (Latest Commit)
+### Latest Improvements (October 2025)
+- **Comprehensive Validation Testing System**: Complete test suite with 95+ automated tests
+- **Ground Truth Validation**: 38 extraction maps from Manus AI for validating extraction accuracy
+- **Validation Tools**: Report generator, comparison tool, and test runner scripts
+- **Quality Scoring**: Automated quality scoring (0-100) for extraction validation
+- **Enhanced Documentation**: Complete validation guide, quick reference, and workflow diagrams
 - **Enhanced Section Mapping**: Added 100+ new mappings based on corpus analysis
 - **Improved TEI Mapping Success**: Increased from 39% to 61% success rate
 - **Better Media Processing**: Improved fallback logic and reduced unnecessary page previews
 - **Force Review Mode**: Added `--review-mode` CLI flag for manual review paper processing
-- **Relaxed Quality Gates**: Adjusted TEI mapping threshold from 80% to 50% during expansion
-- **Enhanced Pipeline**: Better handling of review mode and media extraction
 - **Standalone Media Export**: New dedicated script for batch media extraction with configurable strategies
-- **Selective Media Extraction**: Added `--only-tables` and `--only-images` flags for targeted extraction
 
 ### Recent Enhancements (Current)
 - **Generalizable Mappings**: Added new mappings from evaluation suggestions
@@ -63,7 +65,8 @@ The project has been significantly enhanced with the following major features:
 - **Media Processing**: Advanced image and table extraction with multiple export modes
 - **Pipeline Architecture**: End-to-end processing pipeline with progress tracking
 - **Enhanced CLI**: Sophisticated command-line interface with batch processing capabilities
-- **Testing Framework**: Comprehensive test suite covering all major components
+- **Testing Framework**: Comprehensive test suite with 95+ validation tests against ground truth
+- **Validation System**: Automated quality validation with scoring and detailed reports
 - **Helper Scripts**: Automated GROBID setup and E2E processing scripts
 - **RAG Export**: Generate chunked JSONL files ready for retrieval-augmented generation
 - **Corpus Quality Evaluation**: Comprehensive quality assessment for RAG/LLM fine-tuning
@@ -637,6 +640,50 @@ Based on recent evaluation of 38 documents:
 
 ## Testing
 
+### Validation Testing (NEW!)
+
+**Comprehensive validation against ground truth extraction maps for 38 PDFs:**
+
+```bash
+# Quick validation tests (3 priority PDFs, ~30 seconds)
+./scripts/run_validation_tests.sh
+
+# Full validation (all 38 PDFs, ~5-10 minutes)
+./scripts/run_validation_tests.sh --all
+
+# Test specific components
+./scripts/run_validation_tests.sh --metadata
+./scripts/run_validation_tests.sh --abstract
+./scripts/run_validation_tests.sh --sections
+./scripts/run_validation_tests.sh --figures
+./scripts/run_validation_tests.sh --tables
+
+# Generate validation report with quality scores
+python scripts/validate_extractions.py --priority-only -v
+python scripts/validate_extractions.py -v  # All 38 PDFs
+
+# Compare single PDF extraction (debugging)
+python scripts/compare_extraction.py bmc_oral_health_article1_reso_pac_2025.pdf
+python scripts/compare_extraction.py [pdf_name] --focus abstract
+python scripts/compare_extraction.py [pdf_name] --section introduction
+```
+
+**Ground Truth Data:**
+- 38 PDFs with detailed extraction maps (created by Manus AI)
+- 137 figures catalogued with labels and captions
+- 88 tables catalogued with structure information
+- 79 sections with first/last sentences and word counts
+- 19 complete abstracts with text samples
+- Quality scoring system (0-100) for extraction validation
+
+**See detailed documentation:**
+- `VALIDATION_GUIDE.md` - Complete validation guide (500+ lines)
+- `QUICK_REFERENCE.md` - Quick command reference
+- `TESTING_WORKFLOW.md` - Visual workflow diagrams
+- `tests/README_VALIDATION_TESTS.md` - Test suite documentation
+
+### Unit and Integration Tests
+
 ```bash
 # Run all tests
 pytest -vv
@@ -671,6 +718,10 @@ pytest -k media_exporter_crop -vv
 
 # Pipeline image processing tests
 pytest -k pipeline_images -vv
+
+# Validation tests (ground truth comparison)
+pytest tests/test_extraction_validation.py -v
+pytest tests/test_extraction_validation.py -v -m "not slow"  # Priority files only
 ```
 
 ---

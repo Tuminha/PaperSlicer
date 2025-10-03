@@ -1,0 +1,111 @@
+{
+  "file_name": "mdpi_dentistry_article2_fluoride_release_2025.pdf",
+  "metadata": {
+    "title": "",
+    "authors": [],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13050224",
+    "year": 2025,
+    "total_pages": 14
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Comparison of pH variation for all three materials tested in three buffered solutions (pH 4",
+      "caption_length": 91,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "Fluoride release (mg/L) from the Cention Forte Filling Material, Riva Light Cure HV, and Fuji",
+      "caption_length": 93,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Fluoride release (mg/L) from the Cention Forte Filling Material, Riva Light Cure HV, and Fuji",
+      "caption_length": 93,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Fluoride release (mg/L) from the Cention Forte Filling Material, Riva Light Cure HV, and Fuji",
+      "caption_length": 93,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Specimen preparation was carried out in accordance with the manufacturers’ instructions. Specifically, the Cention Forte Filling Material (Ivoclar) and Fuji IX GP",
+      "caption_length": 162,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Comparison of pH changes across all tested materials",
+      "caption_length": 52,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "comparison table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Mean fluoride concentrations along with standard deviations (SDs) recorded for each tested",
+      "caption_length": 90,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 4,
+    "total_tables": 3,
+    "total_references": 48,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

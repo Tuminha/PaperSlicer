@@ -1,0 +1,186 @@
+{
+  "file_name": "s91_160_ravida_consensus_25.pdf",
+  "metadata": {
+    "title": "AAP/AO Systematic Review on Peri-implant Diseases and",
+    "authors": [],
+    "journal": "Consensus Report",
+    "doi": "",
+    "year": 0,
+    "total_pages": 70
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "materials_and_methods": {
+      "heading": "Materials and Methods",
+      "first_sentence": "Protocol and Registration The present systematic review was developed and reported in accordance with the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 guidelines.9 The protocol was registered in PROSPERO (CRD420244",
+      "first_100_chars": "Protocol and Registration The present systematic review was developed and reported in accordance wit",
+      "last_sentence": "Ravidà et al Appendix Table 4 Articles Excluded After Full-Text Analysis and Reasons for Exclusion Studies identified via databases and registers Studies identified via other",
+      "last_100_chars": "nd Reasons for Exclusion Studies identified via databases and registers Studies identified via other",
+      "word_count": 33847,
+      "pages": "TBD",
+      "subsections": [
+        "Study Selection for Each PICO Question",
+        "Details regarding study selection are available in the",
+        "The canine study conducted by Ericsson et al14 in",
+        "The histomorphometric analysis revealed 6% to 39%",
+        "Various mechanical decontamination methods have",
+        "One human case study combined plastic curettes with",
+        "Combined: One animal study reported the use of an",
+        "One study in humans evaluated four dental implants",
+        "Carral et al found no statistically significant differences",
+        "One study reported similar vertical bone gain when"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Study Selection for Each PICO Question Details regarding study selection are available in the Appendix.",
+      "first_100_chars": "Study Selection for Each PICO Question Details regarding study selection are available in the Append",
+      "last_sentence": "The International Journal of Oral & Maxillofacial Implants s103 Ravidà et al",
+      "last_100_chars": " in the present review. The International Journal of Oral & Maxillofacial Implants s103 Ravidà et al",
+      "word_count": 7487,
+      "pages": "TBD",
+      "subsections": [
+        "Study Selection for Each PICO Question",
+        "Details regarding study selection are available in the",
+        "The canine study conducted by Ericsson et al14 in",
+        "The histomorphometric analysis revealed 6% to 39%",
+        "Various mechanical decontamination methods have",
+        "One human case study combined plastic curettes with",
+        "Combined: One animal study reported the use of an",
+        "One study in humans evaluated four dental implants",
+        "Carral et al found no statistically significant differences",
+        "One study reported similar vertical bone gain when"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "Clinical Remarks Based on Results from Animal and Human Biopsy Studies The knowledge obtained from animal studies highlights the pivotal importance of local therapy and implant decontamination in treating peri-implantitis lesions.",
+      "first_100_chars": "Clinical Remarks Based on Results from Animal and Human Biopsy Studies The knowledge obtained from a",
+      "last_sentence": "Therefore, these contextual differences must be considered when drawing conclusions from the study findings since only two of the studies in this review decontaminated the implants in the mouth before explantation and subsequent analysis of residual ",
+      "last_100_chars": "fore explantation and subsequent analysis of residual bacteria/biofilm and surface alterations.69,71",
+      "word_count": 1165,
+      "pages": "TBD",
+      "subsections": []
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "• Decontamination of the implant surface is necessary to resolve a peri-implantitis lesion.",
+      "first_100_chars": "• Decontamination of the implant surface is necessary to resolve a peri-implantitis lesion. • Implan",
+      "last_sentence": "In this context, electrolytic cleaning, APA, and Er:YAG laser therapy emerged as methods that best embody the attributes of effectiveness.",
+      "last_100_chars": ", APA, and Er:YAG laser therapy emerged as methods that best embody the attributes of effectiveness.",
+      "word_count": 218,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig 1",
+      "caption": "Flowchart summarizing the population and outcomes of",
+      "caption_length": 52,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "flowchart",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 1",
+      "caption": "The outcomes investigated in the present",
+      "caption_length": 40,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Summary of Evidence",
+      "caption_length": 19,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "summary table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Biofilm Decontamination of Implants and Disc Surfaces: Ex Vivo and In Situ Studies",
+      "caption_length": 82,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Biofilm Decontamination of Implant and Disc Surfaces: In Vitro Studies",
+      "caption_length": 70,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "Articles Excluded After Full-Text Analysis and Reasons for Exclusion",
+      "caption_length": 68,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 5",
+      "caption": "RoB of the 41 Animal Studies Included and Assessed Using the SYRCLE’s Tool",
+      "caption_length": 74,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors report no conflicts of interest relate",
+      "last_50_chars": "of Oral & Maxillofacial Implants s105 Ravidà et al"
+    }
+  },
+  "structural_info": {
+    "total_sections": 4,
+    "total_figures": 2,
+    "total_tables": 5,
+    "total_references": 51,
+    "has_appendices": true,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Consensus Report | 0",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

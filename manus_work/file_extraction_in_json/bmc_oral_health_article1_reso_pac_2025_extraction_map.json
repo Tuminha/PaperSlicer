@@ -1,0 +1,233 @@
+{
+  "file_name": "bmc_oral_health_article1_reso_pac_2025.pdf",
+  "metadata": {
+    "title": "Effectiveness of Reso-Pac in enhancing wound healing after third molar surgery: a systematic review with meta-analysis of randomized controlled trials",
+    "authors": [
+      "Savitha Lakshmi Raghavan",
+      "Gowardhan Sivakumar",
+      "Sasidharan Sivakumar*"
+    ],
+    "journal": "BMC Oral Health",
+    "doi": "10.1186/s12903-025-06459-4",
+    "year": 2025,
+    "total_pages": 11
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background Surgical site infections (SSIs) and pos",
+    "last_50_chars": "lidate these findings across diverse populations. ",
+    "word_count": 283,
+    "char_count": 2131
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "In oral surgery, the high concentration of bacteria in the oral cavity increases the risk of surgical site infections (SSIs) [1, 2], which remain a concern despite advancements in management techniques, along with complications like haemorrhage and n",
+      "first_100_chars": "In oral surgery, the high concentration of bacteria in the oral cavity increases the risk of surgica",
+      "last_sentence": "This systematic review and meta-analysis of randomized controlled trials aims to assess Reso-Pac’s effectiveness in reducing pain and enhancing wound healing of the surgically removed impacted mandibular third molars.",
+      "last_100_chars": "educing pain and enhancing wound healing of the surgically removed impacted mandibular third molars.",
+      "word_count": 442,
+      "pages": "TBD",
+      "subsections": []
+    },
+    "materials_and_methods": {
+      "heading": "Materials and Methods",
+      "first_sentence": "Review question This review was conducted in strict accordance with the “Preferred Reporting Items for Systematic Reviews and Meta-Analysis” (PRISMA) guidelines, aiming to address the following research question: “Does the application of Reso-Pac dre",
+      "first_100_chars": "Review question This review was conducted in strict accordance with the “Preferred Reporting Items f",
+      "last_sentence": "Data extracted from eligible randomized controlled trials (RCTs), and standardized mean differences (SMD) with 95% confidence intervals (CI) was calculated to estimate the effect size of Reso-Pac compared to placebo or other pharmacological intervent",
+      "last_100_chars": "the effect size of Reso-Pac compared to placebo or other pharmacological interventions. Risk of bias",
+      "word_count": 677,
+      "pages": "TBD",
+      "subsections": [
+        "Meta-Analysis” (PRISMA) guidelines, aiming to address",
+        "Inclusion and exclusion criteria",
+        "The eligibility criteria for this review were determined",
+        "The search strategy for each database was tailored using",
+        "Table 1 Search strategy for the databases",
+        "Database",
+        "Landry’s Wound Healing Scale). Data extracted from"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "The risk of bias in the included randomized controlled trials was evaluated using the Cochrane Risk of Bias tool (RoB 2.0).",
+      "first_100_chars": "The risk of bias in the included randomized controlled trials was evaluated using the Cochrane Risk ",
+      "last_sentence": "Despite these benefits, the certainty of evidence was downgraded to moderate due to concerns regarding randomization bias and substantial heterogeneity among studies.",
+      "last_100_chars": "o moderate due to concerns regarding randomization bias and substantial heterogeneity among studies.",
+      "word_count": 1921,
+      "pages": "TBD",
+      "subsections": [
+        "Study selection",
+        "Effect measure and statistical analysis",
+        "A comprehensive meta-analysis was conducted using",
+        "Data extraction",
+        "Main outcome of the study",
+        "Study",
+        "Study",
+        "Study supports Reso-Pac, but further",
+        "A meta-analysis was conducted using JASP software to",
+        "Quantitative analysis was performed using Cohen’s d as"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "This review focuses on the management of intraoral wounds after the surgical extraction of impacted mandibular third molars, emphasizing conservative approaches such as the application of intraoral dressings, particularly Reso-Pac, to protect the wou",
+      "first_100_chars": "This review focuses on the management of intraoral wounds after the surgical extraction of impacted ",
+      "last_sentence": "Nonetheless, the evident benefits of Reso-Pac as an intraoral bandage underscore its importance and relevance in advancing the field of oral surgery.",
+      "last_100_chars": "an intraoral bandage underscore its importance and relevance in advancing the field of oral surgery.",
+      "word_count": 1175,
+      "pages": "TBD",
+      "subsections": [
+        "Patient or population: Third molar extracted patients",
+        "Despite these positive findings, the analysis identified",
+        "Bayesian meta-analysis continued to support Reso-Pac’s"
+      ]
+    },
+    "conclusion": {
+      "heading": "Conclusion",
+      "first_sentence": "This systematic review and meta-analysis confirm that Reso-Pac significantly reduces postoperative pain and promotes wound healing following the surgical extraction of impacted mandibular third molars.",
+      "first_100_chars": "This systematic review and meta-analysis confirm that Reso-Pac significantly reduces postoperative p",
+      "last_sentence": "All authors reviewed the manuscript.",
+      "last_100_chars": "ipt. G.S involved in preparing figures and in proof correction. All authors reviewed the manuscript.",
+      "word_count": 108,
+      "pages": "TBD",
+      "subsections": [
+        "This systematic review and meta-analysis confirm that"
+      ]
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 2",
+      "caption": "Risk of bias assessment and summary graph for studies evaluating wound healing parameters",
+      "caption_length": 89,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "Risk of bias assessment and summary graph for studies evaluating pain parameters",
+      "caption_length": 80,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Random effect model forest plot graph for the parameter of pain reduction",
+      "caption_length": 73,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "Bayesian Forest plot graph with observed and estimated effect sizes",
+      "caption_length": 67,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "Random effect model forest plot graph for the parameter of improvement in wound healing",
+      "caption_length": 87,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Search strategy for the databases",
+      "caption_length": 33,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "General characteristics of studies included",
+      "caption_length": 43,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "characteristics table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Main outcome and inference from included studies",
+      "caption_length": 48,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "results table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "GRADE summary of findings table",
+      "caption_length": 31,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "summary table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "funding": {
+      "present": true,
+      "first_50_chars": "The authors have not declared any specific grant f",
+      "last_50_chars": "re generated or analysed during the current study."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "No datasets were generated or analysed during the ",
+      "last_50_chars": "re generated or analysed during the current study."
+    },
+    "declarations": {
+      "present": true,
+      "first_50_chars": "Ethical approval The study did not require ethics ",
+      "last_50_chars": "ia Received: 15 July 2024 / Accepted: 23 June 2025"
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no competing interests. Author",
+      "last_50_chars": "ia Received: 15 July 2024 / Accepted: 23 June 2025"
+    }
+  },
+  "structural_info": {
+    "total_sections": 5,
+    "total_figures": 5,
+    "total_tables": 4,
+    "total_references": 20,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "BMC Oral Health | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

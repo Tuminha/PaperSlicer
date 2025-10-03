@@ -1,0 +1,99 @@
+{
+  "file_name": "mdpi_dentistry_article8_final_collection_2025.pdf",
+  "metadata": {
+    "title": "Nervous System Modulation in Individuals with Clinically",
+    "authors": [],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13070325",
+    "year": 2025,
+    "total_pages": 15
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Academic Editors: Timothy L. Hottel and Daniele Bo",
+    "last_50_chars": "ons.org/license s/by/4.0/). Dent. J. 2025, 13, 325",
+    "word_count": 369,
+    "char_count": 2616
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Hand placement during the first stage of the visceral manual therapy technique",
+      "caption_length": 78,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "Hand placement during the placebo technique",
+      "caption_length": 43,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Hand placement during the second stage of the visceral manual therapy technique",
+      "caption_length": 79,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Flowchart diagram of participants",
+      "caption_length": 33,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "flowchart",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Baseline demographic characteristics of participants in the study groups.",
+      "caption_length": 73,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "characteristics table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Changes in heart rate variability over time.",
+      "caption_length": 44,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 4,
+    "total_tables": 2,
+    "total_references": 41,
+    "has_appendices": false,
+    "has_supplementary": true
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

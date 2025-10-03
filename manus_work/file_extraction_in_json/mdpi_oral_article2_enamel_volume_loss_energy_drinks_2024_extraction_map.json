@@ -1,0 +1,58 @@
+{
+  "file_name": "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.pdf",
+  "metadata": {
+    "title": "Evaluation of Enamel Volume Loss after Exposure to",
+    "authors": [],
+    "journal": "Oral (MDPI)",
+    "doi": "10.3390/oral4010009",
+    "year": 2024,
+    "total_pages": 12
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "methods": {
+      "heading": "Methods",
+      "first_sentence": "",
+      "first_100_chars": "2.2.Materials",
+      "last_sentence": "",
+      "last_100_chars": "2.2.Materials",
+      "word_count": 1,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Figure 4",
+      "caption": "These images give one example of the enamel volume loss for each of the drinks tested",
+      "caption_length": 85,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 1,
+    "total_figures": 1,
+    "total_tables": 0,
+    "total_references": 56,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Oral (MDPI) | 2024",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

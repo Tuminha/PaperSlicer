@@ -9,10 +9,71 @@ from paperslicer.utils.sections_mapping import canonical_section_name, NON_CONTE
 NS = {"tei": "http://www.tei-c.org/ns/1.0"}
 
 
+def _normalize_space(text: str) -> str:
+    return " ".join(text.split())
+
+
 def _txt(el: Optional[etree._Element]) -> str:
     if el is None:
         return ""
-    return " ".join(" ".join(el.itertext()).split())
+    return _normalize_space(" ".join(el.itertext()))
+
+
+def _clean_author_name(name: Optional[str]) -> Optional[str]:
+    if not name:
+        return None
+    norm = _normalize_space(name)
+    if not norm:
+        return None
+    return norm
+
+
+def _extract_affiliation(author_el: etree._Element) -> Optional[str]:
+    aff_nodes = _all(author_el, "./tei:affiliation")
+    if not aff_nodes:
+        return None
+
+    aff_texts: List[str] = []
+    for aff in aff_nodes:
+        parts: List[str] = []
+        seen_local = set()
+
+        def add_part(value: Optional[str]) -> None:
+            if not value:
+                return
+            norm = _normalize_space(value)
+            if not norm:
+                return
+            key = norm.lower()
+            if key in seen_local:
+                return
+            seen_local.add(key)
+            parts.append(norm)
+
+        for org in aff.xpath(".//tei:orgName", namespaces=NS):
+            add_part(_txt(org))
+        for addr_part in aff.xpath(".//tei:address//*[not(self::tei:label)]", namespaces=NS):
+            add_part(_txt(addr_part))
+
+        if not parts:
+            add_part(_normalize_space(" ".join(aff.itertext())))
+
+        if parts:
+            aff_texts.append(", ".join(parts))
+
+    unique_affs: List[str] = []
+    seen = set()
+    for text in aff_texts:
+        key = text.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_affs.append(text)
+
+    if not unique_affs:
+        return None
+
+    return "; ".join(unique_affs)
 
 
 def _first(root: etree._Element, xpath: str) -> Optional[etree._Element]:
@@ -175,8 +236,11 @@ def tei_to_record(tei_bytes: bytes, pdf_path: str) -> PaperRecord:
             if _first(a, "./tei:persName/tei:surname") is not None
             else ""
         )
-        aff = _txt(_first(a, "./tei:affiliation"))
-        authors.append({"name": name or None, "affiliation": aff or None})
+        name = _clean_author_name(name)
+        aff = _extract_affiliation(a)
+        if not name and not aff:
+            continue
+        authors.append({"name": name, "affiliation": aff})
 
     meta = Meta(source_path=pdf_path, title=title or None, journal=journal or None, doi=doi or None, authors=authors)
 
@@ -224,6 +288,32 @@ def tei_to_record(tei_bytes: bytes, pdf_path: str) -> PaperRecord:
         abs_txt = _txt(abs_el)
         if abs_txt:
             sections.setdefault("abstract", abs_txt)
+
+    keywords: List[str] = []
+    for term in _all(root, "//tei:teiHeader//tei:profileDesc//tei:textClass//tei:keywords//tei:term"):
+        kw = _txt(term)
+        if kw:
+            keywords.append(kw)
+    if keywords:
+        uniq = []
+        seen_kw = set()
+        for kw in keywords:
+            norm_kw = _normalize_space(kw)
+            key = norm_kw.lower()
+            if not norm_kw or key in seen_kw:
+                continue
+            seen_kw.add(key)
+            uniq.append(norm_kw)
+        keywords = uniq
+    if keywords:
+        meta.keywords = keywords
+        kw_text = ", ".join(keywords).strip()
+        if kw_text:
+            existing_abs = sections.get("abstract", "").rstrip()
+            if existing_abs:
+                sections["abstract"] = f"{existing_abs} {kw_text} "
+            else:
+                sections["abstract"] = f"{kw_text} "
 
     # ---- Figures and Tables (basic caption harvest)
     figures: List[Dict[str, Any]] = []
@@ -352,4 +442,42 @@ def tei_to_record(tei_bytes: bytes, pdf_path: str) -> PaperRecord:
     except Exception:
         pass
 
-    return PaperRecord(meta=meta, sections=sections, other_sections=other_sections, figures=figures, tables=tables)
+    references: List[Dict[str, Any]] = []
+    XML_NS = "{http://www.w3.org/XML/1998/namespace}"
+    for idx, bibl in enumerate(_all(root, "//tei:text/tei:back//tei:listBibl/tei:biblStruct"), start=1):
+        ref_id = bibl.get(f"{XML_NS}id")
+        title = _txt(_first(bibl, "./tei:analytic/tei:title[@type='main']")) or _txt(
+            _first(bibl, "./tei:monogr/tei:title")
+        )
+        doi = _txt(_first(bibl, ".//tei:idno[@type='DOI']"))
+        year = _txt(_first(bibl, ".//tei:date[@type='published']"))
+        authors = []
+        for auth in _all(bibl, "./tei:analytic/tei:author"):
+            name = _txt(auth)
+            if name:
+                authors.append(name)
+        citation = " ".join(" ".join(bibl.itertext()).split())
+
+        entry: Dict[str, Any] = {"index": idx}
+        if citation:
+            entry["text"] = citation
+        if ref_id:
+            entry["id"] = ref_id
+        if title:
+            entry["title"] = title
+        if doi:
+            entry["doi"] = doi
+        if year:
+            entry["year"] = year
+        if authors:
+            entry["authors"] = authors
+        references.append(entry)
+
+    return PaperRecord(
+        meta=meta,
+        sections=sections,
+        other_sections=other_sections,
+        figures=figures,
+        tables=tables,
+        references=references,
+    )

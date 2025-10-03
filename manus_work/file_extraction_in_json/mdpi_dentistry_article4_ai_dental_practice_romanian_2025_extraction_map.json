@@ -1,0 +1,183 @@
+{
+  "file_name": "mdpi_dentistry_article4_ai_dental_practice_romanian_2025.pdf",
+  "metadata": {
+    "title": "Exploratory Study of Romanian Clinicians’ Perspectives and Experiences Alin Flavius Cozmescu 1 , Ana Cernega 1, * , Dana Galieta Mincă 2, *, Andreea Cristiana Didilescu 3 , Marina Meles, canu Imre 4 , Alexandra Ripszky Totan 5 , Simona Pârvu 6 and Silviu-Mirel Pit, uru 1",
+    "authors": [],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13090390",
+    "year": 2025,
+    "total_pages": 24
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Academic Editor: Paolo Boffano Received: 14 July 2",
+    "last_50_chars": "r the terms and conditions of the Creative Commons",
+    "word_count": 322,
+    "char_count": 2316
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Illustrating scores by subdomains",
+      "caption_length": 33,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "Degree of difficulty—urban vs",
+      "caption_length": 29,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Distribution of doctors according to environment and availability",
+      "caption_length": 65,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Distribution of doctors by environment and use of digitalization",
+      "caption_length": 64,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 5",
+      "caption": "The correlation between the desire score for a decrease in the duration of the medical act",
+      "caption_length": 90,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 6",
+      "caption": "Description of interest scores in relation to digitalization",
+      "caption_length": 60,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 7",
+      "caption": "A comparison of maladaptation scores in relation to the level of experience",
+      "caption_length": 75,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 8",
+      "caption": "Illustrating dental health system and AI benefits and vulnerability",
+      "caption_length": 67,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Tabular representation of perceived difficulty by age group (* Fisher’s Exact Test).",
+      "caption_length": 84,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Tabular representation of perceived difficulty in relation to professional experience (* Fisher’s",
+      "caption_length": 97,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Tabular representation of willingness by age group (* Fisher’s Exact Test).",
+      "caption_length": 75,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "Tabular representation of willingness in relation to professional experience (* Fisher’s Exact Test).",
+      "caption_length": 101,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 5",
+      "caption": "A tabular representation of the use of digital tools by age group (* Fisher’s Exact Test).",
+      "caption_length": 90,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 6",
+      "caption": "A tabular representation of the distribution of practitioners according to their level of",
+      "caption_length": 89,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 8,
+    "total_tables": 6,
+    "total_references": 47,
+    "has_appendices": false,
+    "has_supplementary": true
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

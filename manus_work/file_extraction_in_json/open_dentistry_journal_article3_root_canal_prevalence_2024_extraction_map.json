@@ -1,0 +1,105 @@
+{
+  "file_name": "open_dentistry_journal_article3_root_canal_prevalence_2024.pdf",
+  "metadata": {
+    "title": "lacking data regarding the prevalence of RCT in FPM. This study aimed to determine the prevalence of RCT in FPM among children aged 9-18 years in Jeddah, Saudi Arabia.",
+    "authors": [],
+    "journal": "The Open Dentistry Journal",
+    "doi": "10.2174/0118742106361045241212061340,",
+    "year": 2024,
+    "total_pages": 6
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "conclusion": {
+      "heading": "Conclusion",
+      "first_sentence": "This study provides critical baseline data on the prevalence of RCT in FPMs among children in Jeddah, 5 Saudi Arabia.",
+      "first_100_chars": "This study provides critical baseline data on the prevalence of RCT in FPMs among children in Jeddah",
+      "last_sentence": "LIST OF ABBREVIATIONS",
+      "last_100_chars": ".O.B., W.D., and H.J.S.: were involved in writing and editing the final draft. LIST OF ABBREVIATIONS",
+      "word_count": 114,
+      "pages": "TBD",
+      "subsections": [
+        "This study provides critical baseline data on the",
+        "Proposed the methodology; W.D., M.I.A., J.T., and H.J.S.:",
+        "Collected the data; W.D. and H.J.S.: Took part in data"
+      ]
+    }
+  },
+  "figures": [],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Prevalence of root canal treated first permanent molars.",
+      "caption_length": 56,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "The total number of FPM treated with RCT was 1011",
+      "caption_length": 49,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Dental characteristics of root canal treated teeth at the included healthcare centers (n=1011).",
+      "caption_length": 95,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "characteristics table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "Declared none.",
+      "last_50_chars": "Declared none."
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "None. CONFLICT OF INTEREST The authors declare no ",
+      "last_50_chars": "Dentistry Journal, 2024, Vol. 18 Bamashmous et al."
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no conflict of interest, finan",
+      "last_50_chars": "Dentistry Journal, 2024, Vol. 18 Bamashmous et al."
+    }
+  },
+  "structural_info": {
+    "total_sections": 1,
+    "total_figures": 0,
+    "total_tables": 3,
+    "total_references": 0,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "The Open Dentistry Journal | 2024",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

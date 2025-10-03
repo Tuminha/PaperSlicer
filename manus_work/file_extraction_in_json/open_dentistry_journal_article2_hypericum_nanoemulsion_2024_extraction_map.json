@@ -1,0 +1,91 @@
+{
+  "file_name": "open_dentistry_journal_article2_hypericum_nanoemulsion_2024.pdf",
+  "metadata": {
+    "title": "The Effects of Hypericum perforatum Nanoemulsion on Streptococcus Mutans Biofilm Amir Zandesh1, Soodabeh Kimyai2, Sara Ghadaksaz1, Yasna Panahi1, Behnaz Karimzadeh1 and Solmaz Maleki Dizaj3,*",
+    "authors": [],
+    "journal": "The Open Dentistry Journal",
+    "doi": "10.2174/0118742106351887241205072645,",
+    "year": 2024,
+    "total_pages": 5
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "conclusion": {
+      "heading": "Conclusion",
+      "first_sentence": "The prepared nanoemulsion showed the lowest MIC, MBC, and MBIC values among the studied groups, indicating its antibacterial and antibiofilm effectiveness.",
+      "first_100_chars": "The prepared nanoemulsion showed the lowest MIC, MBC, and MBIC values among the studied groups, indi",
+      "last_sentence": "LIST OF ABBREVIATIONS",
+      "last_100_chars": "rs have reviewed the results and approved the final version of the manuscript. LIST OF ABBREVIATIONS",
+      "word_count": 89,
+      "pages": "TBD",
+      "subsections": [
+        "A.Z., Y.P., B.K.: Data curation; S.K.: Data analysis or"
+      ]
+    }
+  },
+  "figures": [],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "MIC and MBC values of the studied groups.",
+      "caption_length": 41,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "MBIC of the studied groups.",
+      "caption_length": 27,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors acknowledge the financial support prov",
+      "last_50_chars": "Research at Tabriz University of Medical Sciences."
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "The Vice Chancellor for Research at Tabriz Univers",
+      "last_50_chars": "e no conflict of interest, financial or otherwise."
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The author(s) declare no conflict of interest, fin",
+      "last_50_chars": "e no conflict of interest, financial or otherwise."
+    }
+  },
+  "structural_info": {
+    "total_sections": 1,
+    "total_figures": 0,
+    "total_tables": 2,
+    "total_references": 2,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "The Open Dentistry Journal | 2024",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

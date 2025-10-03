@@ -1,0 +1,50 @@
+{
+  "file_name": "periodontology2000_article1_monje_2025.pdf",
+  "metadata": {
+    "title": "SCOI-­Study and Control of Oral Infections, Faculty of Odontology, UIC Barcelona-­Universitat Internacional de Catalunya, Sant Cugat del Vallès, Spain",
+    "authors": [],
+    "journal": "Periodontology 2000",
+    "doi": "10.1111/prd.12638",
+    "year": 2000,
+    "total_pages": 22
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Peri-­implant diseases are dysbiosis-­mediated inf",
+    "last_50_chars": "-­adhesive qualities to the implant surface.63 One",
+    "word_count": 4179,
+    "char_count": 29549
+  },
+  "sections": {},
+  "figures": [],
+  "tables": [
+    {
+      "label": "Table 2",
+      "caption": "Studies treating peri-­implant diseases with the aforemen-",
+      "caption_length": 58,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 0,
+    "total_tables": 1,
+    "total_references": 41,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Periodontology 2000 | 2000",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

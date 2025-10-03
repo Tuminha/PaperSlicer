@@ -1,0 +1,90 @@
+{
+  "file_name": "ClinicalOralImplantsRes-2025-Trimpou-ClinicalPerformanceofImmediatelyRestoredSurfaceModifiedTwo‐Piece.pdf",
+  "metadata": {
+    "title": "Clinical Oral Implants Research ORIGINAL ARTICLE",
+    "authors": [],
+    "journal": "Clinical Oral Implants Research",
+    "doi": "10.1111/clr.70034",
+    "year": 2025,
+    "total_pages": 8
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Purpose: To evaluate the short-­term success and s",
+    "last_50_chars": "osal thickness Distance implant – adjacent tooth 2",
+    "word_count": 906,
+    "char_count": 5882
+  },
+  "sections": {},
+  "figures": [],
+  "tables": [
+    {
+      "label": "Table 2",
+      "caption": "At 6 and 12 months, all patients investigated were associated",
+      "caption_length": 61,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "According to the given case definitions,",
+      "caption_length": 40,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 5",
+      "caption": "The maximum for all items was 2 at all three time",
+      "caption_length": 49,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors have nothing to report. Open Access fu",
+      "last_50_chars": " the corresponding author upon reasonable request."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "Löe, H. 1967. “The Gingival Index, the Plaque Inde",
+      "last_50_chars": " the corresponding author upon reasonable request."
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "Frank Schwarz and Georgia Trimpou have received a ",
+      "last_50_chars": " the corresponding author upon reasonable request."
+    }
+  },
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 0,
+    "total_tables": 3,
+    "total_references": 5,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Clinical Oral Implants Research | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

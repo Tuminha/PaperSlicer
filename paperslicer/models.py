@@ -10,6 +10,7 @@ class Meta:
     journal: Optional[str] = None
     doi: Optional[str] = None
     authors: List[Dict[str, Optional[str]]] = field(default_factory=list)
+    keywords: List[str] = field(default_factory=list)
 
 
 @dataclass
@@ -19,6 +20,7 @@ class PaperRecord:
     other_sections: Dict[str, str] = field(default_factory=dict)
     figures: List[Dict[str, Any]] = field(default_factory=list)
     tables: List[Dict[str, Any]] = field(default_factory=list)
+    references: List[Dict[str, Any]] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -27,4 +29,5 @@ class PaperRecord:
             "other_sections": self.other_sections,
             "figures": self.figures,
             "tables": self.tables,
+            "references": self.references,
         }

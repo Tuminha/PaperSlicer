@@ -1,0 +1,156 @@
+{
+  "file_name": "mdpi_dentistry_article5_implant_assisted_dentures_2025.pdf",
+  "metadata": {
+    "title": "Clinical Performance and Longevity of Implant-Assisted Removable Partial Dentures Compared to Other Removable",
+    "authors": [],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13090389",
+    "year": 2025,
+    "total_pages": 21
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Academic Editor: Patrick R. Schmidlin Received: 4 ",
+    "last_50_chars": "nd Longevity of Implant-Assisted Removable Partial",
+    "word_count": 270,
+    "char_count": 2041
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 2",
+      "caption": "KaplanMeier curve for success rates",
+      "caption_length": 35,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Summary chart on cumulative survival rates (at up to 10-year follow-up)",
+      "caption_length": 71,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Summary chart on cumulative survival rates (at up to 20-year follow-up)",
+      "caption_length": 71,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 5",
+      "caption": "Kaplan-Meier curve for implant survival",
+      "caption_length": 39,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 6",
+      "caption": "KaplanMeier curve for tooth survival",
+      "caption_length": 36,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 7",
+      "caption": "Kaplan-Meier curve for prosthesis survival",
+      "caption_length": 42,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 8",
+      "caption": "KaplanMeier curve for tooth loss rate",
+      "caption_length": 37,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 9",
+      "caption": "KaplanMeier curve for implant loss rate",
+      "caption_length": 39,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 10",
+      "caption": "Kaplan-Meier curve for cases of severe prosthesis fracture",
+      "caption_length": 58,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Characteristics of the included articles and success and survival rates.",
+      "caption_length": 72,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "characteristics table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Sample sizes and severe complication occurrences over total follow-up periods.",
+      "caption_length": 78,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Severe and other frequently observed complications and their rates of occurrence.",
+      "caption_length": 81,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 9,
+    "total_tables": 3,
+    "total_references": 32,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

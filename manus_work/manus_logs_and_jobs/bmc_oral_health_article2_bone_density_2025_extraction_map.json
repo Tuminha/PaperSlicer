@@ -1,0 +1,211 @@
+{
+  "file_name": "bmc_oral_health_article2_bone_density_2025.pdf",
+  "metadata": {
+    "title": "Assessment of bone mineral density",
+    "authors": [],
+    "journal": "BMC Oral Health",
+    "doi": "10.1186/s12903-025-06687-8",
+    "year": 2025,
+    "total_pages": 10
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background The efficacy of radiographs in studying",
+    "last_50_chars": "p with the bone mineral density of these patients.",
+    "word_count": 286,
+    "char_count": 2037
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "The evaluation of trabecular bone structure has multiple and significant applications in various fields of medicine",
+      "first_100_chars": "The evaluation of trabecular bone structure has multiple and significant applications in various fie",
+      "last_sentence": "1 ROIs selected using the ImageJ application Page 2 of 10 dimension in panoramic radiographs of growing patients with OI, using ImageJ software and comparing the results with a control group of health",
+      "last_100_chars": "software and comparing the results with a control group of healthy patients matched for age and sex.",
+      "word_count": 369,
+      "pages": "TBD",
+      "subsections": []
+    },
+    "materials_and_methods": {
+      "heading": "Materials and methods",
+      "first_sentence": "For the present study, a cross-sectional, retrospective, and observational study was conducted using orthopantomographies of children with OI, analyzing different regions of interest (ROI)",
+      "first_100_chars": "For the present study, a cross-sectional, retrospective, and observational study was conducted using",
+      "last_sentence": "A similar observation was made for ROI 3, particularly on the left side, although the statistical evidence for this relationship was weaker compared to ROI 5.",
+      "last_100_chars": "the left side, although the statistical evidence for this relationship was weaker compared to ROI 5.",
+      "word_count": 1237,
+      "pages": "TBD",
+      "subsections": []
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Following the described methodology, six regions of interest were analyzed in the 132 patients included in the sample (66 with OI and 66 controls matched by age and sex)",
+      "first_100_chars": "Following the described methodology, six regions of interest were analyzed in the 132 patients inclu",
+      "last_sentence": "BMC Oral Health (2025) 25:1367",
+      "last_100_chars": "a linear trend and inverse direction (Fig. 4). Burgue\u00f1o-Torres et al. BMC Oral Health (2025) 25:1367",
+      "word_count": 1026,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "ROIs selected using the ImageJ application",
+      "caption_length": 42,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "Stages of fractal analysis: (A) Selection and cutout of the region of interest (ROI); (B) Gaussian filter application; (C) subtraction from the origina",
+      "caption_length": 151,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "Antiresorptive therapy administration in the study sample",
+      "caption_length": 57,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Association between FD and Zoledronic Acid Dose (N = 38)",
+      "caption_length": 56,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Comparative analysis of the regions of interest between",
+      "caption_length": 55,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Comparative analysis of bone mineral density in",
+      "caption_length": 47,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Influence of the type of OI on the fractal dimension in the study sample (n=66)",
+      "caption_length": 79,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "Descriptive statistics of medication doses (OI cases\u2013 N = 66)",
+      "caption_length": 61,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 5",
+      "caption": "Fractal dimension variables, according to pharmacological treatment (N=48)",
+      "caption_length": 74,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 6",
+      "caption": "Association of Fractal Dimension variables with the",
+      "caption_length": 51,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 7",
+      "caption": "Administration protocol of bisphosphonates in patients",
+      "caption_length": 54,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "This study was made possible thanks to the support",
+      "last_50_chars": "ublication of the present manuscript. Page 9 of 10"
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "This research received no external funding. Data a",
+      "last_50_chars": " the corresponding author upon reasonable request."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "The data that support the findings of this study a",
+      "last_50_chars": " the corresponding author upon reasonable request."
+    },
+    "declarations": {
+      "present": true,
+      "first_50_chars": "Ethics approval and consent to participate The pre",
+      "last_50_chars": ". Received: 25 March 2025 / Accepted: 23 July 2025"
+    }
+  },
+  "structural_info": {
+    "total_sections": 3,
+    "total_figures": 4,
+    "total_tables": 7,
+    "total_references": 28,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "BMC Oral Health | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

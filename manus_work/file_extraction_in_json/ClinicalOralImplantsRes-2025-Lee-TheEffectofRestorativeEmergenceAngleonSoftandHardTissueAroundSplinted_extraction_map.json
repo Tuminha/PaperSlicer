@@ -1,0 +1,99 @@
+{
+  "file_name": "ClinicalOralImplantsRes-2025-Lee-TheEffectofRestorativeEmergenceAngleonSoftandHardTissueAroundSplinted.pdf",
+  "metadata": {
+    "title": "Clinical Oral Implants Research ORIGINAL ARTICLE",
+    "authors": [],
+    "journal": "Clinical Oral Implants Research",
+    "doi": "10.1111/clr.70035",
+    "year": 2025,
+    "total_pages": 11
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Prior to the study, scaling was conducted to maintain oral hygiene",
+      "caption_length": 66,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "At 4 weeks, a significant difference in crestal bone remodeling",
+      "caption_length": 63,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 6",
+      "caption": "When comparing the total amount of collagen fibers, the WE",
+      "caption_length": 58,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 8",
+      "caption": "In the NE group, the peri-­implant soft tissue, which includes the",
+      "caption_length": 66,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 9",
+      "caption": "When comparing the NE group and the WE group, vertical distance",
+      "caption_length": 63,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors thank Hyun-­Young Song, Min-­Jung Son,",
+      "last_50_chars": "the corresponding authors upon reasonable request."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "The data that support the findings of this study a",
+      "last_50_chars": "the corresponding authors upon reasonable request."
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no conflicts of interest. Data",
+      "last_50_chars": "the corresponding authors upon reasonable request."
+    }
+  },
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 5,
+    "total_tables": 0,
+    "total_references": 6,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Clinical Oral Implants Research | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

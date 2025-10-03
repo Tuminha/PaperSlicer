@@ -1,0 +1,161 @@
+{
+  "file_name": "bmc_oral_health_article3_cytokine_orthodontics_2025.pdf",
+  "metadata": {
+    "title": "Comparative evaluation of changes",
+    "authors": [],
+    "journal": "BMC Oral Health",
+    "doi": "10.1186/s12903-025-06686-9",
+    "year": 2025,
+    "total_pages": 8
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background Accelerating orthodontic treatment is c",
+    "last_50_chars": "ssion with the rate of orthodontic tooth movement.",
+    "word_count": 266,
+    "char_count": 1884
+  },
+  "sections": {
+    "results": {
+      "heading": "Results",
+      "first_sentence": "This study aimed to evaluate and compare changes in IL-1\u03b2 concentrations in gingival crevicular fluid (GCF) during corticotomy- and piezocision-assisted orthodontic treatment in adult patients",
+      "first_100_chars": "This study aimed to evaluate and compare changes in IL-1\u03b2 concentrations in gingival crevicular flui",
+      "last_sentence": "However, the piezocision group consistently exhibited higher cytokine levels at each time point, reflecting a more pronounced biological response.",
+      "last_100_chars": "hibited higher cytokine levels at each time point, reflecting a more pronounced biological response.",
+      "word_count": 466,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "A Collection of GCF with Capillary tube, B Capillary Tubes & Eppendorf Tubes",
+      "caption_length": 76,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "A Corticotomy unit, B Surgical site",
+      "caption_length": 35,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "A Piezosurgical Unit, B Surgical site",
+      "caption_length": 37,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Gender distribution of the study population",
+      "caption_length": 43,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "Comparison of mean IL-1\u03b2 between the two groups at various timelines",
+      "caption_length": 68,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "Comparison of mean IL-1\u03b2 between baseline (T0) and before (T1), 24 hours (T2), 7 days (T3) and 21 days after surgery (T4) of the Piezocision and",
+      "caption_length": 144,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "TBD",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Demographic details of the study population",
+      "caption_length": 43,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Comparison of mean IL-1\u03b2 between the two groups at",
+      "caption_length": 50,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Comparison of mean IL-1\u03b2 between baseline and",
+      "caption_length": 45,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "Not applicable. 5. Authors\u2019 contributions All auth",
+      "last_50_chars": "iar, Dr. Nandlal Toshniwal, Dr. Ruchika Pandey. 6."
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "Open access funding provided by Datta Meghe Instit",
+      "last_50_chars": "included in this article. 7. 8. 9. 10. 11. 12. 13."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "All data or materials generated or analyzed during",
+      "last_50_chars": "included in this article. 7. 8. 9. 10. 11. 12. 13."
+    },
+    "declarations": {
+      "present": true,
+      "first_50_chars": "Ethics approval and consent to participate This st",
+      "last_50_chars": "ed: 25 March 2025 / Accepted: 23 July 2025 21. 22."
+    }
+  },
+  "structural_info": {
+    "total_sections": 1,
+    "total_figures": 6,
+    "total_tables": 3,
+    "total_references": 9,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "BMC Oral Health | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

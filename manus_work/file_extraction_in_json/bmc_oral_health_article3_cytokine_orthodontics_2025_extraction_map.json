@@ -1,0 +1,201 @@
+{
+  "file_name": "bmc_oral_health_article3_cytokine_orthodontics_2025.pdf",
+  "metadata": {
+    "title": "Comparative evaluation of changes in levels of cytokine – IL-1β in GCF of adult population who have undergone piezocision and corticotomy assisted orthodontics- an",
+    "authors": [
+      "Karthika Nambiar",
+      "Ranjit Kamble",
+      "Srushti Atole*",
+      "Nandlal Toshniwal",
+      "Ruchika Pandey"
+    ],
+    "journal": "BMC Oral Health",
+    "doi": "10.1186/s12903-025-06686-9",
+    "year": 2025,
+    "total_pages": 8
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background Accelerating orthodontic treatment is c",
+    "last_50_chars": "fluid, Orthodontic acceleration, Bone remodelling ",
+    "word_count": 277,
+    "char_count": 1997
+  },
+  "sections": {
+    "results": {
+      "heading": "Results",
+      "first_sentence": "This study aimed to evaluate and compare changes in IL-1β concentrations in gingival crevicular fluid (GCF) during corticotomy- and piezocision-assisted orthodontic treatment in adult patients.",
+      "first_100_chars": "This study aimed to evaluate and compare changes in IL-1β concentrations in gingival crevicular flui",
+      "last_sentence": "However, the piezocision group consistently exhibited higher cytokine levels at each time point, reflecting a more pronounced biological response.",
+      "last_100_chars": "hibited higher cytokine levels at each time point, reflecting a more pronounced biological response.",
+      "word_count": 466,
+      "pages": "TBD",
+      "subsections": [
+        "This study aimed to evaluate and compare changes in",
+        "No statistically significant difference was observed in",
+        "Fig. 4 Gender distribution of the study population"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "Orthodontic treatment relies on mechanical forces to induce cellular responses that drive bone remodelling and tooth movement.",
+      "first_100_chars": "Orthodontic treatment relies on mechanical forces to induce cellular responses that drive bone remod",
+      "last_sentence": "Further studies with larger sample sizes and long-term follow-up are warranted to validate these findings and explore patientcentred outcomes.",
+      "last_100_chars": "nd long-term follow-up are warranted to validate these findings and explore patientcentred outcomes.",
+      "word_count": 827,
+      "pages": "TBD",
+      "subsections": [
+        "In this study, a modified corticotomy approach was",
+        "The study design also ensured consistency in mechanics"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "This study showed that both piezocision and corticotomy resulted in a significant increase in IL-1β levels in gingival crevicular fluid, reflecting an active inflammatory and bone remodelling response.",
+      "first_100_chars": "This study showed that both piezocision and corticotomy resulted in a significant increase in IL-1β ",
+      "last_sentence": "Further studies with larger samples and clinical tooth movement data are needed to determine whether this enhanced response translates to improved orthodontic treatment efficiency.",
+      "last_100_chars": "to determine whether this enhanced response translates to improved orthodontic treatment efficiency.",
+      "word_count": 111,
+      "pages": "TBD",
+      "subsections": [
+        "This study showed that both piezocision and corticotomy"
+      ]
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "A Collection of GCF with Capillary tube, B Capillary Tubes & Eppendorf Tubes",
+      "caption_length": 76,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "A Corticotomy unit, B Surgical site",
+      "caption_length": 35,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "A Piezosurgical Unit, B Surgical site",
+      "caption_length": 37,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "The mean IL1-β between the two groups was compared",
+      "caption_length": 50,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "Comparison of mean IL-1β between the two groups at various timelines",
+      "caption_length": 68,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "In both the piezocision and corticotomy groups, IL-1β",
+      "caption_length": 53,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Demographic details of the study population",
+      "caption_length": 43,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Comparison of mean IL-1β between the two groups at",
+      "caption_length": 50,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "comparison table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Comparison of mean IL-1β between baseline and",
+      "caption_length": 45,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "comparison table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "Not applicable. 5. Authors’ contributions All auth",
+      "last_50_chars": "iar, Dr. Nandlal Toshniwal, Dr. Ruchika Pandey. 6."
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "Open access funding provided by Datta Meghe Instit",
+      "last_50_chars": "included in this article. 7. 8. 9. 10. 11. 12. 13."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "All data or materials generated or analyzed during",
+      "last_50_chars": "included in this article. 7. 8. 9. 10. 11. 12. 13."
+    },
+    "declarations": {
+      "present": true,
+      "first_50_chars": "Ethics approval and consent to participate This st",
+      "last_50_chars": "ed: 25 March 2025 / Accepted: 23 July 2025 21. 22."
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no competing interests. Author",
+      "last_50_chars": "ed: 25 March 2025 / Accepted: 23 July 2025 21. 22."
+    }
+  },
+  "structural_info": {
+    "total_sections": 3,
+    "total_figures": 6,
+    "total_tables": 3,
+    "total_references": 4,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "BMC Oral Health | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

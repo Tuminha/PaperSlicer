@@ -1,0 +1,177 @@
+{
+  "file_name": "bmc_oral_health_article1_reso_pac_2025.pdf",
+  "metadata": {
+    "title": "",
+    "authors": [],
+    "journal": "BMC Oral Health",
+    "doi": "10.1186/s12903-025-06459-4",
+    "year": 2025,
+    "total_pages": 11
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background Surgical site infections (SSIs) and pos",
+    "last_50_chars": "complications such as pain, haemorrhage, and nerve",
+    "word_count": 14,
+    "char_count": 111
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "found": true
+    },
+    "materials_and_methods": {
+      "heading": "Materials and methods",
+      "found": true
+    },
+    "results": {
+      "heading": "Results",
+      "found": true
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "found": true
+    },
+    "conclusion": {
+      "heading": "Conclusion",
+      "found": true
+    },
+    "references": {
+      "heading": "References",
+      "found": true
+    },
+    "funding": {
+      "heading": "Funding",
+      "found": true
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": ").",
+      "caption_length": 2
+    },
+    {
+      "label": "Fig. 1",
+      "caption": "). The primary",
+      "caption_length": 14
+    },
+    {
+      "label": "Fig. 1",
+      "caption": "PRISMA Flow chart",
+      "caption_length": 17
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "Risk of bias assessment and summary graph for studies evaluating wound healing parameters",
+      "caption_length": 89
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "). Fit",
+      "caption_length": 6
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "). This negative pooled effect size suggests a significant reduction",
+      "caption_length": 68
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "Risk of bias assessment and summary graph for studies evaluating pain parameters",
+      "caption_length": 80
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Random effect model forest plot graph for the parameter of pain reduction",
+      "caption_length": 73
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "). Fit measures",
+      "caption_length": 15
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "Bayesian Forest plot graph with observed and estimated effect sizes",
+      "caption_length": 67
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "Random effect model forest plot graph for the parameter of improvement in wound healing",
+      "caption_length": 87
+    },
+    {
+      "label": "Fig. 4",
+      "caption": ") suggests that patients treated with Reso-Pac",
+      "caption_length": 46
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "), further reinforcing the effectiveness of Reso-Pac in alleviating postoperative pain following third molar extractions. In terms",
+      "caption_length": 130
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "). These",
+      "caption_length": 8
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "). While these limitations must be",
+      "caption_length": 34
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": ").",
+      "caption_length": 2
+    },
+    {
+      "label": "Table 1",
+      "caption": "Search strategy for the databases",
+      "caption_length": 33
+    },
+    {
+      "label": "Table 2",
+      "caption": ").",
+      "caption_length": 2
+    },
+    {
+      "label": "Table 3",
+      "caption": "presents a comprehensive summary of outcome",
+      "caption_length": 43
+    },
+    {
+      "label": "Table 2",
+      "caption": "General characteristics of studies included",
+      "caption_length": 43
+    },
+    {
+      "label": "Table 3",
+      "caption": "Main outcome and inference from included studies",
+      "caption_length": 48
+    },
+    {
+      "label": "Table 4",
+      "caption": "). For pain reduction, patients treated with Reso-Pac showed an SMD of",
+      "caption_length": 70
+    },
+    {
+      "label": "Table 4",
+      "caption": "GRADE summary of findings table",
+      "caption_length": 31
+    }
+  ],
+  "structural_info": {
+    "total_pages": 11,
+    "total_figures": 15,
+    "total_tables": 8,
+    "total_sections": 7
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "text_readability": "Good"
+  }
+}

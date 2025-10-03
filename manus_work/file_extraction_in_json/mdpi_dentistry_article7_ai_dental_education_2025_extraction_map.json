@@ -1,0 +1,88 @@
+{
+  "file_name": "mdpi_dentistry_article7_ai_dental_education_2025.pdf",
+  "metadata": {
+    "title": "Artificial Intelligence in Dental Education: A Scoping Review of Applications, Challenges, and Gaps Mohammed El-Hakim * , Robert Anthonappa and Amr Fawzy University of Western Australia, Dental School, Perth, WA 6009, Australia; robert.anthonappa@uwa.edu.au (R.A.);",
+    "authors": [
+      "Mohammed El-Hakim *",
+      "Robert Anthonappa",
+      "Amr Fawzy"
+    ],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13090384",
+    "year": 2025,
+    "total_pages": 19
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Academic Editors: Hans S. Malmstrom and Denis Bour",
+    "last_50_chars": "AI application and evaluation in dental education.",
+    "word_count": 254,
+    "char_count": 1936
+  },
+  "sections": {
+    "methods": {
+      "heading": "Methods",
+      "first_sentence": "elaborated Feedback (eF) and Knowledge of Results (KOR) on radiographic diagnostic competencies in dental students, and to evaluate the diagnostic accuracy of an AI system (dentalXrai Pro 3.0) as a potential educational aid.",
+      "first_100_chars": "elaborated Feedback (eF) and Knowledge of Results (KOR) on radiographic diagnostic competencies in d",
+      "last_sentence": "Limitations Findings Scoping Review",
+      "last_100_chars": ", and item agreement. Included test-retest reliability analysis. Limitations Findings Scoping Review",
+      "word_count": 210,
+      "pages": "TBD",
+      "subsections": [
+        "Design",
+        "Statistical"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "Students found the AI feedback system helpful for identifying and correcting",
+      "first_100_chars": "Students found the AI feedback system helpful for identifying and correcting",
+      "last_sentence": "Students found the AI feedback system helpful for identifying and correcting",
+      "last_100_chars": "Students found the AI feedback system helpful for identifying and correcting",
+      "word_count": 11,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "PRISMA flow diagram [17] for the scoping review process performed",
+      "caption_length": 65,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "flowchart",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Summary of Included Studies Categorized by AI Domain in Dental Education.",
+      "caption_length": 73,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "summary table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 2,
+    "total_figures": 1,
+    "total_tables": 1,
+    "total_references": 34,
+    "has_appendices": false,
+    "has_supplementary": true
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

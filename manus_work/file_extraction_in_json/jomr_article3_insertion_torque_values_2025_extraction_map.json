@@ -1,0 +1,163 @@
+{
+  "file_name": "jomr_article3_insertion_torque_values_2025.pdf",
+  "metadata": {
+    "title": "Accumulated Insertion Torque Values: a Preliminary Study Reiko Kobatake1, Kazuya Doi1, Tomoko Izumikawa1, Yusuke Morimoto1, Kaien Wakamatsu1, Kazuhiro Tsuga1 Department of Advanced Prosthodontics, Hiroshima University Graduate School of Biomedical and Health Sciences,",
+    "authors": [
+      "Department of Advanced Prosthodontics",
+      "Hiroshima University Graduate School of Biomedical",
+      "Health Sciences,"
+    ],
+    "journal": "Journal of Oral and Maxillofacial Research",
+    "doi": "",
+    "year": 2025,
+    "total_pages": 8
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Objectives: This preliminary in vitro study aimed ",
+    "last_50_chars": "2025/2/e6/v16n2e6.pdf doi: 10.5037/jomr.2025.16206",
+    "word_count": 314,
+    "char_count": 2010
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "The primary stability of an implant is closely related to treatment prognosis [1,2].",
+      "first_100_chars": "The primary stability of an implant is closely related to treatment prognosis [1,2]. Currently, this",
+      "last_sentence": "Surgical Pro2 (NSK-Nakanishi International; Kanuma, Tochigi, Japan) was used as the implant motor system.",
+      "last_100_chars": "cal Pro2 (NSK-Nakanishi International; Kanuma, Tochigi, Japan) was used as the implant motor system.",
+      "word_count": 574,
+      "pages": "TBD",
+      "subsections": [
+        "The purpose of this preliminary in vitro study was to",
+        "MATERIAL AND METHODS"
+      ]
+    },
+    "methods": {
+      "heading": "Methods",
+      "first_sentence": "The study was conducted at the Department of Advanced Prosthodontics, Hiroshima University Graduate School of Biomedical and Health Sciences, Hiroshima, Japan, between November 13, 2024 to November 22, 2024.",
+      "first_100_chars": "The study was conducted at the Department of Advanced Prosthodontics, Hiroshima University Graduate ",
+      "last_sentence": "The calculations were performed using GraphPad Prism version 7.0 software (GraphPad Software Inc.; La Jolla, CA, USA).",
+      "last_100_chars": "ere performed using GraphPad Prism version 7.0 software (GraphPad Software Inc.; La Jolla, CA, USA).",
+      "word_count": 335,
+      "pages": "TBD",
+      "subsections": [
+        "The study was conducted at the Department of",
+        "Statistical analysis"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Colour maps of implantation torque values The implantation torque values were recorded as shown in Figure 3.",
+      "first_100_chars": "Colour maps of implantation torque values The implantation torque values were recorded as shown in F",
+      "last_sentence": "A correlation was observed between ATV and ISQ (42-10ST [P < 0.05, r = 0.81], 37-6ST [P < 0.05, r = 0.83]) (Figure 5).",
+      "last_100_chars": "observed between ATV and ISQ (42-10ST [P < 0.05, r = 0.81], 37-6ST [P < 0.05, r = 0.83]) (Figure 5).",
+      "word_count": 803,
+      "pages": "TBD",
+      "subsections": [
+        "Statistically significant at level"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "This study focused on the IT value as an evaluation of the primary stability of implants and investigated a new evaluation method based on the IT value over time using simulated bone blocks.",
+      "first_100_chars": "This study focused on the IT value as an evaluation of the primary stability of implants and investi",
+      "last_sentence": "• Long-term implications of accumulated insertion torque on implant stability and bone health require further investigation in longitudinal studies.",
+      "last_100_chars": "n torque on implant stability and bone health require further investigation in longitudinal studies.",
+      "word_count": 710,
+      "pages": "TBD",
+      "subsections": [
+        "This study focused on the IT value as an evaluation",
+        "In this study, we used simulated bone blocks with a",
+        "This study has several limitations:"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "The accumulated torque value changed according to the density of the simulated bone block for differentsized implants, and a correlation was observed with existing implant stability evaluations.",
+      "first_100_chars": "The accumulated torque value changed according to the density of the simulated bone block for differ",
+      "last_sentence": "This novel method may be useful for evaluating the stability of primary implants.",
+      "last_100_chars": "ility evaluations. This novel method may be useful for evaluating the stability of primary implants.",
+      "word_count": 40,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Implants: (a) 42-10ST = diameter 4",
+      "caption_length": 34,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "The instant torque generated over time was measured",
+      "caption_length": 51,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Colour map of insertion torque: A = D1, 42-10ST; B = D2, 42-10ST; C = D3, 42-10ST; D = D4, 42-10ST; E = D1, 37-6ST;",
+      "caption_length": 115,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Correlation between accumulated torque value (ATV) and peak torque value (PTV): A = 42-10ST; B = 37-6ST",
+      "caption_length": 103,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 5",
+      "caption": "Correlation between implant stability quotient (ISQ) and accumulated torque value (ATV): A = 42-10ST; B = 37-6ST",
+      "caption_length": 112,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Comparison of measurements between implants",
+      "caption_length": 43,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "comparison table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 5,
+    "total_figures": 5,
+    "total_tables": 1,
+    "total_references": 25,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Journal of Oral and Maxillofacial Research | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

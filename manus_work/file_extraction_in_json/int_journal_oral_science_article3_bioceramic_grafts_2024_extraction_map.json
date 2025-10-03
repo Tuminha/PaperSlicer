@@ -1,0 +1,95 @@
+{
+  "file_name": "int_journal_oral_science_article3_bioceramic_grafts_2024.pdf",
+  "metadata": {
+    "title": "endodontists, many clinical problems remain to be overcome. The consensus has gathered well-known domestic experts to hold a series of special discussions and reached the consensus. This document speciﬁes the indications, contraindications, preoperative preparations, operational procedures, complication prevention measures, and efﬁcacy evaluation of apical microsurgery and is applicable to dentists who perform apical microsurgery after systematic training.",
+    "authors": [
+      "Yat-Sen University & Guangdong Provincial Key Laboratory of Stomatology",
+      "China; Department of Oral",
+      "Maxillofacial Surgery",
+      "School of Stomatology"
+    ],
+    "journal": "International Journal of Oral Science",
+    "doi": "10.1038/s41368-024-00334-8",
+    "year": 2024,
+    "total_pages": 9
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "Root canal therapy is currently the most common and effective method for treating periapical diseases, with a success rate of more than 80%, while the success rate of root canal retreatment ; https://doi.org/10.1038/s41368-024-00334-8 can reach 50–80",
+      "first_100_chars": "Root canal therapy is currently the most common and effective method for treating periapical disease",
+      "last_sentence": "The cotton pellet must be removed before ﬂap repositioning; no special treatment is needed, but the patient should be periodically followed-up.12,13",
+      "last_100_chars": "ositioning; no special treatment is needed, but the patient should be periodically followed-up.12,13",
+      "word_count": 3101,
+      "pages": "TBD",
+      "subsections": [
+        "Patient preparation",
+        "SURGICAL PROCEDURES",
+        "Flap design"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "Following the biological concepts, i.e.",
+      "first_100_chars": "Following the biological concepts, i.e. complete debridement, tight sealing of root canal system, an",
+      "last_sentence": "22, 1717–1724 (2018).",
+      "last_100_chars": "lesion: survival analysis using propensity score analysis. Clin. Oral. Invset. 22, 1717–1724 (2018).",
+      "word_count": 706,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 2",
+      "caption": "Sulcular rectangular ﬂap with a horizontal incision in the",
+      "caption_length": 58,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "Submarginal rectangular ﬂap with a horizontal incision in the",
+      "caption_length": 61,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Sulcular triangular ﬂap with a horizontal incision in the",
+      "caption_length": 57,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 2,
+    "total_figures": 3,
+    "total_tables": 0,
+    "total_references": 54,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "International Journal of Oral Science | 2024",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

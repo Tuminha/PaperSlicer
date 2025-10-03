@@ -1,0 +1,215 @@
+{
+  "file_name": "international_journal_implant_dentistry_article2_cadcam_titanium_mesh_2025.pdf",
+  "metadata": {
+    "title": "Comparison between CAD/CAM titanium mesh vs. conventional titanium mesh in bone regeneration: a systematic review and metaanalysis Gian Maria Ragucci1 , Antonio Fernández Augè1*, Anna Tresserra Parra1, Basel Elnayef1",
+    "authors": [],
+    "journal": "International Journal of Implant Dentistry",
+    "doi": "10.1186/s40729-025-00643-5",
+    "year": 2025,
+    "total_pages": 16
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background Vertical bone defects remain a challeng",
+    "last_50_chars": ". The results support the potential advantages of ",
+    "word_count": 329,
+    "char_count": 2149
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "Dental implant treatment has significantly evolved since its early stages, becoming a predictable and widely accepted technique [1].",
+      "first_100_chars": "Dental implant treatment has significantly evolved since its early stages, becoming a predictable an",
+      "last_sentence": "The objective of this systematic review is to analyze the clinical and radiological outcomes—including vertical and horizontal bone gain—as well as the potential complications and challenges associated with the use of customized versus conventional t",
+      "last_100_chars": "ciated with the use of customized versus conventional titanium mesh in bone augmentation procedures.",
+      "word_count": 591,
+      "pages": "TBD",
+      "subsections": [
+        "Chiapasco et al., in a retrospective study using CTM,"
+      ]
+    },
+    "materials_and_methods": {
+      "heading": "Materials and Methods",
+      "first_sentence": "Search strategy Four electronic databases- Cochrane Central, Google Scholar, PubMed and Web of Science - were used to identify relevant publications in English without time restrictions.",
+      "first_100_chars": "Search strategy Four electronic databases- Cochrane Central, Google Scholar, PubMed and Web of Scien",
+      "last_sentence": "and G.M.R.), and any discrepancies were resolved through discussion with a third reviewer (F.H.A.) This systematic review was registered in the International Prospective Register of Systematic Reviews (PROSPERO) under the number CRD420251051175.",
+      "last_100_chars": "nternational Prospective Register of Systematic Reviews (PROSPERO) under the number CRD420251051175.",
+      "word_count": 711,
+      "pages": "TBD",
+      "subsections": [
+        "Four electronic databases- Cochrane Central, Google",
+        "Inclusion and exclusion criteria",
+        "Study selection",
+        "Each study was independently reviewed by G.M.R and",
+        "Statistical analysis"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "The initial search identified 695 titles, of which 56 were identified as potentially relevant after the initial screening phase.",
+      "first_100_chars": "The initial search identified 695 titles, of which 56 were identified as potentially relevant after ",
+      "last_sentence": "A detailed summary of the risk of bias assessments is provided in Tables 2 and 3.",
+      "last_100_chars": "iable adjustments. A detailed summary of the risk of bias assessments is provided in Tables 2 and 3.",
+      "word_count": 1405,
+      "pages": "TBD",
+      "subsections": [
+        "Articles were excluded for reasons such as lack of data"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "In the current literature, there are still few studies that directly compare the outcomes of conventional titanium mesh (TM) and customized titanium mesh (CTM) in guided bone regeneration procedures.",
+      "first_100_chars": "In the current literature, there are still few studies that directly compare the outcomes of convent",
+      "last_sentence": "These findings may help guide clinicians in selecting the most appropriate technique for vertical ridge augmentation procedures.",
+      "last_100_chars": "e clinicians in selecting the most appropriate technique for vertical ridge augmentation procedures.",
+      "word_count": 2067,
+      "pages": "TBD",
+      "subsections": [
+        "The primary objective of the present study was to assess",
+        "In this study, the mean vertical bone gain across groups",
+        "Study Quality"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "Within the limitations of this study, the use of customized titanium mesh (CTM) appears to be an effective technique for bone augmentation.",
+      "first_100_chars": "Within the limitations of this study, the use of customized titanium mesh (CTM) appears to be an eff",
+      "last_sentence": "To gain a clearer understanding of their potential impact, additional randomized controlled trials with extended follow-up periods are recommended.",
+      "last_100_chars": "ial impact, additional randomized controlled trials with extended follow-up periods are recommended.",
+      "word_count": 89,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "Table 1 provides a detailed summary of the included",
+      "caption_length": 51,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "Forest plot comparing vertical bone gain between conventional titanium meshes (TM) and customized titanium meshes (CTM)",
+      "caption_length": 119,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "Forest plot comparing horizontal bone gain between CTM and TM",
+      "caption_length": 61,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Meta-regression results comparing membrane exposure rates between conventional and CAD/CAM titanium meshes",
+      "caption_length": 106,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "Meta-regression results evaluating the incidence of other complications between the two groups",
+      "caption_length": 94,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "Scatterplot illustrating the association between follow-up duration and the rate of other complications across studies using conventional and",
+      "caption_length": 141,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Summary of the main characteristics and outcomes of the included studies",
+      "caption_length": 72,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "characteristics table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Domain-based risk of bias assessment (RoB-2) for randomized controlled trials included in the review",
+      "caption_length": 100,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Risk of bias assessment of non-randomized studies using the Newcastle-Ottawa scale (NOS)",
+      "caption_length": 88,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "funding": {
+      "present": true,
+      "first_50_chars": "This research received no external funding. Data a",
+      "last_50_chars": "urrent study. Page 14 of 16 9. 10. 11. 12. 13. 14."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "No datasets were generated or analysed during the ",
+      "last_50_chars": "urrent study. Page 14 of 16 9. 10. 11. 12. 13. 14."
+    },
+    "declarations": {
+      "present": true,
+      "first_50_chars": "Ethics approval and consent to participate Not app",
+      "last_50_chars": "ueta, s/n, 08195 Sant Cugat del Vallès, Barcelona,"
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no competing interests. 17. Au",
+      "last_50_chars": "ueta, s/n, 08195 Sant Cugat del Vallès, Barcelona,"
+    }
+  },
+  "structural_info": {
+    "total_sections": 5,
+    "total_figures": 6,
+    "total_tables": 3,
+    "total_references": 20,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "International Journal of Implant Dentistry | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

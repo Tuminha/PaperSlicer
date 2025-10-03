@@ -1,0 +1,102 @@
+{
+  "file_name": "open_dentistry_journal_article1_consort_orthodontics_2024.pdf",
+  "metadata": {
+    "title": "CONSORT items. Essential elements like the study participants, interventions, objectives, outcomes, and conclusions were consistently reported. However, crucial methodological details such as randomization procedures, blinding techniques, recruitment status, adverse events, trial registration, and funding sources were frequently missing from",
+    "authors": [
+      "Fahad Alharbi,*",
+      "Saeed Asiri"
+    ],
+    "journal": "The Open Dentistry Journal",
+    "doi": "10.2174/0118742106365130241216054256,",
+    "year": 2024,
+    "total_pages": 7
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "reporting , CONSORT Statement, Dental abstracts , ",
+    "last_50_chars": " 00966599964445; E-mail: fahad.alharbi@psau.edu.sa",
+    "word_count": 93,
+    "char_count": 713
+  },
+  "sections": {
+    "conclusion": {
+      "heading": "Conclusion",
+      "first_sentence": "This study found that abstracts of RCTs published in four leading journals between 2018 and 2022 fell short of the standards suggested by the CONSORT statement.",
+      "first_100_chars": "This study found that abstracts of RCTs published in four leading journals between 2018 and 2022 fel",
+      "last_sentence": "LIST OF ABBREVIATIONS CONSORT = Consolidated Standards of Reporting",
+      "last_100_chars": "uted to drafting the manuscript. LIST OF ABBREVIATIONS CONSORT = Consolidated Standards of Reporting",
+      "word_count": 79,
+      "pages": "TBD",
+      "subsections": [
+        "This study found that abstracts of RCTs published in",
+        "FA contributed to conceptualization, study design, and"
+      ]
+    }
+  },
+  "figures": [],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Univariate analysis showed AJODO to be",
+      "caption_length": 38,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Univariate linear regression derived coefficients (B) and 95% confidence interval with a mean score of",
+      "caption_length": 102,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Calculated score value of the CONSORT checklist guideline.",
+      "caption_length": 58,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors gratefully acknowledge the generous su",
+      "last_50_chars": "ia which facilitated the conduct of this research."
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "None. CONFLICT OF INTERESTS The authors declare no",
+      "last_50_chars": "e no conflict of interest, financial or otherwise."
+    }
+  },
+  "structural_info": {
+    "total_sections": 1,
+    "total_figures": 0,
+    "total_tables": 3,
+    "total_references": 0,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "The Open Dentistry Journal | 2024",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

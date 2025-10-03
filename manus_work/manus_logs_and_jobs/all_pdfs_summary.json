@@ -1,0 +1,188 @@
+{
+  "total_pdfs_processed": 38,
+  "pdfs_by_journal": {
+    "Clinical Oral Implants Research": [
+      "ClinicalOralImplantsRes-2025-Lee-TheEffectofRestorativeEmergenceAngleonSoftandHardTissueAroundSplinted.pdf",
+      "ClinicalOralImplantsRes-2025-Sforza-Peri\u2010ImplantConditionsDuringSupportivePeriodontalCareAProspective.pdf",
+      "ClinicalOralImplantsRes-2025-Trimpou-ClinicalPerformanceofImmediatelyRestoredSurfaceModifiedTwo\u2010Piece.pdf"
+    ],
+    "Periodontology 2000": [
+      "Periodontology2000-2023-Lin\u0303ares-Criticalreviewonbonegraftingduringimmediateimplantplacement.pdf",
+      "periodontology2000_article1_monje_2025.pdf"
+    ],
+    "BMC Oral Health": [
+      "bmc_oral_health_article1_reso_pac_2025.pdf",
+      "bmc_oral_health_article2_bone_density_2025.pdf",
+      "bmc_oral_health_article3_cytokine_orthodontics_2025.pdf"
+    ],
+    "Dental Materials Journal": [
+      "dmj_article1_aligner_thickness_orthodontics_2025.pdf",
+      "dmj_article2_osteoinductivity_dicalcium_phosphate_2025.pdf",
+      "dmj_article3_dental_resin_composites_hydroxyapatite_2025.pdf"
+    ],
+    "International Journal of Dental Materials": [
+      "ijdm_article1_nickel_chromium_alloy_surface_roughness_2025.pdf",
+      "ijdm_article2_ai_caries_detection_radiographs_2025.pdf",
+      "ijdm_article3_bioactive_varnish_microleakage_composite_2025.pdf"
+    ],
+    "International Journal of Oral Science": [
+      "int_journal_oral_science_article1_apical_microsurgery_2025.pdf",
+      "int_journal_oral_science_article2_organoids_maxillofacial_2024.pdf",
+      "int_journal_oral_science_article3_bioceramic_grafts_2024.pdf"
+    ],
+    "International Journal of Implant Dentistry": [
+      "international_journal_implant_dentistry_article1_macrodesign_insertion_load_2025.pdf",
+      "international_journal_implant_dentistry_article2_cadcam_titanium_mesh_2025.pdf",
+      "international_journal_implant_dentistry_article3_3d_theory_osseointegration_2025.pdf"
+    ],
+    "Journal of Oral and Maxillofacial Research": [
+      "jomr_article1_sinus_membrane_elevation_2025.pdf",
+      "jomr_article2_implant_stability_vacuum_plasma_2025.pdf",
+      "jomr_article3_insertion_torque_values_2025.pdf"
+    ],
+    "Dentistry Journal (MDPI)": [
+      "mdpi_dentistry_article1_dental_neglect_scale_2025.pdf",
+      "mdpi_dentistry_article2_fluoride_release_2025.pdf",
+      "mdpi_dentistry_article4_ai_dental_practice_romanian_2025.pdf",
+      "mdpi_dentistry_article5_implant_assisted_dentures_2025.pdf",
+      "mdpi_dentistry_article6_endodontic_management_2025.pdf",
+      "mdpi_dentistry_article7_ai_dental_education_2025.pdf",
+      "mdpi_dentistry_article8_final_collection_2025.pdf"
+    ],
+    "Oral (MDPI)": [
+      "mdpi_oral_article1_bitemark_analysis_bias_2024.pdf",
+      "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.pdf"
+    ],
+    "The Open Dentistry Journal": [
+      "open_dentistry_journal_article1_consort_orthodontics_2024.pdf",
+      "open_dentistry_journal_article2_hypericum_nanoemulsion_2024.pdf",
+      "open_dentistry_journal_article3_root_canal_prevalence_2024.pdf"
+    ],
+    "Consensus Report": [
+      "s1_48_barootchi_consensus_25(1).pdf",
+      "s49_72_lin_consensus_25.pdf",
+      "s91_160_ravida_consensus_25.pdf"
+    ]
+  },
+  "total_figures_all_papers": 56,
+  "total_tables_all_papers": 39,
+  "papers_with_missing_sections": [
+    "ClinicalOralImplantsRes-2025-Lee-TheEffectofRestorativeEmergenceAngleonSoftandHardTissueAroundSplinted.pdf",
+    "ClinicalOralImplantsRes-2025-Sforza-Peri\u2010ImplantConditionsDuringSupportivePeriodontalCareAProspective.pdf",
+    "ClinicalOralImplantsRes-2025-Trimpou-ClinicalPerformanceofImmediatelyRestoredSurfaceModifiedTwo\u2010Piece.pdf",
+    "Periodontology2000-2023-Lin\u0303ares-Criticalreviewonbonegraftingduringimmediateimplantplacement.pdf",
+    "ijdm_article1_nickel_chromium_alloy_surface_roughness_2025.pdf",
+    "ijdm_article2_ai_caries_detection_radiographs_2025.pdf",
+    "ijdm_article3_bioactive_varnish_microleakage_composite_2025.pdf",
+    "int_journal_oral_science_article1_apical_microsurgery_2025.pdf",
+    "int_journal_oral_science_article2_organoids_maxillofacial_2024.pdf",
+    "int_journal_oral_science_article3_bioceramic_grafts_2024.pdf",
+    "mdpi_dentistry_article1_dental_neglect_scale_2025.pdf",
+    "mdpi_dentistry_article2_fluoride_release_2025.pdf",
+    "mdpi_dentistry_article4_ai_dental_practice_romanian_2025.pdf",
+    "mdpi_dentistry_article5_implant_assisted_dentures_2025.pdf",
+    "mdpi_dentistry_article6_endodontic_management_2025.pdf",
+    "mdpi_dentistry_article7_ai_dental_education_2025.pdf",
+    "mdpi_dentistry_article8_final_collection_2025.pdf",
+    "mdpi_oral_article1_bitemark_analysis_bias_2024.pdf",
+    "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.pdf",
+    "periodontology2000_article1_monje_2025.pdf"
+  ],
+  "extraction_errors": [
+    {
+      "file": "ClinicalOralImplantsRes-2025-Lee-TheEffectofRestorativeEmergenceAngleonSoftandHardTissueAroundSplinted.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "ClinicalOralImplantsRes-2025-Sforza-Peri\u2010ImplantConditionsDuringSupportivePeriodontalCareAProspective.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "ClinicalOralImplantsRes-2025-Trimpou-ClinicalPerformanceofImmediatelyRestoredSurfaceModifiedTwo\u2010Piece.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "Periodontology2000-2023-Lin\u0303ares-Criticalreviewonbonegraftingduringimmediateimplantplacement.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "dmj_article1_aligner_thickness_orthodontics_2025.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "dmj_article2_osteoinductivity_dicalcium_phosphate_2025.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "dmj_article3_dental_resin_composites_hydroxyapatite_2025.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "int_journal_oral_science_article1_apical_microsurgery_2025.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "int_journal_oral_science_article2_organoids_maxillofacial_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "int_journal_oral_science_article3_bioceramic_grafts_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "mdpi_dentistry_article1_dental_neglect_scale_2025.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "mdpi_dentistry_article2_fluoride_release_2025.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "mdpi_oral_article1_bitemark_analysis_bias_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "mdpi_oral_article2_enamel_volume_loss_energy_drinks_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "open_dentistry_journal_article1_consort_orthodontics_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "open_dentistry_journal_article2_hypericum_nanoemulsion_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "open_dentistry_journal_article3_root_canal_prevalence_2024.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "s1_48_barootchi_consensus_25(1).pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "s49_72_lin_consensus_25.pdf",
+      "error": "Abstract not found"
+    },
+    {
+      "file": "s91_160_ravida_consensus_25.pdf",
+      "error": "Abstract not found"
+    }
+  ],
+  "processing_date": "2025-10-02",
+  "journal_counts": {
+    "Clinical Oral Implants Research": 3,
+    "Periodontology 2000": 2,
+    "BMC Oral Health": 3,
+    "Dental Materials Journal": 3,
+    "International Journal of Dental Materials": 3,
+    "International Journal of Oral Science": 3,
+    "International Journal of Implant Dentistry": 3,
+    "Journal of Oral and Maxillofacial Research": 3,
+    "Dentistry Journal (MDPI)": 7,
+    "Oral (MDPI)": 2,
+    "The Open Dentistry Journal": 3,
+    "Consensus Report": 3
+  }
+}

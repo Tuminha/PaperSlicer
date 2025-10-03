@@ -1,0 +1,195 @@
+{
+  "file_name": "mdpi_dentistry_article6_endodontic_management_2025.pdf",
+  "metadata": {
+    "title": "",
+    "authors": [
+      "Giovanni Barbagallo",
+      "Roberto Sammarco",
+      "Pietro Valerio Foti ,"
+    ],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13090388",
+    "year": 2025,
+    "total_pages": 22
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Academic Editors: David E. Jaramillo and Jorge Nun",
+    "last_50_chars": "ndodontic Management of a Complex Endo-Periodontal",
+    "word_count": 51,
+    "char_count": 341
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Intraoral radiography of tooth 1",
+      "caption_length": 32,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "Axial CBCT images of tooth 1",
+      "caption_length": 28,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Cross-section and Pano-rex CBCT images of tooth 1",
+      "caption_length": 49,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Pano-rex and cross-sectional CBCT images of tooth 1",
+      "caption_length": 51,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 5",
+      "caption": "Exposure parameters of CBCT image",
+      "caption_length": 33,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 6",
+      "caption": "Microscopic exploration and probing of EPL under the operating microscope",
+      "caption_length": 73,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 7",
+      "caption": "Access cavity prepared under microscopic vision, highlighting the balance between",
+      "caption_length": 81,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 8",
+      "caption": "Definition and visual inspection of the root resorption area under the operating microscope,",
+      "caption_length": 92,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 9",
+      "caption": "Post-treatment radiograph with composite filling",
+      "caption_length": 48,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 10",
+      "caption": "Axial CBCT images of tooth 1",
+      "caption_length": 28,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 11",
+      "caption": "Cross-section CBCT images of tooth 1",
+      "caption_length": 36,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 12",
+      "caption": "Pano-rex and cross-sectional CBCT images of tooth 1",
+      "caption_length": 51,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 13",
+      "caption": "Pre-treatment and 6-month follow-up healing comparison of EPL",
+      "caption_length": 61,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 14",
+      "caption": "Rendering of CBCT images of tooth 1",
+      "caption_length": 35,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 15",
+      "caption": "Exposure parameters of CBCT follow-up image",
+      "caption_length": 43,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 16",
+      "caption": "Intraoral radiography of tooth 1",
+      "caption_length": 32,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 17",
+      "caption": "EPL before (A) and after treatment (red circle showing mesiocervical widening of the",
+      "caption_length": 84,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 17,
+    "total_tables": 0,
+    "total_references": 35,
+    "has_appendices": false,
+    "has_supplementary": true
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

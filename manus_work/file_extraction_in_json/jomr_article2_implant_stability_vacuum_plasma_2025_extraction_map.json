@@ -1,0 +1,165 @@
+{
+  "file_name": "jomr_article2_implant_stability_vacuum_plasma_2025.pdf",
+  "metadata": {
+    "title": "Effect of Vacuum Plasma Activation on Early Implant Stability: a Single-Blind Split-Mouth Randomized Clinical Trial Claudio Stacchi1, Antonio Rapani1, Marco Montanari2, Rebecca Martini1, Teresa Lombardi3 Department of Medical, Surgical and Health Sciences, University of Trieste, 34100 Trieste, Italy.",
+    "authors": [
+      "Department of Medical",
+      "Surgery Specialties",
+      "Radiological Sciences",
+      "Public Health",
+      "University of Brescia"
+    ],
+    "journal": "Journal of Oral and Maxillofacial Research",
+    "doi": "",
+    "year": 2025,
+    "total_pages": 11
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Objectives: Plasma surface activation of dental im",
+    "last_50_chars": "2025/2/e5/v16n2e5.pdf doi: 10.5037/jomr.2025.16205",
+    "word_count": 312,
+    "char_count": 2283
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "Modern implant designs have undergone extensive improvement over the past decades, with particular emphasis on optimizing surface morphology, chemistry, and macro-geometry to promote osseointegration and enhance clinical outcomes [1-3].",
+      "first_100_chars": "Modern implant designs have undergone extensive improvement over the past decades, with particular e",
+      "last_sentence": "P < 0.05 was considered indicative of statistical significance.",
+      "last_100_chars": " the t-test for independent samples. P < 0.05 was considered indicative of statistical significance.",
+      "word_count": 2241,
+      "pages": "TBD",
+      "subsections": [
+        "Modern implant designs have undergone extensive",
+        "MATERIAL AND METHODS",
+        "Study design",
+        "This study was designed as a multicenter, single-blind,",
+        "The study protocol was developed following the",
+        "Patient selection",
+        "All partially edentulous patients requiring the",
+        "Inclusion criteria",
+        "Patient age > 18 years;",
+        "Patients must be able to review and understand"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Study population A total of 31 consecutive patients were screened for eligibility, and after the application of inclusion and exclusion criteria, 24 patients (18 males and 6 females; age range 39 to 78 years; 58.1 [SD 10.3] years; 11 smokers and 13 n",
+      "first_100_chars": "Study population A total of 31 consecutive patients were screened for eligibility, and after the app",
+      "last_sentence": "A detailed summary of the results is provided in Table 2.",
+      "last_100_chars": " throughout the entire observation period. A detailed summary of the results is provided in Table 2.",
+      "word_count": 775,
+      "pages": "TBD",
+      "subsections": [
+        "Study population",
+        "A total of 31 consecutive patients were screened",
+        "Analysis",
+        "Regarding implant lengths, 2 patients received 7",
+        "All surgical procedures were performed by three"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "The present split-mouth randomized controlled clinical trial aimed to evaluate the effect of vacuum plasma treatment on early implant stability in partially edentulous patients.",
+      "first_100_chars": "The present split-mouth randomized controlled clinical trial aimed to evaluate the effect of vacuum ",
+      "last_sentence": "Future large-scale, multicenter clinical trials with extended follow-up are warranted to determine whether these differences translate into meaningful clinical advantages, such as earlier loading or improved longterm outcomes.",
+      "last_100_chars": "ranslate into meaningful clinical advantages, such as earlier loading or improved longterm outcomes.",
+      "word_count": 935,
+      "pages": "TBD",
+      "subsections": [
+        "Furthermore, it is important to note that this study"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "Within the limitations of this randomized controlled clinical trial, the findings suggest that vacuum plasma treatment of titanium implants, applied immediately before placement, may positively influence implant stability during the intermediate phas",
+      "first_100_chars": "Within the limitations of this randomized controlled clinical trial, the findings suggest that vacuu",
+      "last_sentence": "Future studies could explore whether combining plasma activation with minimally invasive site preparation methods may further optimize early implant stability, particularly in more challenging clinical scenarios.",
+      "last_100_chars": "ptimize early implant stability, particularly in more challenging clinical scenarios. Stacchi et al.",
+      "word_count": 241,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Vacuum plasma treatment of the implant inserted",
+      "caption_length": 47,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "CONSORT flow chart with description of study design and study groups",
+      "caption_length": 68,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "flowchart",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "Implant stability quotient values from implant placement (T0) to 90 days of healing (T90) in test and control group",
+      "caption_length": 115,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "Implant stability pattern (%) from implant placement (T0) to 90 days of healing (T90) in test and control group",
+      "caption_length": 111,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Baseline demographic and clinical characteristics",
+      "caption_length": 49,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "characteristics table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Implant stability quotient values over time in test and",
+      "caption_length": 55,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 4,
+    "total_figures": 4,
+    "total_tables": 2,
+    "total_references": 32,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Journal of Oral and Maxillofacial Research | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "file_name": "dmj_article1_aligner_thickness_orthodontics_2025.pdf",
+  "metadata": {
+    "title": "The mechanical effect of aligner’s thickness and material properties in invisible orthodontics: A quantitative finite element study Waheed AHMAD1,2, Jing XIONG3 and Zeyang XIA4 Soft Robotics Research Center, Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen 518055, China",
+    "authors": [
+      "Research Center for Medical Robotics",
+      "Minimally Invasive Surgical Devices",
+      "Shenzhen Institutes of Advanced Technology",
+      "Chinese Academy"
+    ],
+    "journal": "Dental Materials Journal",
+    "doi": "",
+    "year": 2025,
+    "total_pages": 11
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "Invisible orthodontics, particularly aligners, have attracted considerable attention in recent years, owing largely to their aesthetic qualities and perceived comfort.",
+      "first_100_chars": "Invisible orthodontics, particularly aligners, have attracted considerable attention in recent years",
+      "last_sentence": "We hypothesized that precise adjustments in either the E or the thickness of aligners could achieve comparable effects on the force and moment exerted, offering potential for tailored therapeutic outcomes.",
+      "last_100_chars": "rable effects on the force and moment exerted, offering potential for tailored therapeutic outcomes.",
+      "word_count": 653,
+      "pages": "TBD",
+      "subsections": [
+        "FE analysis has been employed to investigate aligner",
+        "Our study explored the interaction between key"
+      ]
+    },
+    "materials_and_methods": {
+      "heading": "Materials and Methods",
+      "first_sentence": "To evaluate the mechanical impact of aligner thickness and material properties on orthodontic treatments, a FE model of the mandibular teeth, periodontal ligament, and bone complex (TPBC) was developed.",
+      "first_100_chars": "To evaluate the mechanical impact of aligner thickness and material properties on orthodontic treatm",
+      "last_sentence": "A total of 432 trials were conducted on each volunteer’s models (nine aligners with different thicknesses×12 sets of E×four teeth explained in Table 2).",
+      "last_100_chars": "er’s models (nine aligners with different thicknesses×12 sets of E×four teeth explained in Table 2).",
+      "word_count": 1415,
+      "pages": "TBD",
+      "subsections": [
+        "In each model, the aligner was designed with a",
+        "This statistical approach allows us to test the hypothesis",
+        "Attachments were modeled using computer-aided design",
+        "This study was reviewed and approved by the",
+        "Loading procedure"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Relation of force and moment with E and thickness of aligner An observable alteration in force and moment generation occurred upon initial tooth movement as the E and thickness of the aligner was adjusted (refer to Figs.",
+      "first_100_chars": "Relation of force and moment with E and thickness of aligner An observable alteration in force and m",
+      "last_sentence": "In the buccal-lingual direction, deviations are up to 0.04° for 0.01 GPa and 0.2 mm thickness, escalating to −0.19° and 0.3° for 3.5 GPa and 1.0 mm thickness also indicating tipping (see Fig.",
+      "last_100_chars": "escalating to −0.19° and 0.3° for 3.5 GPa and 1.0 mm thickness also indicating tipping (see Fig. 7).",
+      "word_count": 1233,
+      "pages": "TBD",
+      "subsections": [
+        "Statistical analysis",
+        "The statistical analyses were conducted using Python",
+        "The dataset presented in Table 5 substantiates the"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "This study aimed to understand the biomechanical implications of aligner material and thickness in 381 Dent Mater J 2025; 44(4): 375–385 Fig.",
+      "first_100_chars": "This study aimed to understand the biomechanical implications of aligner material and thickness in 3",
+      "last_sentence": "Additionally, time-dependent properties such as flexure and effective modulus will be integrated to improve model precision and provide a deeper understanding of the biomechanical behavior of aligners in varying clinical conditions.",
+      "last_100_chars": "ide a deeper understanding of the biomechanical behavior of aligners in varying clinical conditions.",
+      "word_count": 1356,
+      "pages": "TBD",
+      "subsections": [
+        "This study aimed to understand the biomechanical",
+        "FE analysis. These studies, however, did not extensively",
+        "The statistical analysis confirms our hypothesis,",
+        "In this study, we observed that both the thickness",
+        "The study findings indicate that both the thickness",
+        "M/F ratio appeared to plateau. Additionally, the study",
+        "One of the pivotal findings of this study is the notable",
+        "The implications of this study for clinical practice",
+        "Our study offers valuable insights but also"
+      ]
+    },
+    "conclusion": {
+      "heading": "Conclusion",
+      "first_sentence": "Our study quantitatively demonstrates how aligner thickness and Young’s modulus (E) impact orthodontic forces and moments, revealing that variations in these properties can significantly influence tooth movement dynamics.",
+      "first_100_chars": "Our study quantitatively demonstrates how aligner thickness and Young’s modulus (E) impact orthodont",
+      "last_sentence": "This research contributes new insights into the biomechanical effects of aligner adjustments, enhancing our understanding of how material properties can be optimized to improve clinical practices in invisible orthodontics.",
+      "last_100_chars": "of how material properties can be optimized to improve clinical practices in invisible orthodontics.",
+      "word_count": 106,
+      "pages": "TBD",
+      "subsections": [
+        "Our study quantitatively demonstrates how aligner"
+      ]
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "Overview of the study methodology including model reconstruction, experimental",
+      "caption_length": 78,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "To accurately simulate the biomechanical",
+      "caption_length": 40,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 7",
+      "caption": "Effect of E on the direction of orthodontic tooth",
+      "caption_length": 49,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Dent Mater J 2025; 44(4): 375–385",
+      "caption_length": 33,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Summary of aligner thicknesses and young’s modulus values used in the FE analysis across four teeth",
+      "caption_length": 99,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "summary table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "Relationship of moment with E and thickness of aligner.",
+      "caption_length": 55,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 5",
+      "caption": "Relationship of M/F with E and thickness of aligner.",
+      "caption_length": 52,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "This work was supported by the National Natural Sc",
+      "last_50_chars": "EREST The authors declare no conflict of interest."
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no conflict of interest.",
+      "last_50_chars": "The authors declare no conflict of interest."
+    }
+  },
+  "structural_info": {
+    "total_sections": 5,
+    "total_figures": 3,
+    "total_tables": 4,
+    "total_references": 0,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dental Materials Journal | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

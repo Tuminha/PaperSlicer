@@ -1,0 +1,74 @@
+{
+  "file_name": "ijdm_article2_ai_caries_detection_radiographs_2025.pdf",
+  "metadata": {
+    "title": "Standard ways of evaluating these cases still depend heavily on clinical skill, which isn’t always consistent. Mistakes in reading the signs aren’t rare. Now, with advancements in Artificial Intelligence, the field is shifting. It’s not just about detection anymore. AI enters the scene",
+    "authors": [],
+    "journal": "International Journal of Dental Materials",
+    "doi": "10.37983/IJDM.2025.7202",
+    "year": 2025,
+    "total_pages": 10
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background: Dental caries, being among the most fr",
+    "last_50_chars": "al Radiographs. Int J Dent Mater. 2025;7(2):37-46.",
+    "word_count": 313,
+    "char_count": 2214
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Diagram showing the steps in processing 400 periapical images through a Fiji-powered ResNet model for interproximal",
+      "caption_length": 115,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "photograph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 2",
+      "caption": "A bar graph compares caries diagnosis by three radiologists across 900 posterior teeth",
+      "caption_length": 86,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 3",
+      "caption": "A line graph comparing detection rates of interproximal caries by class (I to III) between radiologists and the AI model",
+      "caption_length": 120,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Figure 4",
+      "caption": "ROC curves demonstrating AI performance in detecting interproximal caries from periapical radiographs",
+      "caption_length": 101,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 4,
+    "total_tables": 0,
+    "total_references": 44,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "International Journal of Dental Materials | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "file_name": "international_journal_implant_dentistry_article1_macrodesign_insertion_load_2025.pdf",
+  "metadata": {
+    "title": "Influence of implant macrodesign and insertion load during implant placement on primary stability in artificial bone Yiwen Wang1, Yoko Yamaguchi1,2,3*, Poyuan Hsueh3 and Daisuke Higuchi1,2",
+    "authors": [
+      "Yiwen Wang",
+      "Yoko Yamaguchi,,*",
+      "Poyuan Hsueh",
+      "Daisuke Higuchi,"
+    ],
+    "journal": "International Journal of Implant Dentistry",
+    "doi": "10.1186/s40729-025-00644-4",
+    "year": 2025,
+    "total_pages": 11
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "methods": {
+      "heading": "Methods",
+      "first_sentence": "Implants The prototype implants were fabricated from commercially pure titanium with a parallel design.",
+      "first_100_chars": "Implants The prototype implants were fabricated from commercially pure titanium with a parallel desi",
+      "last_sentence": "Two-way analysis of variance (ANOVA) with implant type and insertion load as factors was performed, followed by Tukey’s multiple comparisons test (JMP4, SAS Institute, Tokyo, Japan) (p < 0.05).",
+      "last_100_chars": "ormed, followed by Tukey’s multiple comparisons test (JMP4, SAS Institute, Tokyo, Japan) (p < 0.05).",
+      "word_count": 806,
+      "pages": "TBD",
+      "subsections": [
+        "Statistical analysis"
+      ]
+    },
+    "results": {
+      "heading": "Results",
+      "first_sentence": "Minimum insertion load During the measurement process, when the insertion load was gradually reduced in 0.5 N increments, a threshold was reached beyond which either implant insertion could no longer be accomplished or the implant exhibited slippage ",
+      "first_100_chars": "Minimum insertion load During the measurement process, when the insertion load was gradually reduced",
+      "last_sentence": "a: S12, (b): D06, (c): S06",
+      "last_100_chars": "The torque‒time curves for different insertion loads at SI2, D06 and S06. a: S12, (b): D06, (c): S06",
+      "word_count": 1104,
+      "pages": "TBD",
+      "subsections": [
+        "Pattern analysis of the insertion time",
+        "Fig. 7 Pattern analysis of the insertion torque–time curve"
+      ]
+    },
+    "discussion": {
+      "heading": "Discussion",
+      "first_sentence": "Effect of the insertion load In clinical practice, parameters such as the ITV and implant stability quotient (ISQ) are used to assess primary stability [13, 14].",
+      "first_100_chars": "Effect of the insertion load In clinical practice, parameters such as the ITV and implant stability ",
+      "last_sentence": "Abbreviations ITV \u0007Insertion torque value RTV \u0007Removal torque value",
+      "last_100_chars": "ign combinations, are warranted. Abbreviations ITV \u0007Insertion torque value RTV \u0007Removal torque value",
+      "word_count": 1316,
+      "pages": "TBD",
+      "subsections": [
+        "A limitation of this study is that it was conducted under"
+      ]
+    },
+    "conclusions": {
+      "heading": "Conclusions",
+      "first_sentence": "This study conducted simulation experiments using prototype implants and artificial bone to elucidate the impact of the insertion load on primary stability.",
+      "first_100_chars": "This study conducted simulation experiments using prototype implants and artificial bone to elucidat",
+      "last_sentence": "Data availability No datasets were generated or analysed during the current study.",
+      "last_100_chars": "than S12 and S06. Data availability No datasets were generated or analysed during the current study.",
+      "word_count": 128,
+      "pages": "TBD",
+      "subsections": [
+        "This study conducted simulation experiments using",
+        "Data availability"
+      ]
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "Implants used in the experiment",
+      "caption_length": 31,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "Artificial bone used in this study and preparation of the implant sockets",
+      "caption_length": 73,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "An example of a torque‒time curve of the blue line",
+      "caption_length": 50,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "ITV at different insertion loads",
+      "caption_length": 32,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 6",
+      "caption": "RTV at different insertion loads",
+      "caption_length": 32,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 7",
+      "caption": "For all the implants, as the insertion load",
+      "caption_length": 43,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 8",
+      "caption": "The torque‒time curves for different insertion loads at SI2,",
+      "caption_length": 60,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 9",
+      "caption": "Artificial bone‒implant interface at the upper region of the implants under various insertion loads (magnification, × 50)",
+      "caption_length": 121,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 10",
+      "caption": "Void area at the bone‒implant interface for each implant and insertion load (magnification, × 20)",
+      "caption_length": 97,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 11",
+      "caption": "Total void area at the bone‒implant interface under various insertion loads for different implant types",
+      "caption_length": 103,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Analysis of the insertion time for each insertion load in S12",
+      "caption_length": 61,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Analysis of the insertion time for each insertion load in D06",
+      "caption_length": 61,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Analysis of the insertion time for each insertion load in S06",
+      "caption_length": 61,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "The authors thank the Vectrix Corporation and Dire",
+      "last_50_chars": "authors read and approved of the final manuscript."
+    },
+    "funding": {
+      "present": true,
+      "first_50_chars": "No funding.",
+      "last_50_chars": "No funding."
+    },
+    "data_availability": {
+      "present": true,
+      "first_50_chars": "No datasets were generated or analysed during the ",
+      "last_50_chars": "re generated or analysed during the current study."
+    },
+    "declarations": {
+      "present": true,
+      "first_50_chars": "Ethics approval and consent to participate This st",
+      "last_50_chars": "national Journal of Implant Dentistry (2025) 11:56"
+    },
+    "conflicts_of_interest": {
+      "present": true,
+      "first_50_chars": "The authors declare no competing interests. Receiv",
+      "last_50_chars": "national Journal of Implant Dentistry (2025) 11:56"
+    }
+  },
+  "structural_info": {
+    "total_sections": 4,
+    "total_figures": 10,
+    "total_tables": 3,
+    "total_references": 24,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "International Journal of Implant Dentistry | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

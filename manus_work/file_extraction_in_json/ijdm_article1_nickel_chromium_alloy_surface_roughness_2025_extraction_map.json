@@ -1,0 +1,50 @@
+{
+  "file_name": "ijdm_article1_nickel_chromium_alloy_surface_roughness_2025.pdf",
+  "metadata": {
+    "title": "Effect of Recasting Nickel-Chromium Alloy on Surface Roughness: An in vitro Study Munagapati Bharathi1, Kotra Vara Lakshmi2,*",
+    "authors": [],
+    "journal": "International Journal of Dental Materials",
+    "doi": "10.37983/IJDM.2025.7201",
+    "year": 2025,
+    "total_pages": 5
+  },
+  "abstract": {
+    "present": true,
+    "first_50_chars": "Background: Dental casting alloys play a crucial r",
+    "last_50_chars": "in vitro Study. Int J Dent Mater. 2025;7(2):32-36.",
+    "word_count": 330,
+    "char_count": 2204
+  },
+  "sections": {},
+  "figures": [],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "The recasting of the alloy demonstrated",
+      "caption_length": 39,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 0,
+    "total_tables": 1,
+    "total_references": 11,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "International Journal of Dental Materials | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "file_name": "mdpi_dentistry_article1_dental_neglect_scale_2025.pdf",
+  "metadata": {
+    "title": "",
+    "authors": [
+      "Lisa Irmscher",
+      "David Bantel",
+      "Clara Theres Meyer-Probst",
+      "Katja Petrowski",
+      "Hendrik Berth"
+    ],
+    "journal": "Dentistry Journal (MDPI)",
+    "doi": "10.3390/dj13050225",
+    "year": 2025,
+    "total_pages": 14
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {},
+  "figures": [
+    {
+      "label": "Figure 1",
+      "caption": "Scatterplot of the Dental Neglect Scale (DNS) and the Oral Health Impact Profile (OHIP-5)",
+      "caption_length": 89,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "graph",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "The Cronbach’s α is also shown, and was obtained by deleting one item. For",
+      "caption_length": 74,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 2",
+      "caption": "Result of the exploratory factor analysis.",
+      "caption_length": 42,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "results table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 3",
+      "caption": "Goodness-of-fit indices of the confirmatory factor model.",
+      "caption_length": 57,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 4",
+      "caption": "Correlations between DNS, BSI-18, OHIP-5, DMF_T, DMF_S, PSI, and DAS.",
+      "caption_length": 69,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 5",
+      "caption": "Differences in DNS between gender, age, education, and oral health-related variables (PSI,",
+      "caption_length": 90,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Table 6",
+      "caption": "DNS and preventive behavior.",
+      "caption_length": 28,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {},
+  "structural_info": {
+    "total_sections": 0,
+    "total_figures": 1,
+    "total_tables": 6,
+    "total_references": 41,
+    "has_appendices": false,
+    "has_supplementary": true
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "Dentistry Journal (MDPI) | 2025",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}

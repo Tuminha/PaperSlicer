@@ -1,0 +1,121 @@
+{
+  "file_name": "int_journal_oral_science_article2_organoids_maxillofacial_2024.pdf",
+  "metadata": {
+    "title": "challenged by a lack of versatile preclinical models. Recently, the advancements in the organoid industry have provided novel strategies to break through this dilemma. Here, we summarize the existing biological and engineering approaches that were employed to generate oral and maxillofacial organoids. Then, we detail the use of modiﬁed co-culture methods, such as cell cluster co-inoculation and air-liquid interface culture technology to reconstitute the vascular network and immune microenvironment in",
+    "authors": [
+      "Yufei Wu",
+      "Xiang Li",
+      "Hanzhe Liu",
+      "Xiao Yang",
+      "Rui Li",
+      "Hui Zhao",
+      "Zhengjun Shang"
+    ],
+    "journal": "International Journal of Oral Science",
+    "doi": "10.1038/s41368-024-00324-w",
+    "year": 2024,
+    "total_pages": 15
+  },
+  "abstract": {
+    "present": false,
+    "first_50_chars": "",
+    "last_50_chars": "",
+    "word_count": 0,
+    "char_count": 0
+  },
+  "sections": {
+    "introduction": {
+      "heading": "Introduction",
+      "first_sentence": "Due to the speciﬁcity of anatomy and unhealth lifestyle, oral and maxillofacial region (OMR) is highly vulnerable to a wide spectrum of diseases including inﬂammation,1 trauma,2 and tumors.3,4 Treatments of OMR illnesses are difﬁcult in that the exci",
+      "first_100_chars": "Due to the speciﬁcity of anatomy and unhealth lifestyle, oral and maxillofacial region (OMR) is high",
+      "last_sentence": "CONSTRUCTION AND CHARACTERIZATION OF ORAL AND MAXILLOFACIAL ORGANOIDS Three key elements to construct oral and maxillofacial",
+      "last_100_chars": "ERIZATION OF ORAL AND MAXILLOFACIAL ORGANOIDS Three key elements to construct oral and maxillofacial",
+      "word_count": 351,
+      "pages": "TBD",
+      "subsections": []
+    }
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "caption": "Three key elements to construct oral and maxillofacial organoids",
+      "caption_length": 64,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 2",
+      "caption": "Heatmap showing the culture conditions for various oral and maxillofacial organoid cultures",
+      "caption_length": 91,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 3",
+      "caption": "Cell clusters co-inoculation for culturing assembled oral cancer organoids",
+      "caption_length": 74,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 4",
+      "caption": "Vascularized oral cancer organoids constructed by engineering technologies (take microﬂuidics for example)",
+      "caption_length": 106,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    },
+    {
+      "label": "Fig. 5",
+      "caption": "Application of oral and maxillofacial organoids in the simulation of related diseases",
+      "caption_length": 85,
+      "page": "TBD",
+      "position": "TBD",
+      "type": "diagram",
+      "referenced_in_text": true
+    }
+  ],
+  "tables": [
+    {
+      "label": "Table 1",
+      "caption": "Organoids in the oral and maxillofacial region: present and future",
+      "caption_length": 66,
+      "page": "TBD",
+      "columns": "TBD",
+      "rows": "TBD",
+      "column_headers": [],
+      "first_row": [],
+      "type": "data table",
+      "referenced_in_text": true
+    }
+  ],
+  "other_sections": {
+    "acknowledgements": {
+      "present": true,
+      "first_50_chars": "This study was supported by grants from National K",
+      "last_50_chars": "rests: The authors declare no competing interests."
+    }
+  },
+  "structural_info": {
+    "total_sections": 1,
+    "total_figures": 5,
+    "total_tables": 1,
+    "total_references": 62,
+    "has_appendices": false,
+    "has_supplementary": false
+  },
+  "quality_indicators": {
+    "has_page_numbers": true,
+    "headers_footers": "International Journal of Oral Science | 2024",
+    "watermarks": "none",
+    "text_readability": "Good",
+    "special_notes": ""
+  }
+}
